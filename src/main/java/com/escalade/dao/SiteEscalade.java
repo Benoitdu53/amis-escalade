@@ -1,4 +1,4 @@
-package com.escalade.Dao;
+package com.escalade.dao;
 
 import javax.persistence.*;
 import java.io.Serializable;
