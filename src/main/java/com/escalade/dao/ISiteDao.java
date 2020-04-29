@@ -1,7 +1,10 @@
 package com.escalade.dao;
 
-import java.util.List;
+import com.escalade.entities.SiteEscalade;
 
+import javax.ejb.Local;
+import java.util.List;
+@Local
 public interface ISiteDao
 {
     public List<SiteEscalade> listSite();

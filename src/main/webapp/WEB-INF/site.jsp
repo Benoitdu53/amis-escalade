@@ -5,7 +5,7 @@
     <title>Site d'escalade</title>
 </head>
 <body>
-        <table>
+        <table border="1">
             <tr>
                 <th>id</th>
                 <th>Nom</th>
@@ -17,7 +17,19 @@
                 <th>Orientation</th>
             </tr>
 
-            <c:forEach items="${param.}"
+            <tr>
+                <c:forEach var="sites" items="${sites}">
+                    <td><c:out value="${sites.id}"/></td>
+                    <td><c:out value="${sites.nom}"/></td>
+                    <td><c:out value="${sites.type}"/></td>
+                    <td><c:out value="${sites.secteur}"/></td>
+                    <td><c:out value="${sites.voie}"/></td>
+                    <td><c:out value="${sites.longueur}"/></td>
+                    <td><c:out value="${sites.cotation}"/></td>
+                    <td><c:out value="${sites.orientation}"/></td>
+                </c:forEach>
+            </tr>
+
         </table>
 </body>
 </html>
