@@ -1,4 +1,4 @@
-package com.escalade.entities;
+package com.escalade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,35 +15,27 @@ public class SiteEscalade implements Serializable {
     private Integer voie;
     private Integer longueur;
     private String cotation;
-
-    /*
-        Constructeurs sans paramètres
-     */
-    public SiteEscalade()
-    {
-        super();
-    }
-
     private String orientation;
     private String nom;
 
-    /*
-        Constructeurs avec paramètres
-     */
-    public SiteEscalade(final String type, final String secteur, final Integer voie, final Integer longueur, final String cotation, final String orientation, final String nom)
+    @Override
+    public String toString()
     {
-        this.type = type;
-        this.secteur = secteur;
-        this.voie = voie;
-        this.longueur = longueur;
-        this.cotation = cotation;
-        this.orientation = orientation;
-        this.nom = nom;
+        return "SiteEscalade{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", secteur='" + secteur + '\'' +
+                ", voie=" + voie +
+                ", longueur=" + longueur +
+                ", cotation='" + cotation + '\'' +
+                ", orientation='" + orientation + '\'' +
+                ", nom='" + nom + '\'' +
+                '}';
     }
 
     /*
-        Getters et setters
-     */
+            Getters et setters
+         */
     public Long getId()
     {
         return id;

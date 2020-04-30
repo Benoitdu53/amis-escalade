@@ -1,12 +1,10 @@
-package com.escalade.dao;
+package com.escalade.service;
 
 import com.escalade.model.SiteEscalade;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
-public interface ISiteDao
+public interface ISiteService
 {
     public List<SiteEscalade> getAllSites();
 }
