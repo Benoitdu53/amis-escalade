@@ -8,6 +8,7 @@
         <datasource-mapping>
           <factory-entry name="SITE_ESCALADE" value="9608fbd5-7984-42fe-89f7-d5129beb7ff8" />
           <factory-entry name="amis-escalade" />
+          <factory-entry name="entityManagerFactory" />
           <factory-entry name="site" />
         </datasource-mapping>
         <naming-strategy-map />

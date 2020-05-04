@@ -3,19 +3,20 @@ package com.escalade.service;
 import com.escalade.dao.ISiteDao;
 import com.escalade.model.SiteEscalade;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.util.List;
 
-@Service
+@Named("siteService")
 public class SiteServiceImpl implements ISiteService
 {
     @Autowired
-    ISiteDao siteDao;
+    private ISiteDao iSiteDao;
 
     @Override
     public List<SiteEscalade> getAllSites()
     {
-        return null;
+        return iSiteDao.findAll();
     }
 }

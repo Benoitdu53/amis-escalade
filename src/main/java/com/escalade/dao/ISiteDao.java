@@ -1,12 +1,7 @@
 package com.escalade.dao;
 
 import com.escalade.model.SiteEscalade;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
 
-@Repository
-public interface ISiteDao
-{
-    public List<SiteEscalade> getAllSites();
-}
+public interface ISiteDao extends JpaRepository<SiteEscalade, Long> { }

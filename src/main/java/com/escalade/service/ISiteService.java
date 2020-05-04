@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface ISiteService
 {
-    public List<SiteEscalade> getAllSites();
+    List<SiteEscalade> getAllSites();
 }
