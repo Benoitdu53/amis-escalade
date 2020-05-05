@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name="siteEscalade")
-public class SiteEscalade implements Serializable {
+public class Site implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name ="id")
