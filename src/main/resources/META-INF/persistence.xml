@@ -10,7 +10,7 @@
 
         <properties>
             <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/amis_escalade"/>
-            <property name="hibernate.connection.usernam" value="root"/>
+            <property name="hibernate.connection.username" value="root"/>
             <property name="hibernate.connection.password" value="brichet"/>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
 

@@ -1,22 +1,27 @@
 package com.escalade.controller;
 
+import com.escalade.model.SiteEscalade;
 import com.escalade.service.ISiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.enterprise.inject.Model;
-import javax.servlet.http.HttpServlet;
+import java.util.List;
 
 @Controller
-public class SiteController extends HttpServlet {
+@RequestMapping("site")
+public class SiteController {
 
     @Autowired
-    ISiteService iSiteService;
+    private ISiteService iSiteService;
 
-    @RequestMapping(value = "/sites", method = RequestMethod.GET)
+    @GetMapping("/sites")
     public String GetAllSites(Model model){
+        List<SiteEscalade> siteEscalades = ISiteService.getAllSites();
+        model.addAttribute("site", siteEscalades);
         return "siteDisplay";
     }
 }

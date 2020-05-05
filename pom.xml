@@ -50,7 +50,12 @@
             <version>2.1.4.RELEASE</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.2.5.RELEASE</version>
+        </dependency>
 
         <!--JSR-->
         <!-- https://mvnrepository.com/artifact/javax.annotation/jsr250-api -->
