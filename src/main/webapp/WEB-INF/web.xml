@@ -3,6 +3,7 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
   <display-name>Amis escalade</display-name>
 
   <!-- Front Controller qui se décide quel controller doit se charger de la réponse -->
@@ -18,4 +19,5 @@
     <servlet-name>spring</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
 </web-app>

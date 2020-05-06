@@ -7,6 +7,8 @@
     <title>Site d'escalade</title>
 </head>
 <body>
+
+    <jsp:include page="rechercheSite.jsp"></jsp:include><br>
         <table border="1">
             <tr>
                 <th>id</th>
