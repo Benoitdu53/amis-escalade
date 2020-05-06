@@ -5,6 +5,7 @@
 <web-app>
   <display-name>Amis escalade</display-name>
 
+  <!-- Front Controller qui se décide quel controller doit se charger de la réponse -->
   <servlet>
     <servlet-name>spring</servlet-name>
     <servlet-class>

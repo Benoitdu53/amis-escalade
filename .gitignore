@@ -1,8 +1,10 @@
 ### Intellij Idea ###
 .idea
 *.iws
-.iml
+*.iml
 *.ipr
+amis-escalade.iml
+
 
 ### Projet ###
 target/

@@ -32,6 +32,11 @@ public class PersistenceJPAConfig {
     private String dataSourcePassword;
     @Value("${hibernate.dialect}")
     private String hibernateDialect;
+
+    /**
+     *Bean entityManager, persistence des entités
+     * @return
+     */
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
@@ -45,6 +50,10 @@ public class PersistenceJPAConfig {
         return em;
     }
 
+    /**
+     * Bean database qui utilise les paramètre de application.properties
+     * @return
+     */
     @Bean
     public DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -55,6 +64,11 @@ public class PersistenceJPAConfig {
         return dataSource;
     }
 
+    /**
+     * Bean de transaction
+     * @param emf
+     * @return
+     */
     @Bean
     public PlatformTransactionManager transactionManager(EntityManagerFactory emf){
         JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -62,11 +76,19 @@ public class PersistenceJPAConfig {
         return transactionManager;
     }
 
+    /**
+     * Gère les execptions
+     * @return
+     */
     @Bean
     public PersistenceExceptionTranslationPostProcessor exceptionTranslation(){
         return new PersistenceExceptionTranslationPostProcessor();
     }
 
+    /**
+     * indique le dialect utilisé, paramètre de application.properties
+     * @return
+     */
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", hibernateDialect);

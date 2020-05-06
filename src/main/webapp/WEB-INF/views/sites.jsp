@@ -19,18 +19,19 @@
                 <th>Orientation</th>
             </tr>
 
-            <tr>
-                <c:forEach var="sites" items="${sites}">
-                    <td><c:out value="${sites.id}"/></td>
-                    <td><c:out value="${sites.nom}"/></td>
-                    <td><c:out value="${sites.type}"/></td>
-                    <td><c:out value="${sites.secteur}"/></td>
-                    <td><c:out value="${sites.voie}"/></td>
-                    <td><c:out value="${sites.longueur}"/></td>
-                    <td><c:out value="${sites.cotation}"/></td>
-                    <td><c:out value="${sites.orientation}"/></td>
-                </c:forEach>
-            </tr>
+            <c:forEach var="sites" items="${sites}">
+                <tr>
+                        <td><c:out value="${sites.id}"/></td>
+                        <td><c:out value="${sites.nom}"/></td>
+                        <td><c:out value="${sites.type}"/></td>
+                        <td><c:out value="${sites.secteur}"/></td>
+                        <td><c:out value="${sites.voie}"/></td>
+                        <td><c:out value="${sites.longueur}"/></td>
+                        <td><c:out value="${sites.cotation}"/></td>
+                        <td><c:out value="${sites.orientation}"/></td>
+                </tr>
+            </c:forEach>
+
 
         </table>
 </body>
