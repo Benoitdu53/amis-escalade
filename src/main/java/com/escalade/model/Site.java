@@ -16,6 +16,7 @@ public class Site implements Serializable {
     private Integer longueur;
     private String cotation;
     private String orientation;
+    @Column(name="localisation")
     private String nom;
 
     @Override

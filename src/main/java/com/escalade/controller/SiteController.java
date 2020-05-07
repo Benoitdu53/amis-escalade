@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Controller annotation pour les controlleurs classique, généralement utilisé en combinaison avec @RequestMapping
@@ -25,9 +26,11 @@ public class SiteController {
      * @return le nom de la view
      */
     @RequestMapping(value = "/sites")
-    public String findSites(Model model){
-        model.addAttribute("sites", siteService.getSites());
+    public String findSites( Model model){
+
+            model.addAttribute("sites", siteService.getSites());
+            //model.addAttribute("sites",siteService.getSearchSites(nom));
+
         return "sites";
     }
-
 }

@@ -10,5 +10,6 @@ public interface SiteService
      *
      * @return tout les sites
      */
-    public List<Site> getSites();
+    List<Site> getSites();
+    List<Site> getSearchSites(String nom);
 }

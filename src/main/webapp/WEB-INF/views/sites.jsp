@@ -12,7 +12,7 @@
         <table border="1">
             <tr>
                 <th>id</th>
-                <th>Nom</th>
+                <th>Localisation</th>
                 <th>Type</th>
                 <th>Secteur</th>
                 <th>Voie</th>

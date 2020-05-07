@@ -32,4 +32,11 @@ public class SiteServiceImpl implements SiteService
                         .collect(Collectors.toList());
 
     }
+
+    @Override
+    public List<Site> getSearchSites(String nom)
+    {
+        return StreamSupport.stream(siteDao.findByNom(nom).spliterator(), false)
+                .collect(Collectors.toList());
+    }
 }
