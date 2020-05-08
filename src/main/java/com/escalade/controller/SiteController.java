@@ -26,11 +26,12 @@ public class SiteController {
      * @return le nom de la view
      */
     @RequestMapping(value = "/sites")
-    public String findSites( Model model){
+    public String findSites( Model model, @RequestParam(name = "nom", defaultValue = "") String nomCritere){
 
-            model.addAttribute("sites", siteService.getSites());
-            //model.addAttribute("sites",siteService.getSearchSites(nom));
 
-        return "sites";
+                model.addAttribute("sites", siteService.getSites());
+                model.addAttribute("sitesCritere",siteService.getSearchSites(nomCritere));
+
+                return "sites";
     }
 }
