@@ -1,6 +1,6 @@
 <%@ page isELIgnored="false"%>
-<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -22,8 +22,9 @@
             </tr>
 
 
+            <!-- Si aucun critères n'est insérer, on affiche tout les sites -->
+            <!-- Sinon on affiche les sites selon les critères -->
         <c:choose>
-            <!-- Si un aucun critères n'est insérer, on affiche tout les sites -->
             <c:when test="${empty sitesCritere}">
             <c:forEach var="sites" items="${sites}">
                 <tr>
@@ -38,7 +39,6 @@
                 </tr>
             </c:forEach>
             </c:when>
-            <!-- Si un critère est detecté on affiche les sites selon les critères -->
             <c:otherwise>
                 <c:forEach var="sites" items="${sitesCritere}">
                     <tr>

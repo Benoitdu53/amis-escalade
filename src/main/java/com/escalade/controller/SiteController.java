@@ -28,7 +28,6 @@ public class SiteController {
     @RequestMapping(value = "/sites")
     public String findSites( Model model, @RequestParam(name = "nom", defaultValue = "") String nomCritere){
 
-
                 model.addAttribute("sites", siteService.getSites());
                 model.addAttribute("sitesCritere",siteService.getSearchSites(nomCritere));
 
