@@ -4,39 +4,45 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="siteEscalade")
+@Table(name= "site")
 public class Site implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column
     private Long id;
-    private String type;
-    private String secteur;
-    private Integer voie;
-    private Integer longueur;
-    private String cotation;
-    private String orientation;
-    @Column(name="localisation")
+    @Column
     private String nom;
+    @Column
+    private String departement;
+    @Column
+    private String pays;
+    @Column(name = "nbre_secteur")
+    private int nbreSecteur;
+    @Column
+    private String type;
+    @Column(name="cotation_min")
+    private int cotationMin;
+    @Column(name="cotation_max")
+    private int cotationMax;
+    @Column(name="longueur_max")
+    private int longueurMax;
 
     @Override
     public String toString()
     {
-        return "SiteEscalade{" +
+        return "Site{" +
                 "id=" + id +
-                ", type='" + type + '\'' +
-                ", secteur='" + secteur + '\'' +
-                ", voie=" + voie +
-                ", longueur=" + longueur +
-                ", cotation='" + cotation + '\'' +
-                ", orientation='" + orientation + '\'' +
                 ", nom='" + nom + '\'' +
+                ", departement='" + departement + '\'' +
+                ", pays='" + pays + '\'' +
+                ", nbreSecteur=" + nbreSecteur +
+                ", type='" + type + '\'' +
+                ", cotationMin=" + cotationMin +
+                ", cotationMax=" + cotationMax +
+                ", longueurMax=" + longueurMax +
                 '}';
     }
 
-    /*
-            Getters et setters
-         */
     public Long getId()
     {
         return id;
@@ -45,6 +51,46 @@ public class Site implements Serializable {
     public void setId(final Long id)
     {
         this.id = id;
+    }
+
+    public String getNom()
+    {
+        return nom;
+    }
+
+    public void setNom(final String nom)
+    {
+        this.nom = nom;
+    }
+
+    public String getDepartement()
+    {
+        return departement;
+    }
+
+    public void setDepartement(final String departement)
+    {
+        this.departement = departement;
+    }
+
+    public String getPays()
+    {
+        return pays;
+    }
+
+    public void setPays(final String pays)
+    {
+        this.pays = pays;
+    }
+
+    public int getNbreSecteur()
+    {
+        return nbreSecteur;
+    }
+
+    public void setNbreSecteur(final int nbreSecteur)
+    {
+        this.nbreSecteur = nbreSecteur;
     }
 
     public String getType()
@@ -57,63 +103,33 @@ public class Site implements Serializable {
         this.type = type;
     }
 
-    public String getSecteur()
+    public int getCotationMin()
     {
-        return secteur;
+        return cotationMin;
     }
 
-    public void setSecteur(final String secteur)
+    public void setCotationMin(final int cotationMin)
     {
-        this.secteur = secteur;
+        this.cotationMin = cotationMin;
     }
 
-    public Integer getVoie()
+    public int getCotationMax()
     {
-        return voie;
+        return cotationMax;
     }
 
-    public void setVoie(final Integer voie)
+    public void setCotationMax(final int cotationMax)
     {
-        this.voie = voie;
+        this.cotationMax = cotationMax;
     }
 
-    public Integer getLongueur()
+    public int getLongueurMax()
     {
-        return longueur;
+        return longueurMax;
     }
 
-    public void setLongueur(final Integer longueur)
+    public void setLongueurMax(final int longueurMax)
     {
-        this.longueur = longueur;
-    }
-
-    public String getCotation()
-    {
-        return cotation;
-    }
-
-    public void setCotation(final String cotation)
-    {
-        this.cotation = cotation;
-    }
-
-    public String getOrientation()
-    {
-        return orientation;
-    }
-
-    public void setOrientation(final String orientation)
-    {
-        this.orientation = orientation;
-    }
-
-    public String getNom()
-    {
-        return nom;
-    }
-
-    public void setNom(final String nom)
-    {
-        this.nom = nom;
+        this.longueurMax = longueurMax;
     }
 }
