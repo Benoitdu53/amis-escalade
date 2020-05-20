@@ -24,7 +24,6 @@
                     <th>Longueur-max</th>
                 </tr>
 
-
                 <!-- Si aucun critères n'est insérer, on affiche tout les sites -->
                 <!-- Sinon on affiche les sites selon les critères -->
 

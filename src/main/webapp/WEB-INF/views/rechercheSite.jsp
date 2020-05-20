@@ -16,28 +16,27 @@
 
             <select name="pays">
             <div id="pays">
-                    <option value="DEFAULT">Sélectionner un pays</option>
+                    <option value="">Sélectionner un pays</option>
                     <c:forEach var="pays" items="${pays}">
-                        <option value="${pays}">${pays}</option>
+                        <option value="${pays}" ${pays==param["pays"]?'selected="selected"':''}> ${pays}</option>
                     </c:forEach>
                 </div>
             </select>
 
-
             <select name="cotationMin">
                 <div id="cotationMin">
-                    <option value="DEFAULT">Sélectionner une cotation minimum</option>
+                    <option value="0">Sélectionner une cotation minimum</option>
                     <c:forEach var="cotationMin" items="${cotationMin}">
-                    <option value="${cotationMin}">${cotationMin}</option>
+                    <option value="${cotationMin}" ${cotationMin==param["cotationMin"]?'selected="selected"':''}>${cotationMin}</option>
                     </c:forEach>
             </select>
             </div>
 
             <select name="type">
                 <div id="type">
-                    <option value="DEFAULT">Sélectionner un type</option>
+                    <option value="">Sélectionner un type</option>
                     <c:forEach var="type" items="${type}">
-                    <option value="${type}">${type}</option>
+                    <option value="${type}" ${type==param["type"]?'selected="selected"':''}>${type}</option>
                     </c:forEach>
                 </div>
             </select>

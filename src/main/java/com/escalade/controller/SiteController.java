@@ -28,11 +28,14 @@ public class SiteController {
      */
     @RequestMapping(value = "/searchSites")
     public String findSites( Model model,
-                             @RequestParam(name = "pays", defaultValue = "DEFAULT") String pays,
-                             @RequestParam(name = "cotationMin", defaultValue = "DEFAULT") int cotationMin,
-                             @RequestParam(name = "type", defaultValue = "DEFAULT") String type) {
+                             @RequestParam(name = "pays", defaultValue = "", required = false) String pays,
+                             @RequestParam(name = "cotationMin",defaultValue = "0", required = false) int cotationMin,
+                             @RequestParam(name = "type", defaultValue = "", required = false) String type) {
 
         model.addAttribute("sites",siteService.getSearchSites(pays, cotationMin, type));
+        model.addAttribute("pays", siteService.getPays());
+        model.addAttribute("cotationMin", siteService.getCotationMin());
+        model.addAttribute("type", siteService.getType());
 
         return "sites";
     }

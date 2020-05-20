@@ -73,7 +73,7 @@ public class SiteServiceImpl implements SiteService
     @Override
     public List<Site> getSearchSites(String pays, int cotationMin, String type)
     {
-        return StreamSupport.stream(siteDao.findByPaysAndCotationMinAndType(pays, cotationMin, type).spliterator(), false)
+        return StreamSupport.stream(siteDao.searchSite(pays, cotationMin, type).spliterator(), false)
                 .collect(Collectors.toList());
     }
 }
