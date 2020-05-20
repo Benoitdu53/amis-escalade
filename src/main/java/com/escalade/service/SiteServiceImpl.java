@@ -33,10 +33,47 @@ public class SiteServiceImpl implements SiteService
 
     }
 
+    /**
+     *
+     * @return la liste des pays
+     */
     @Override
-    public List<Site> getSearchSites(String nom)
+    public List<String> getPays()
     {
-        return StreamSupport.stream(siteDao.findByNom(nom).spliterator(), false)
+        return siteDao.findDistinctPays();
+    }
+
+    /**
+     *
+     * @return la liste des cotations minimums
+     */
+    @Override
+    public List<String> getCotationMin()
+    {
+        return siteDao.findDistinctCotationMin();
+    }
+
+    /**
+     *
+     * @return la liste des types
+     */
+    @Override
+    public List<String> getType()
+    {
+        return siteDao.findDistinctType();
+    }
+
+    /**
+     *
+     * @param pays
+     * @param cotationMin
+     * @param type
+     * @return la liste selon les critères reçus
+     */
+    @Override
+    public List<Site> getSearchSites(String pays, int cotationMin, String type)
+    {
+        return StreamSupport.stream(siteDao.findByPaysAndCotationMinAndType(pays, cotationMin, type).spliterator(), false)
                 .collect(Collectors.toList());
     }
 }

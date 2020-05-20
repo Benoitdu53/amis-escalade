@@ -27,6 +27,9 @@ public class Site implements Serializable {
     @Column(name="longueur_max")
     private int longueurMax;
 
+
+//    private List<Secteur>
+
     @Override
     public String toString()
     {

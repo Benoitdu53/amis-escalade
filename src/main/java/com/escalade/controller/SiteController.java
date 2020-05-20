@@ -4,6 +4,7 @@ import com.escalade.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -25,12 +26,31 @@ public class SiteController {
      * @param model
      * @return le nom de la view
      */
-    @RequestMapping(value = "/sites")
-    public String findSites( Model model, @RequestParam(name = "nom", defaultValue = "") String nomCritere){
+    @RequestMapping(value = "/searchSites")
+    public String findSites( Model model,
+                             @RequestParam(name = "pays", defaultValue = "DEFAULT") String pays,
+                             @RequestParam(name = "cotationMin", defaultValue = "DEFAULT") int cotationMin,
+                             @RequestParam(name = "type", defaultValue = "DEFAULT") String type) {
 
-                model.addAttribute("sites", siteService.getSites());
-                model.addAttribute("sitesCritere",siteService.getSearchSites(nomCritere));
+        model.addAttribute("sites",siteService.getSearchSites(pays, cotationMin, type));
 
-                return "sites";
+        return "sites";
     }
+
+    /**
+     *
+     * @param model
+     * @return tout les sites d'escalade
+     */
+    @RequestMapping(value = "/sites")
+    public String findAllSites(Model model){
+
+        model.addAttribute("pays", siteService.getPays());
+        model.addAttribute("cotationMin", siteService.getCotationMin());
+        model.addAttribute("type", siteService.getType());
+
+        model.addAttribute("sites", siteService.getSites());
+        return "sites";
+    }
+
 }
