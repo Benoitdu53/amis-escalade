@@ -32,7 +32,10 @@ public class Site implements Serializable {
     {
         return "Site{" +
                 "id=" + id +
-                ", nom='" + nom + '\'' +
+                ",q" +
+                "qqq" +
+                "" +
+                "  nom='" + nom + '\'' +
                 ", departement='" + departement + '\'' +
                 ", pays='" + pays + '\'' +
                 ", nbreSecteur=" + nbreSecteur +

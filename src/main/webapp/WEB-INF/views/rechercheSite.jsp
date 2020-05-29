@@ -1,54 +1,43 @@
 <%@ page isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 
-<!DOCTYPE html>
-<html>
     <body>
 
-        <p><a href="sites">Tout les sites </a> </p>
-
         <!-- Formulaire de critère de recherche des sites -->
-        <form id="formulaireSite" method="get" action="sites">
+        <!-- Critère : Pays, cotation min, type-->
+        <form:form id="formulaireSite" method="get" action="/searchSites">
+
+            <select name="pays">
             <div id="pays">
-                <select name="pays" id="listePays">
                     <option value="">Sélectionner un pays</option>
+                    <c:forEach var="pays" items="${pays}">
+                        <option value="${pays}" ${pays==param["pays"]?'selected="selected"':''}> ${pays}</option>
+                    </c:forEach>
+                </div>
+            </select>
 
-                        <option value="testPays">En test</option>
-
-                </select>
+            <select name="cotationMin">
+                <div id="cotationMin">
+                    <option value="0">Sélectionner une cotation minimum</option>
+                    <c:forEach var="cotationMin" items="${cotationMin}">
+                    <option value="${cotationMin}" ${cotationMin==param["cotationMin"]?'selected="selected"':''}>${cotationMin}</option>
+                    </c:forEach>
+            </select>
             </div>
 
-            <div id="departement">
-                <select name="departement"id="listeDepartement">
-                    <option value="">Sélectionner un département</option>
+            <select name="type">
+                <div id="type">
+                    <option value="">Sélectionner un type</option>
+                    <c:forEach var="type" items="${type}">
+                    <option value="${type}" ${type==param["type"]?'selected="selected"':''}>${type}</option>
+                    </c:forEach>
+                </div>
+            </select>
 
-                        <option value="testDepartement">En test</option>
+            <input type="submit" value="Rechecher"/>
+        </form:form>
 
-                </select>
-            </div>
-
-                <!-- Par nom -->
-                    <select name="nom">
-                            <option value="">Sélectionner le nom du site</option>
-                        <c:forEach var="sites" items="${sites}">
-                                <option value="${sites.nom}">${sites.nom}</option>
-                        </c:forEach>
-                    </select>
-                    <br>
-                    <input type="submit" value="submit"/>
-        </form>
-
-        <script>
-            jQuery(document).ready(function () {
-                /* Au lancement on cache le bloc "departement" */
-                $("div#departement").hide();
-                /* Au clic sur un pays on affiche les départements */
-                jQuery('input[name=listeDepartement]:selected').onclick(function () {
-                    $("div#listeDepartement").show();
-                })
-            })
-        </script>
     </body>
-</html>

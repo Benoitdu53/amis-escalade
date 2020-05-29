@@ -11,5 +11,9 @@ public interface SiteService
      * @return tout les sites
      */
     List<Site> getSites();
-    List<Site> getSearchSites(String nom);
+    List<String> getPays();
+    List<String> getCotationMin();
+    List<String> getType();
+
+    List<Site> getSearchSites(String pays, int cotationMin, String type);
 }
