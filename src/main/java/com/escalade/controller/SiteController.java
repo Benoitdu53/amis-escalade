@@ -6,7 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.net.http.HttpRequest;
 
 /**
  * @Controller annotation pour les controlleurs classique, généralement utilisé en combinaison avec @RequestMapping
@@ -26,7 +29,7 @@ public class SiteController {
      * @param model
      * @return le nom de la view
      */
-    @RequestMapping(value = "/searchSites")
+    @RequestMapping(value = "/searchSites", method = RequestMethod.GET)
     public String findSites( Model model,
                              @RequestParam(name = "pays", defaultValue = "", required = false) String pays,
                              @RequestParam(name = "cotationMin",defaultValue = "0", required = false) int cotationMin,
@@ -45,7 +48,7 @@ public class SiteController {
      * @param model
      * @return tout les sites d'escalade
      */
-    @RequestMapping(value = "/sites")
+    @RequestMapping(value = "/sites", method = RequestMethod.GET)
     public String findAllSites(Model model){
 
         model.addAttribute("pays", siteService.getPays());
@@ -53,7 +56,7 @@ public class SiteController {
         model.addAttribute("type", siteService.getType());
 
         model.addAttribute("sites", siteService.getSites());
-        return "sites";
+        return "/sites";
     }
 
 }

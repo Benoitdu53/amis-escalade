@@ -4,11 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 
-<!DOCTYPE html>
-<html>
     <body>
-
-        <p><a href="sites">Tout les sites </a> </p>
 
         <!-- Formulaire de critère de recherche des sites -->
         <!-- Critère : Pays, cotation min, type-->
@@ -45,4 +41,3 @@
         </form:form>
 
     </body>
-</html>

@@ -15,5 +15,12 @@
             <h2>Le site communautaire des amis de l'escalade</h2>
         </div>
     </div>
+
+        <%--    Menu de navigation --%>
+        <div class="navbar">
+            <p><a href="/sites">Tout les sites </a> </p>
+            <p><a href="/addSite">Ajouter un site </a> </p>
+        </div>
+
     </body>
 </html>
