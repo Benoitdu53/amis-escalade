@@ -76,4 +76,11 @@ public class SiteServiceImpl implements SiteService
         return StreamSupport.stream(siteDao.searchSite(pays, cotationMin, type).spliterator(), false)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public void insertSite(Site newSite)
+    {
+        siteDao.save(newSite);
+    }
+
 }

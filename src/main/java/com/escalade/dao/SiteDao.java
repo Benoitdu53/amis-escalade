@@ -25,4 +25,5 @@ public interface SiteDao extends CrudRepository<Site, Long>
 
     @Query("SELECT s FROM Site s WHERE (:pays='' or s.pays = :pays) AND (s.cotationMin>=:cotationMin) AND (:type='' or s.type=:type)")
     List<Site> searchSite(@Param ("pays") String pays, @Param("cotationMin") int cotationMin, @Param("type") String type);
+
 }

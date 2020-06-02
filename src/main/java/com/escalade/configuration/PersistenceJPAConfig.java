@@ -37,7 +37,7 @@ public class PersistenceJPAConfig {
      *Bean entityManager, persistence des entités
      * @return
      */
-    @Bean
+    @Bean(name = "entityManagerFactory")
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em
                 = new LocalContainerEntityManagerFactoryBean();

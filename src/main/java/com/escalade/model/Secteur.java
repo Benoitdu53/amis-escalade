@@ -2,12 +2,14 @@ package com.escalade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "secteur")
 public class Secteur implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     @Column
     private Long id;
@@ -15,6 +17,10 @@ public class Secteur implements Serializable {
     private String secteur;
     @Column(name = "nbre_voie")
     private int nbreVoie;
+
+    @OneToMany
+    @JoinColumn(name = "id")
+    private List<Voie> voieList = new ArrayList<>();
 
     @Override
     public String toString()
