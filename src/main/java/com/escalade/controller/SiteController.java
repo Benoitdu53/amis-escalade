@@ -3,7 +3,6 @@ package com.escalade.controller;
 import com.escalade.model.Site;
 import com.escalade.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-
 import javax.validation.Valid;
 
 /**
@@ -92,7 +90,7 @@ public class SiteController {
     @RequestMapping(value = "/site", method = RequestMethod.GET)
     public String findSite (Model model, @RequestParam("idSite") Long id){
 
-        model.addAttribute("site", siteService.getSite(id));
+        model.addAttribute("site", siteService.getSiteById(id));
 
         return "/site";
     }

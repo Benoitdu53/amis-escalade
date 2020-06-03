@@ -8,10 +8,9 @@
     <head>
         <jsp:include page="include/header.jsp"></jsp:include><br>
         <jsp:include page="rechercheSite.jsp"></jsp:include><br>
-        <title>Site d'escalade</title>
     </head>
     <body>
-            <table border="1">
+            <table border="1" id="tableauSites">
                 <tr>
                     <th>id</th>
                     <th>nom</th>
@@ -38,7 +37,7 @@
                             <td><c:out value="${sites.cotationMin}"/></td>
                             <td><c:out value="${sites.cotationMax}"/></td>
                             <td><c:out value="${sites.longueurMax}"/></td>
-                        <td><a href="<c:url value="site"><c:param name="idSite" value="${sites.id}"/></c:url>">Séléctioner le site </a></td>
+                        <td><a href="<c:url value="site"><c:param name="idSite" value="${sites.id}"/></c:url>">Gestion du site </a></td>
                     </tr>
                 </c:forEach>
 

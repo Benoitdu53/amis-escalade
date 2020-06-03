@@ -3,7 +3,7 @@ package com.escalade.service;
 import com.escalade.model.Site;
 
 import java.util.List;
-import java.util.Optional;
+
 
 public interface SiteService
 {
@@ -13,5 +13,5 @@ public interface SiteService
     List<String> getType();
     List<Site> getSearchSites(String pays, int cotationMin, String type);
     void insertSite(Site newSite);
-    Optional<Site> getSite(Long id);
+    Site getSiteById(Long id);
 }
