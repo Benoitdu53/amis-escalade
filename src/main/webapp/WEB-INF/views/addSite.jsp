@@ -5,8 +5,7 @@
 <body>
 
 
-    <%--@elvariable id="site" type="com.escalade.model.Site"--%>
-    <form:form id="addSite" method="post" action="/sites" modelAttribute="site">
+    <form:form id="formualireSite" method="post" action="/addSite" modelAttribute="site">
     <table>
         <div class="nom">
             <tr>

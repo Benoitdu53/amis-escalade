@@ -19,7 +19,7 @@
         <%--    Menu de navigation --%>
         <div class="navbar">
             <p><a href="/sites">Tout les sites </a> </p>
-            <p><a href="/addSite">Ajouter un site </a> </p>
+            <p><a href="/formSite">Ajouter un site </a> </p>
         </div>
 
     </body>

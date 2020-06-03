@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.validation.Valid;
 
@@ -26,12 +28,18 @@ public class SiteController {
     @Autowired
     private SiteService siteService;
 
+    @RequestMapping(value = "formSite", method = RequestMethod.GET)
+    public ModelAndView formSite(){
+
+        return new ModelAndView("addSite", "site", new Site());
+    }
+
     /**
      * Méthode qui ajoute un site en base
      * @return
      */
-    @RequestMapping(value = "/addSite", method = RequestMethod.GET)
-    public String addSite (@Valid @ModelAttribute("site")Site newSite, BindingResult result){
+    @RequestMapping(value = "/addSite", method = RequestMethod.POST)
+    public Object addSite (@Valid @ModelAttribute("site")Site newSite, BindingResult result){
 
         try{
             if (result.hasErrors()){
@@ -42,7 +50,7 @@ public class SiteController {
         }
 
         siteService.insertSite(newSite);
-        return "/addSite";
+        return new RedirectView("/sites");
     }
 
     /**
@@ -61,7 +69,7 @@ public class SiteController {
         model.addAttribute("cotationMin", siteService.getCotationMin());
         model.addAttribute("type", siteService.getType());
 
-        return "sites";
+        return "/sites";
     }
 
     /**
