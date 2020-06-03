@@ -38,6 +38,7 @@
                             <td><c:out value="${sites.cotationMin}"/></td>
                             <td><c:out value="${sites.cotationMax}"/></td>
                             <td><c:out value="${sites.longueurMax}"/></td>
+                        <td><a href="<c:url value="site"><c:param name="idSite" value="${sites.id}"/></c:url>">Séléctioner le site </a></td>
                     </tr>
                 </c:forEach>
 

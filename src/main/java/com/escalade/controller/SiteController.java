@@ -3,6 +3,7 @@ package com.escalade.controller;
 import com.escalade.model.Site;
 import com.escalade.service.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -86,6 +87,14 @@ public class SiteController {
 
         model.addAttribute("sites", siteService.getSites());
         return "/sites";
+    }
+
+    @RequestMapping(value = "/site", method = RequestMethod.GET)
+    public String findSite (Model model, @RequestParam("idSite") Long id){
+
+        model.addAttribute("site", siteService.getSite(id));
+
+        return "/site";
     }
 
 }

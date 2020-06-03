@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -81,6 +82,12 @@ public class SiteServiceImpl implements SiteService
     public void insertSite(Site newSite)
     {
         siteDao.save(newSite);
+    }
+
+    @Override
+    public Optional<Site> getSite(Long id)
+    {
+        return siteDao.findById(id);
     }
 
 }
