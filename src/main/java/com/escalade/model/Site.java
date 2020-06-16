@@ -29,8 +29,7 @@ public class Site implements Serializable {
     @Column(name="longueur_max")
     private int longueurMax;
 
-    @OneToMany
-    @JoinColumn(name = "id")
+    @OneToMany(mappedBy = "site")
     private List<Secteur> secteurList = new ArrayList<>();
 
     @Override

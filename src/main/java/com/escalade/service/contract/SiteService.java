@@ -1,5 +1,6 @@
-package com.escalade.service;
+package com.escalade.service.contract;
 
+import com.escalade.model.Secteur;
 import com.escalade.model.Site;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public interface SiteService
     List<Site> getSearchSites(String pays, int cotationMin, String type);
     void insertSite(Site newSite);
     Site getSiteById(Long id);
+
 }

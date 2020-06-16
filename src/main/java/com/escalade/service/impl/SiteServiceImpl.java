@@ -1,7 +1,9 @@
-package com.escalade.service;
+package com.escalade.service.impl;
 
 import com.escalade.dao.SiteDao;
+import com.escalade.model.Secteur;
 import com.escalade.model.Site;
+import com.escalade.service.contract.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,12 @@ import java.util.stream.StreamSupport;
 @Service
 public class SiteServiceImpl implements SiteService
 {
+    private final SiteDao siteDao;
+
     @Autowired
-    private SiteDao siteDao;
+    public SiteServiceImpl(SiteDao siteDao){
+        this.siteDao = siteDao;
+    }
 
     /**
      *
@@ -88,5 +94,7 @@ public class SiteServiceImpl implements SiteService
     {
         return siteDao.getSiteById(id);
     }
+
+
 
 }

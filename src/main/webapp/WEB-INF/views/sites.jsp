@@ -2,15 +2,22 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
 
 <html>
     <head>
+        <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
         <jsp:include page="include/header.jsp"></jsp:include><br>
         <jsp:include page="rechercheSite.jsp"></jsp:include><br>
     </head>
+
     <body>
+
+    <div class="navbarSites">
+            <p><a href="/formSite">Ajouter un site </a> </p>
+    </div>
+
             <table border="1" id="tableauSites">
+                <caption>Site</caption>
                 <tr>
                     <th>id</th>
                     <th>nom</th>
@@ -37,7 +44,7 @@
                             <td><c:out value="${sites.cotationMin}"/></td>
                             <td><c:out value="${sites.cotationMax}"/></td>
                             <td><c:out value="${sites.longueurMax}"/></td>
-                        <td><a href="<c:url value="site"><c:param name="idSite" value="${sites.id}"/></c:url>">Gestion du site </a></td>
+                        <td><a href="<c:url value="site/${sites.id}"></c:url>">Gestion du site </a></td>
                     </tr>
                 </c:forEach>
 

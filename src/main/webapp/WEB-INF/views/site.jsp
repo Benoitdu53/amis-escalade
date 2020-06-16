@@ -38,10 +38,16 @@
         </div>
     </table>
 
+    <br><br>
+
+    <div class="ajoutSecteur">
+        <p><a href="<c:url value="/site/${site.id}/secteur/add"/>">Ajouter un secteur </a> </p>
+    </div>
+
     <!-- Tableau des secteurs -->
 
     <table border="1" id="tableauSecteurs">
-        <div class="titreSite">
+        <div class="titreSecteur">
             <caption>Secteurs</caption>
             <tr>
                 <th>id</th>
@@ -54,9 +60,32 @@
                 <td><c:out value="${secteurs.id}"/></td>
                 <td><c:out value="${secteurs.secteur}"/></td>
                 <td><c:out value="${secteurs.nbreVoie}"/></td>
+                <td><p><a href="<c:url value="/site/${site.id}/secteur/${secteurs.id}/voie/add"/>">Ajouter une voie </a> </p></td>
             </tr>
         </c:forEach>
+        </div>
+    </table>
 
+    <!-- Tableau des voies -->
+
+    <table border="1" id="tableauvoies">
+        <div class="titreVoies">
+            <caption>Secteurs</caption>
+            <tr>
+                <th>id</th>
+                <th>Voie</th>
+                <th>Longueur</th>
+                <th>Cotation</th>
+            </tr>
+
+            <c:forEach var="voies" items="${voies}">
+                <tr>
+                    <td><c:out value="${voies.id}"/></td>
+                    <td><c:out value="${voies.voie}"/></td>
+                    <td><c:out value="${voies.longueur}"/></td>
+                    <td><c:out value="${voies.cotation}"/></td>
+                </tr>
+            </c:forEach>
         </div>
     </table>
 

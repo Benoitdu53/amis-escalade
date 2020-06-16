@@ -23,7 +23,7 @@
                 <div id="cotationMin">
                     <option value="0">Sélectionner une cotation minimum</option>
                     <c:forEach var="cotationMin" items="${cotationMin}">
-                    <option value="${cotationMin}" ${cotationMin==param["cotationMin"]?'selected="selected"':''}>${cotationMin}</option>
+                    <option value="${cotationMin}" ${cotationMin==param["cotationMin"]?'selected="selected"':''}> ${cotationMin}</option>
                     </c:forEach>
             </select>
             </div>

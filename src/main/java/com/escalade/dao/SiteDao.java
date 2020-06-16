@@ -9,11 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**
- * Interface qui etend le CruRepository ( méthode findAll, saveAll, etc...)
+ * Interface qui étend le CruRepository ( méthode findAll, saveAll, etc...)
  */
 @Repository
 public interface SiteDao extends CrudRepository<Site, Long>
 {
+
     @Query("SELECT DISTINCT s.pays FROM Site s")
     List<String> findDistinctPays();
 
@@ -28,4 +29,5 @@ public interface SiteDao extends CrudRepository<Site, Long>
 
     @Query("SELECT s FROM Site s WHERE s.id = :id")
     Site getSiteById(@Param("id") Long id);
+
 }

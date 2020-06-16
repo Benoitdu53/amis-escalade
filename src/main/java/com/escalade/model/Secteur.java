@@ -18,9 +18,32 @@ public class Secteur implements Serializable {
     @Column(name = "nbre_voie")
     private int nbreVoie;
 
-    @OneToMany
-    @JoinColumn(name = "id")
+    @OneToMany(mappedBy = "secteur")
     private List<Voie> voieList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_site")
+    private Site site;
+
+    public List<Voie> getVoieList()
+    {
+        return voieList;
+    }
+
+    public void setVoieList(final List<Voie> voieList)
+    {
+        this.voieList = voieList;
+    }
+
+    public Site getSite()
+    {
+        return site;
+    }
+
+    public void setSite(final Site site)
+    {
+        this.site = site;
+    }
 
     @Override
     public String toString()
