@@ -12,15 +12,26 @@ public class Longueur implements Serializable
     @Column
     private Long id;
 
-    @Column
-    private int long_relais;
+    @Column(name = "long_relais")
+    private int longRelais;
 
-    @Column
-    private int long_total;
+    @Column(name = "long_total")
+    private int longTotal;
 
     @ManyToOne
     @JoinColumn(name = "id_voie")
     private Voie voie;
+
+    @Override
+    public String toString()
+    {
+        return "Longueur{" +
+                "id=" + id +
+                ", longRelais=" + longRelais +
+                ", longTotal=" + longTotal +
+                ", voie=" + voie +
+                '}';
+    }
 
     public Long getId()
     {
@@ -32,24 +43,24 @@ public class Longueur implements Serializable
         this.id = id;
     }
 
-    public int getLong_relais()
+    public int getLongRelais()
     {
-        return long_relais;
+        return longRelais;
     }
 
-    public void setLong_relais(final int long_relais)
+    public void setLongRelais(final int longRelais)
     {
-        this.long_relais = long_relais;
+        this.longRelais = longRelais;
     }
 
-    public int getLong_total()
+    public int getLongTotal()
     {
-        return long_total;
+        return longTotal;
     }
 
-    public void setLong_total(final int long_total)
+    public void setLongTotal(final int longTotal)
     {
-        this.long_total = long_total;
+        this.longTotal = longTotal;
     }
 
     public Voie getVoie()
@@ -59,14 +70,6 @@ public class Longueur implements Serializable
 
     public void setVoie(final Voie voie)
     {
-        this.voie = voie;
-    }
-
-    public Longueur(final Long id, final int long_relais, final int long_total, final Voie voie)
-    {
-        this.id = id;
-        this.long_relais = long_relais;
-        this.long_total = long_total;
         this.voie = voie;
     }
 }

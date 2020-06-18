@@ -1,6 +1,5 @@
 package com.escalade.service.contract;
 
-import com.escalade.model.Secteur;
 import com.escalade.model.Site;
 
 import java.util.List;

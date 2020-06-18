@@ -41,6 +41,16 @@ public class Voie implements Serializable {
     @JoinColumn(name = "id_secteur")
     private Secteur secteur;
 
+    public List<Longueur> getLongueurList()
+    {
+        return longueurList;
+    }
+
+    public void setLongueurList(final List<Longueur> longueurList)
+    {
+        this.longueurList = longueurList;
+    }
+
     public Secteur getSecteur()
     {
         return secteur;

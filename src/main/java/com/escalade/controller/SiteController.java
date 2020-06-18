@@ -3,12 +3,14 @@ package com.escalade.controller;
 import com.escalade.model.Site;
 import com.escalade.service.contract.SecteurService;
 import com.escalade.service.contract.SiteService;
-import com.escalade.service.contract.VoieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -24,11 +26,10 @@ import javax.validation.Valid;
 @Controller
 public class SiteController {
 
-    @Autowired
-    private SiteService siteService;
+    // ----- Injection des dépendances ----- //
 
     @Autowired
-    private VoieService voieService;
+    private SiteService siteService;
 
     private final SecteurService secteurService;
     @Autowired
@@ -42,8 +43,13 @@ public class SiteController {
         return new ModelAndView("addSite", "site", new Site());
     }
 
+
+
+
     /**
-     * Méthode qui ajoute un site en base
+     *              Ajoute un site
+     * @param newSite
+     * @param result
      * @return
      */
     @RequestMapping(value = "/addSite", method = RequestMethod.POST)
@@ -61,10 +67,16 @@ public class SiteController {
         return new RedirectView("/sites");
     }
 
+
+
+
     /**
-     *
+     *              Permet la recherche de site par critère ( Pays, Cotation minimum, Type ) et l'affiche
      * @param model
-     * @return le nom de la view
+     * @param pays
+     * @param cotationMin
+     * @param type
+     * @return
      */
     @RequestMapping(value = "/searchSites", method = RequestMethod.GET)
     public String findSites( Model model,
@@ -80,10 +92,13 @@ public class SiteController {
         return "/sites";
     }
 
+
+
+
     /**
-     *
+     *              Affiche tout les sites
      * @param model
-     * @return tout les sites d'escalade
+     * @return
      */
     @RequestMapping(value = "/sites", method = RequestMethod.GET)
     public String findAllSites(Model model){
@@ -95,21 +110,4 @@ public class SiteController {
         model.addAttribute("sites", siteService.getSites());
         return "/sites";
     }
-
-    /**
-     *
-     * @param model
-     * @param id
-     * @return le site d'escalade sélectionner
-     */
-    @RequestMapping(value = "/site/{idSite}", method = RequestMethod.GET)
-    public String findSite (Model model, @PathVariable("idSite") Long id){
-
-        model.addAttribute("voies", voieService.getVoieByidSite(id));
-        model.addAttribute("secteurs", secteurService.getSectorByIdSite(id));
-        model.addAttribute("site", siteService.getSiteById(id));
-
-        return "/site";
-    }
-
 }
