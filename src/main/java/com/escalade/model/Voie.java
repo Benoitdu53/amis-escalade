@@ -2,13 +2,15 @@ package com.escalade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "voie")
 public class Voie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
@@ -30,6 +32,33 @@ public class Voie implements Serializable {
                 ", longueur=" + longueur +
                 ", cotation='" + cotation + '\'' +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "voie")
+    private List<Longueur> longueurList = new ArrayList<>();
+
+    @ManyToOne
+    @JoinColumn(name = "id_secteur")
+    private Secteur secteur;
+
+    public List<Longueur> getLongueurList()
+    {
+        return longueurList;
+    }
+
+    public void setLongueurList(final List<Longueur> longueurList)
+    {
+        this.longueurList = longueurList;
+    }
+
+    public Secteur getSecteur()
+    {
+        return secteur;
+    }
+
+    public void setSecteur(final Secteur secteur)
+    {
+        this.secteur = secteur;
     }
 
     public Long getId()
