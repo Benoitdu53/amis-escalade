@@ -1,45 +1,47 @@
-
-CREATE TABLE site (
-                id INT AUTO_INCREMENT NOT NULL,
-                nom VARCHAR(50) NOT NULL,
-                departement VARCHAR(50),
-                pays VARCHAR(50) NOT NULL,
-                nbre_secteur INT,
-                type VARCHAR(50),
-                cotation_min INT,
-                cotation_max INT NOT NULL,
-                longueur_max INT NOT NULL,
-                PRIMARY KEY (id)
+create table site
+(
+    id           int auto_increment
+        primary key,
+    nom          varchar(50) not null,
+    departement  varchar(50) null,
+    pays         varchar(50) not null,
+    nbre_secteur int         null,
+    type         varchar(50) null,
+    cotation_min int         null,
+    cotation_max int         not null,
+    longueur_max int         not null
 );
 
-
-CREATE TABLE secteur (
-                id INT AUTO_INCREMENT NOT NULL,
-                secteur VARCHAR(50) NOT NULL,
-                nbre_voie INT NOT NULL,
-                id_site INT NOT NULL,
-                PRIMARY KEY (id)
+create table secteur
+(
+    id        int auto_increment
+        primary key,
+    secteur   varchar(50) not null,
+    nbre_voie int         not null,
+    id_site   int         not null,
+    constraint site_secteur_fk
+        foreign key (id_site) references site (id)
 );
 
-
-CREATE TABLE voie (
-                id INT AUTO_INCREMENT NOT NULL,
-                voie VARCHAR(50) NOT NULL,
-                longueur INT NOT NULL,
-                cotation VARCHAR(10) NOT NULL,
-                id_secteur INT NOT NULL,
-                PRIMARY KEY (id)
+create table voie
+(
+    id         int auto_increment
+        primary key,
+    voie       varchar(50) not null,
+    longueur   int         not null,
+    cotation   varchar(10) not null,
+    id_secteur int         not null,
+    constraint secteur_voie_fk
+        foreign key (id_secteur) references secteur (id)
 );
 
-
-ALTER TABLE secteur ADD CONSTRAINT site_secteur_fk
-FOREIGN KEY (id_site)
-REFERENCES site (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
-
-ALTER TABLE voie ADD CONSTRAINT secteur_voie_fk
-FOREIGN KEY (id_secteur)
-REFERENCES secteur (id)
-ON DELETE NO ACTION
-ON UPDATE NO ACTION;
+create table longueur
+(
+    id          int auto_increment
+        primary key,
+    long_relais int null,
+    long_total  int not null,
+    id_voie     int not null,
+    constraint voie_longueur_fk
+        foreign key (id_voie) references voie (id)
+);
