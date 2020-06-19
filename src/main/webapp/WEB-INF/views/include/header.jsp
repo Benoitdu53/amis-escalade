@@ -6,7 +6,8 @@
 
 <html>
     <head>
-
+        <link rel="stylesheet" href="/resources/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/resources/css/style.css">
     </head>
     <body>
     <div class="sample-header">
