@@ -45,6 +45,7 @@
                             <td><c:out value="${sites.cotationMax}"/></td>
                             <td><c:out value="${sites.longueurMax}"/></td>
                         <td><a href="<c:url value="site/${sites.id}"></c:url>">Gestion du site </a></td>
+                        <td><a href="<c:url value="/site/${site.id}/delete"/>">Supprimer le site</a></td>
                     </tr>
                 </c:forEach>
 

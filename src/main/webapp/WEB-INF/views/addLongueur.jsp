@@ -13,14 +13,14 @@
         <table>
             <div class="longRelais">
                 <tr>
-                    <td><form:label id="longRelais" class="col-md-3 control-label" path="longRelais">Chiffre de la voie</form:label></td>
+                    <td><form:label id="longRelais" class="col-md-3 control-label" path="longRelais">Longueur des relais</form:label></td>
                     <td><form:input path="longRelais"/></td>
                 </tr>
             </div>
 
             <div class="longTotal">
                 <tr>
-                    <td><form:label id="longTotal" class="col-md-3 control-label" path="longTotal">Longueur de la voie</form:label></td>
+                    <td><form:label id="longTotal" class="col-md-3 control-label" path="longTotal">Longueur total de la voie</form:label></td>
                     <td><form:input path="longTotal"/></td>
                 </tr>
             </div>

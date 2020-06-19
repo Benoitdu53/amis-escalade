@@ -59,7 +59,8 @@
                     <td><c:out value="${secteurs.id}"/></td>
                     <td><c:out value="${secteurs.secteur}"/></td>
                     <td><c:out value="${secteurs.nbreVoie}"/></td>
-                    <td><p><a href="<c:url value="/site/${site.id}/secteur/${secteurs.id}/voie"/>">Gestion du secteur</a> </p></td>
+                    <td><a href="<c:url value="/secteur/${secteurs.id}/voie"/>">Gestion du secteur</a></td>
+                    <td><a href="<c:url value="/secteur/${secteurs.id}/delete"/>">Supprimer le secteur</a></td>
                 </tr>
             </c:forEach>
         </div>

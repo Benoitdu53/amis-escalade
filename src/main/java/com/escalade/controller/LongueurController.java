@@ -1,10 +1,11 @@
 package com.escalade.controller;
 
 import com.escalade.model.Longueur;
-import com.escalade.model.Voie;
 import com.escalade.service.contract.LongueurService;
+import com.escalade.service.contract.VoieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +21,9 @@ public class LongueurController {
 
     // ----- Injection des dépendances ----- //
 
+    @Autowired
+    private VoieService voieService;
+
     private final LongueurService longueurService;
     @Autowired
     public LongueurController(LongueurService longueurService){
@@ -31,19 +35,14 @@ public class LongueurController {
 
     /**
      *              Affiche le formulaire d'ajout des longueurs
-     * @param idSite
-     * @param idSecteur
      * @param idVoie
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/{idSecteur}/voie/{idVoie}/longueur/add", method = RequestMethod.GET)
-    public ModelAndView formLongueur(@PathVariable("idSite") Long idSite,
-                                     @PathVariable("idSecteur") Long idSecteur,
-                                     @PathVariable("idVoie") Long idVoie){
+    @RequestMapping(value = "/voie/{idVoie}/longueur/add", method = RequestMethod.GET)
+    public ModelAndView formLongueur( @PathVariable("idVoie") Long idVoie){
 
         ModelAndView modelAndView = new ModelAndView("addLongueur", "longueur", new Longueur());
-        modelAndView.addObject("idSite", idSite);
-        modelAndView.addObject("idSecteur", idSecteur);
+
         modelAndView.addObject("idVoie", idVoie);
 
         return modelAndView;
@@ -53,18 +52,30 @@ public class LongueurController {
 
 
     /**
+     *              Affiche la page des longueurs
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/voie/{idVoie}/longueur", method = RequestMethod.GET)
+    public String displayVoie (Model model, @PathVariable("idVoie") Long idVoie){
+
+        model.addAttribute("voie", voieService.getVoieById(idVoie));
+        model.addAttribute("longueurs", longueurService.getLongueurByVoieId(idVoie));
+
+        return "/longueur";
+    }
+
+
+
+    /**
      *              Ajoute une longueur à une voie
-     * @param newVoie
+     * @param newLongueur
      * @param result
-     * @param idSecteur
-     * @param idSite
      * @param idVoie
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/{idSecteur}/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
-    public Object addVoie (@Valid @ModelAttribute("voie") Voie newVoie, BindingResult result,
-                           @PathVariable("idSecteur") Long idSecteur,
-                           @PathVariable("idSite") Long idSite,
+    @RequestMapping(value = "/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
+    public Object addLongueur (@Valid @ModelAttribute("longueur") Longueur newLongueur, BindingResult result,
                            @PathVariable("idVoie") Long idVoie){
 
         try{
@@ -75,8 +86,21 @@ public class LongueurController {
             // TODO Exception
         }
 
-        //longueurService.insertLongueur(newVoie, idSecteur, idSite);
+        longueurService.insertLongueur(newLongueur, idVoie);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("/voie/{idVoie}/longueur");
+    }
+
+
+
+
+    /**
+     *              Supprimer une longueur
+     */
+    @RequestMapping(value = "/longueur/{idLongueur}/delete", method = RequestMethod.GET)
+    public String deleteLongueur (@PathVariable("idLongueur") Long idLongueur){
+        longueurService.deleteById(idLongueur);
+
+        return "/longueur";
     }
 }

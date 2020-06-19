@@ -95,6 +95,10 @@ public class SiteServiceImpl implements SiteService
         return siteDao.getSiteById(id);
     }
 
-
+    @Override
+    public void deleteSiteById(final Long idSite)
+    {
+        siteDao.deleteById(idSite);
+    }
 
 }

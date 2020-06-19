@@ -32,9 +32,15 @@ public class SecteurServiceImpl implements SecteurService
     }
 
     @Override
+    public void deleteSecteurById(final Long idSecteur)
+    {
+        secteurDao.deleteById(idSecteur);
+    }
+
+    @Override
     public List<Secteur> getSectorByIdSite(final Long id)
     {
-        return secteurDao.getSectorByIdSite(id);
+        return secteurDao.getSectorByIdSite(siteService.getSiteById(id));
     }
 
     @Override

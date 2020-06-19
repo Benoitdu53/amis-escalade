@@ -14,5 +14,5 @@ public interface SiteService
     List<Site> getSearchSites(String pays, int cotationMin, String type);
     void insertSite(Site newSite);
     Site getSiteById(Long id);
-
+    void deleteSiteById(Long idSite);
 }

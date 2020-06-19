@@ -37,14 +37,12 @@ public class VoieController
     /**
      *              Affiche la page des voies
      * @param model
-     * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/{idSecteur}/voie", method = RequestMethod.GET)
-    public String displayVoie (Model model, @PathVariable("idSite") Long idSite,
-                                            @PathVariable("idSecteur") Long idSecteur){
+    @RequestMapping(value = "/secteur/{idSecteur}/voie", method = RequestMethod.GET)
+    public String displayVoie (Model model, @PathVariable("idSecteur") Long idSecteur){
 
-        model.addAttribute("secteur", secteurService.getSectorById(idSite));
+        model.addAttribute("secteur", secteurService.getSectorById(idSecteur));
         model.addAttribute("voies", voieService.getVoieBySecteurId(idSecteur));
 
         return "/voie";
@@ -56,15 +54,13 @@ public class VoieController
     /**
      *              Affiche le formulaire d'ajout des voies
      * @param idSecteur
-     * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
-    public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur, @PathVariable("idSite") Long idSite){
+    @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
+    public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur){
 
         ModelAndView modelAndView = new ModelAndView("addVoie", "voie", new Voie());
         modelAndView.addObject("idSecteur", idSecteur);
-        modelAndView.addObject("idSite", idSite);
 
         return modelAndView;
     }
@@ -77,13 +73,11 @@ public class VoieController
      * @param newVoie
      * @param result
      * @param idSecteur
-     * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/{idSecteur}/voie/add", method= RequestMethod.POST)
+    @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.POST)
     public Object addVoie (@Valid @ModelAttribute("voie") Voie newVoie, BindingResult result,
-                           @PathVariable("idSecteur") Long idSecteur,
-                           @PathVariable("idSite") Long idSite){
+                           @PathVariable("idSecteur") Long idSecteur){
 
         try{
             if (result.hasErrors()){
@@ -93,9 +87,21 @@ public class VoieController
             // TODO Exception
         }
 
-        voieService.insertVoie(newVoie, idSecteur, idSite);
+        voieService.insertVoie(newVoie, idSecteur);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("/secteur/{idSecteur}/voie");
     }
 
+
+
+
+    /**
+     *              Supprimer une voie
+     */
+    @RequestMapping(value = "/voie/{idVoie}/delete", method = RequestMethod.GET)
+    public String deleteLongueur (@PathVariable("idVoie") Long idVoie, Model model){
+        voieService.deleteVoieById(idVoie);
+
+        return "/voie";
+    }
 }

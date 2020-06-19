@@ -25,15 +25,27 @@ public class VoieServiceImpl implements VoieService
     @Override
     public List<Voie> getVoieBySecteurId(Long idSecteur)
     {
-        return voieDao.getVoieBySecteurId(idSecteur);
+        return voieDao.getVoieBySecteurId(secteurService.getSectorById(idSecteur));
     }
 
     @Override
-    public void insertVoie( Voie newVoie, Long idSecteur, Long idSite)
+    public Voie getVoieById(final Long idVoie)
+    {
+        return voieDao.getVoieById(idVoie);
+    }
+
+    @Override
+    public void insertVoie(Voie newVoie, Long idSecteur)
     {
         Secteur secteur = secteurService.getSectorById(idSecteur);
         newVoie.setSecteur(secteur);
         voieDao.save(newVoie);
+    }
+
+    @Override
+    public void deleteVoieById(final Long idVoie)
+    {
+        voieDao.deleteById(idVoie);
     }
 
 }

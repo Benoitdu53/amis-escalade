@@ -28,7 +28,7 @@
 </table>
 
 <div class="ajoutVoie">
-    <p><a href="<c:url value="/site/${site.id}/secteur/${secteurs.id}/voie/add"/>">Ajouter une voie</a> </p>
+    <p><a href="<c:url value="/secteur/${secteur.id}/voie/add"/>">Ajouter une voie</a> </p>
 </div>
 
 <!-- Tableau des voies -->
@@ -49,7 +49,8 @@
                 <td><c:out value="${voies.voie}"/></td>
                 <td><c:out value="${voies.longueur}"/></td>
                 <td><c:out value="${voies.cotation}"/></td>
-                <td><p><a href="<c:url value="/site/${site.id}/secteur/${secteurs.id}/voie/${voies.id}/longueur/add"/>">Ajouter une longueur </a> </p></td>
+                <td><p><a href="<c:url value="/voie/${voies.id}/longueur"/>">Gestion de la longueur </a> </p></td>
+                <td><a href="<c:url value="/voie/${voies.id}/delete"/>">Supprimer la voie</a></td>
             </tr>
         </c:forEach>
 

@@ -7,5 +7,7 @@ import java.util.List;
 public interface VoieService
 {
     List<Voie> getVoieBySecteurId(Long idSecteur);
-    void insertVoie(Voie newVoie, Long idSecteur, Long idSite);
+    Voie getVoieById(Long idVoie);
+    void insertVoie(Voie newVoie, Long idSecteur);
+    void deleteVoieById(Long idVoie);
 }
