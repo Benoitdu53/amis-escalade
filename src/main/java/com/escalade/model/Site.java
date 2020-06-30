@@ -12,22 +12,27 @@ public class Site implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
-    @Column
+
+    @Column(name = "nom")
     private String nom;
-    @Column
+
+    @Column(name = "departement")
     private String departement;
-    @Column
+
+    @Column(name = "pays")
     private String pays;
-    @Column(name = "nbre_secteur")
-    private int nbreSecteur;
-    @Column
-    private String type;
+
     @Column(name="cotation_min")
-    private int cotationMin;
+    private String cotationMin;
+
     @Column(name="cotation_max")
-    private int cotationMax;
-    @Column(name="longueur_max")
-    private int longueurMax;
+    private String cotationMax;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "type")
+    private String type;
 
     @OneToMany(mappedBy = "site")
     private List<Secteur> secteurList = new ArrayList<>();
@@ -37,17 +42,14 @@ public class Site implements Serializable {
     {
         return "Site{" +
                 "id=" + id +
-                ",q" +
-                "qqq" +
-                "" +
-                "  nom='" + nom + '\'' +
+                ", nom='" + nom + '\'' +
                 ", departement='" + departement + '\'' +
                 ", pays='" + pays + '\'' +
-                ", nbreSecteur=" + nbreSecteur +
-                ", type='" + type + '\'' +
                 ", cotationMin=" + cotationMin +
                 ", cotationMax=" + cotationMax +
-                ", longueurMax=" + longueurMax +
+                ", description='" + description + '\'' +
+                ", type='" + type + '\'' +
+                ", secteurList=" + secteurList +
                 '}';
     }
 
@@ -91,14 +93,34 @@ public class Site implements Serializable {
         this.pays = pays;
     }
 
-    public int getNbreSecteur()
+    public String getCotationMin()
     {
-        return nbreSecteur;
+        return cotationMin;
     }
 
-    public void setNbreSecteur(final int nbreSecteur)
+    public void setCotationMin(final String cotationMin)
     {
-        this.nbreSecteur = nbreSecteur;
+        this.cotationMin = cotationMin;
+    }
+
+    public String getCotationMax()
+    {
+        return cotationMax;
+    }
+
+    public void setCotationMax(final String cotationMax)
+    {
+        this.cotationMax = cotationMax;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(final String description)
+    {
+        this.description = description;
     }
 
     public String getType()
@@ -111,33 +133,13 @@ public class Site implements Serializable {
         this.type = type;
     }
 
-    public int getCotationMin()
+    public List<Secteur> getSecteurList()
     {
-        return cotationMin;
+        return secteurList;
     }
 
-    public void setCotationMin(final int cotationMin)
+    public void setSecteurList(final List<Secteur> secteurList)
     {
-        this.cotationMin = cotationMin;
-    }
-
-    public int getCotationMax()
-    {
-        return cotationMax;
-    }
-
-    public void setCotationMax(final int cotationMax)
-    {
-        this.cotationMax = cotationMax;
-    }
-
-    public int getLongueurMax()
-    {
-        return longueurMax;
-    }
-
-    public void setLongueurMax(final int longueurMax)
-    {
-        this.longueurMax = longueurMax;
+        this.secteurList = secteurList;
     }
 }

@@ -2,29 +2,26 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<head>
+    <jsp:include page="include/header.jsp"></jsp:include>
+</head>
+
 <body>
 <div id="formulaireVoie">
     <%--@elvariable id="voie" type="com.escalade.model.Voie"--%>
     <form:form id="formulaireVoie" method="post" modelAttribute="voie">
         <table>
-            <div class="voie">
+            <div class="nomSecteur">
                 <tr>
-                    <td><form:label id="voie" class="col-md-3 control-label" path="voie">Lettre de la voie</form:label></td>
-                    <td><form:input path="voie"/></td>
+                    <td><form:label id="nom" class="col-md-3 control-label" path="nom">Indiquer le nom</form:label></td>
+                    <td><form:input path="nom"/></td>
                 </tr>
             </div>
 
-            <div class="longueur">
+            <div class="taille">
                 <tr>
-                    <td><form:label id="longueur" class="col-md-3 control-label" path="longueur">Longueur de la voie</form:label></td>
-                    <td><form:input path="longueur"/></td>
-                </tr>
-            </div>
-
-            <div class="cotation">
-                <tr>
-                    <td><form:label id="cotation" class="col-md-3 control-label" path="cotation">Cotation de la voie</form:label></td>
-                    <td><form:input path="cotation"/></td>
+                    <td><form:label id="taille" class="col-md-3 control-label" path="taille">Indiquer la taille</form:label></td>
+                    <td><form:input path="taille"/></td>
                 </tr>
             </div>
 

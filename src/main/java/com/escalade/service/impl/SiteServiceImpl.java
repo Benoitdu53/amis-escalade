@@ -20,12 +20,17 @@ import java.util.stream.StreamSupport;
 @Service
 public class SiteServiceImpl implements SiteService
 {
-    private final SiteDao siteDao;
 
+    // ----- Injection des dépendances ----- //
+
+    private final SiteDao siteDao;
     @Autowired
     public SiteServiceImpl(SiteDao siteDao){
         this.siteDao = siteDao;
     }
+
+
+
 
     /**
      *
@@ -54,9 +59,9 @@ public class SiteServiceImpl implements SiteService
      * @return la liste des cotations minimums
      */
     @Override
-    public List<String> getCotationMin()
+    public List<String> getDepartement()
     {
-        return siteDao.findDistinctCotationMin();
+        return siteDao.findDistinctDepartement();
     }
 
     /**
@@ -72,14 +77,14 @@ public class SiteServiceImpl implements SiteService
     /**
      *
      * @param pays
-     * @param cotationMin
+     * @param departement
      * @param type
      * @return la liste selon les critères reçus
      */
     @Override
-    public List<Site> getSearchSites(String pays, int cotationMin, String type)
+    public List<Site> getSearchSites(String pays, String departement, String type)
     {
-        return StreamSupport.stream(siteDao.searchSite(pays, cotationMin, type).spliterator(), false)
+        return StreamSupport.stream(siteDao.searchSite(pays, departement, type).spliterator(), false)
                 .collect(Collectors.toList());
     }
 

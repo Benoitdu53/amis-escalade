@@ -18,7 +18,9 @@
 
         <%--    Menu de navigation --%>
         <div class="navbar">
-            <p><a href="/sites">Tout les sites </a> </p>
+            <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
+            <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
+            <p><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></p>
         </div>
 
     </body>

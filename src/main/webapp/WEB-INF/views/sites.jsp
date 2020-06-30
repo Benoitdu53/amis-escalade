@@ -13,7 +13,7 @@
     <body>
 
     <div class="navbarSites">
-            <p><a href="/formSite">Ajouter un site </a> </p>
+        <p><a href="<c:url value="/formSite"></c:url>">Ajouter un site </a> </p>
     </div>
 
             <table border="1" id="tableauSites">
@@ -23,11 +23,10 @@
                     <th>nom</th>
                     <th>Departement</th>
                     <th>Pays</th>
-                    <th>Nombre de secteur</th>
                     <th>Type</th>
                     <th>Cotation-min</th>
                     <th>Cotation-max</th>
-                    <th>Longueur-max</th>
+                    <th>Description</th>
                 </tr>
 
                 <!-- Si aucun critères n'est insérer, on affiche tout les sites -->
@@ -39,11 +38,10 @@
                             <td><c:out value="${sites.nom}"/></td>
                             <td><c:out value="${sites.departement}"/></td>
                             <td><c:out value="${sites.pays}"/></td>
-                            <td><c:out value="${sites.nbreSecteur}"/></td>
                             <td><c:out value="${sites.type}"/></td>
                             <td><c:out value="${sites.cotationMin}"/></td>
                             <td><c:out value="${sites.cotationMax}"/></td>
-                            <td><c:out value="${sites.longueurMax}"/></td>
+                            <td><c:out value="${sites.description}"/></td>
                         <td><a href="<c:url value="site/${sites.id}"></c:url>">Gestion du site </a></td>
                         <td><a href="<c:url value="/site/${site.id}/delete"/>">Supprimer le site</a></td>
                     </tr>

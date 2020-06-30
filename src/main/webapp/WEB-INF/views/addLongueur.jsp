@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-
+    <jsp:include page="include/header.jsp"></jsp:include>
 </head>
 
 <body>
@@ -11,17 +11,24 @@
     <%--@elvariable id="longueur" type="com.escalade.model.Longueur"--%>
     <form:form id="formulaireLongueur" method="post" modelAttribute="longueur">
         <table>
-            <div class="longRelais">
+            <div class="nbrePoints">
                 <tr>
-                    <td><form:label id="longRelais" class="col-md-3 control-label" path="longRelais">Longueur des relais</form:label></td>
-                    <td><form:input path="longRelais"/></td>
+                    <td><form:label id="nbrePoints" class="col-md-3 control-label" path="nbrePoints">Indiquer le nombre de points</form:label></td>
+                    <td><form:input path="nbrePoints"/></td>
                 </tr>
             </div>
 
-            <div class="longTotal">
+            <div class="taille">
                 <tr>
-                    <td><form:label id="longTotal" class="col-md-3 control-label" path="longTotal">Longueur total de la voie</form:label></td>
-                    <td><form:input path="longTotal"/></td>
+                    <td><form:label id="taille" class="col-md-3 control-label" path="taille">indiquer la taille</form:label></td>
+                    <td><form:input path="taille"/></td>
+                </tr>
+            </div>
+
+            <div class="cotation">
+                <tr>
+                    <td><form:label id="cotation" class="col-md-3 control-label" path="cotation">Indiquer la cotation</form:label></td>
+                    <td><form:input path="cotation"/></td>
                 </tr>
             </div>
 

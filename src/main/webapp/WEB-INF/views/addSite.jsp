@@ -1,12 +1,16 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+<head>
+    <jsp:include page="include/header.jsp"></jsp:include>
+</head>
+
 <body>
-    <form:form id="formualireSite" method="post" action="/addSite" modelAttribute="site">
+    <form:form id="formulaireSite" method="post" action="/addSite" modelAttribute="site">
     <table>
-        <div class="nom">
+        <div class="nomSite">
             <tr>
-                <td><form:label id="nom" class="col-md-3 control-label" path="nom">Nom du site</form:label></td>
+                <td><form:label id="nomSite" class="col-md-3 control-label" path="nom">Nom du site</form:label></td>
                 <td><form:input path="nom"/></td>
             </tr>
         </div>
@@ -22,13 +26,6 @@
             <tr>
                 <td><form:label id="pays" class="col-md-3 control-label" path="pays">Pays du site</form:label></td>
                 <td><form:input path="pays"/></td>
-            </tr>
-        </div>
-
-        <div class="nbreSecteur">
-            <tr>
-                <td><form:label id="nbreSecteur" class="col-md-3 control-label" path="nbreSecteur">Nombre de secteur</form:label></td>
-                <td><form:input path="nbreSecteur"/></td>
             </tr>
         </div>
 
@@ -53,10 +50,10 @@
             </tr>
         </div>
 
-        <div class="longueurMax">
+        <div class="descriptionSite">
             <tr>
-                <td><form:label id="longueurMax" class="col-md-3 control-label" path="longueurMax">Longueur maximum du site</form:label></td>
-                <td><form:input path="longueurMax"/></td>
+                <td><form:label id="descriptionSite" class="col-md-3 control-label" path="description">Description du site</form:label></td>
+                <td><form:input path="description"/></td>
             </tr>
         </div>
 
