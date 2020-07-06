@@ -10,11 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 public class UtilisateurController
@@ -98,22 +100,20 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-    public Object validateLogin(@Param("pseudo") String pseudo,
-                                @Param("password") String password,
-                                Model model){
+    public String validateLogin(HttpSession session,
+                                @Param("pseudo") String pseudo,
+                                @Param("password") String password){
 
-        try{
         Utilisateur utilisateur = utilisateurService.loginUtilisateur(pseudo,password);
-        if (utilisateur !=null){
-            model.addAttribute("utilisateur", utilisateur);
+
+        if (utilisateur ==null){
 
             return "/utilisateurs";
         }
 
-        }catch (Exception e){
 
-        }
+        session.setAttribute("pseudo", pseudo);
 
-        return new RedirectView("/sites");
+        return ("/sites");
     }
 }

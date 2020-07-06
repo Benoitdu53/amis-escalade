@@ -6,7 +6,6 @@ import com.escalade.service.contract.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -71,16 +70,17 @@ public class UtilisateurServiceImpl implements UtilisateurService
     @Override
     public Utilisateur loginUtilisateur(String pseudo, String password)
     {
+
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
 
-        String pass = utilisateur.getPassword();
-
-        if (utilisateur == null && pass != password){
-            // TODO renvoyer un message "Pseudo ou mot de passe incorrect"
-
-            return null;
-        }else {
+        if (utilisateur != null)
+        {
+            String pass = utilisateur.getPassword();
+            if (!pass.equals(password)) {
+                // TODO pseudo ou mot de passe incorrect
+                utilisateur =null;
+            }
+        }
             return utilisateur;
         }
     }
-}

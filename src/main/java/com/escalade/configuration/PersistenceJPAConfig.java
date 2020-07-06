@@ -32,6 +32,8 @@ public class PersistenceJPAConfig {
     private String dataSourcePassword;
     @Value("${hibernate.dialect}")
     private String hibernateDialect;
+    @Value("${spring.jpa.hibernate.ddl-auto")
+    private String hibernateDdl;
 
     /**
      *Bean entityManager, persistence des entités
@@ -92,6 +94,7 @@ public class PersistenceJPAConfig {
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", hibernateDialect);
+        properties.setProperty("hibernate.ddl", hibernateDdl);
         return properties;
     }
 }

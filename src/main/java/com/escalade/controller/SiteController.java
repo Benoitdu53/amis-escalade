@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -105,7 +106,7 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "/sites", method = RequestMethod.GET)
-    public String findAllSites(Model model){
+    public String findAllSites(Model model, HttpSession session){
 
         model.addAttribute("pays", siteService.getPays());
         model.addAttribute("departement", siteService.getDepartement());

@@ -7,10 +7,27 @@
     <head>
         <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
         <jsp:include page="include/header.jsp"></jsp:include><br>
+        <jsp:include page="navBarMenu.jsp"></jsp:include>
         <jsp:include page="rechercheSite.jsp"></jsp:include><br>
     </head>
 
     <body>
+
+    <c:if test="${empty sessionScope.pseudo}">
+
+        <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
+        <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
+        <p><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></p>
+
+    </c:if>
+
+    <c:if test="${not empty sessionScope.pseudo}">
+
+        <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
+        <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
+        <%--            <p><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></p>--%>
+
+    </c:if>
 
     <div class="navbarSites">
         <p><a href="<c:url value="/formSite"></c:url>">Ajouter un site </a> </p>
