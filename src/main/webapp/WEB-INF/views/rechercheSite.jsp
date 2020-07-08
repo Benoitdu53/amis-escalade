@@ -19,11 +19,11 @@
                 </div>
             </select>
 
-            <select name="cotationMin">
-                <div id="cotationMin">
-                    <option value="0">Sélectionner une cotation minimum</option>
-                    <c:forEach var="cotationMin" items="${cotationMin}">
-                    <option value="${cotationMin}" ${cotationMin==param["cotationMin"]?'selected="selected"':''}> ${cotationMin}</option>
+            <select name="departement">
+                <div id="departement">
+                    <option value="">Sélectionner un département</option>
+                    <c:forEach var="departement" items="${departement}">
+                    <option value="${departement}" ${departement==param["departement"]?'selected="selected"':''}> ${departement}</option>
                     </c:forEach>
             </select>
             </div>

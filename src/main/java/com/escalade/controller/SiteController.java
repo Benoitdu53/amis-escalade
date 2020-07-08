@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 /**
@@ -34,7 +35,14 @@ public class SiteController {
         this.secteurService = secteurService;
     }
 
-    @RequestMapping(value = "formSite", method = RequestMethod.GET)
+
+
+
+    /**
+     * Affiche le formulaire d'ajout de site
+     * @return
+     */
+    @RequestMapping(value = "/formSite", method = RequestMethod.GET)
     public ModelAndView formSite(){
 
         return new ModelAndView("addSite", "site", new Site());
@@ -71,19 +79,19 @@ public class SiteController {
      *              Permet la recherche de site par critère ( Pays, Cotation minimum, Type ) et l'affiche
      * @param model
      * @param pays
-     * @param cotationMin
+     * @param departement
      * @param type
      * @return
      */
     @RequestMapping(value = "/searchSites", method = RequestMethod.GET)
     public String findSites( Model model,
                              @RequestParam(name = "pays", defaultValue = "", required = false) String pays,
-                             @RequestParam(name = "cotationMin",defaultValue = "0", required = false) int cotationMin,
+                             @RequestParam(name = "departement",defaultValue = "", required = false) String departement,
                              @RequestParam(name = "type", defaultValue = "", required = false) String type) {
 
-        model.addAttribute("sites",siteService.getSearchSites(pays, cotationMin, type));
+        model.addAttribute("sites",siteService.getSearchSites(pays, departement, type));
         model.addAttribute("pays", siteService.getPays());
-        model.addAttribute("cotationMin", siteService.getCotationMin());
+        model.addAttribute("departement", siteService.getDepartement());
         model.addAttribute("type", siteService.getType());
 
         return "/sites";
@@ -98,10 +106,10 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "/sites", method = RequestMethod.GET)
-    public String findAllSites(Model model){
+    public String findAllSites(Model model, HttpSession session){
 
         model.addAttribute("pays", siteService.getPays());
-        model.addAttribute("cotationMin", siteService.getCotationMin());
+        model.addAttribute("departement", siteService.getDepartement());
         model.addAttribute("type", siteService.getType());
 
         model.addAttribute("sites", siteService.getSites());
@@ -112,12 +120,13 @@ public class SiteController {
 
 
     /**
-     *              Supprimer une voie
+     *              Supprime une voie
+     * @return
      */
     @RequestMapping(value = "/site/{idSite}/delete", method = RequestMethod.GET)
-    public String deleteLongueur (@PathVariable("idSite") Long idSite){
+    public RedirectView deleteLongueur (@PathVariable("idSite") Long idSite){
         siteService.deleteSiteById(idSite);
 
-        return "/site";
+        return new RedirectView("/sites");
     }
 }

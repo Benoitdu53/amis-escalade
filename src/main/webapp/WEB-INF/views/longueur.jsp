@@ -15,16 +15,14 @@
         <caption>Voie</caption>
         <tr>
             <th>id</th>
-            <th>Voie</th>
-            <th>Longueur</th>
-            <th>Cotation</th>
+            <th>Nom</th>
+            <th>Taille</th>
         </tr>
 
         <tr>
             <td><c:out value="${voie.id}"/></td>
-            <td><c:out value="${voie.voie}"/></td>
-            <td><c:out value="${voie.longueur}"/></td>
-            <td><c:out value="${voie.cotation}"/></td>
+            <td><c:out value="${voie.nom}"/></td>
+            <td><c:out value="${voie.taille}"/></td>
         </tr>
     </div>
 </table>
@@ -40,15 +38,17 @@
         <caption>Longueurs</caption>
         <tr>
             <th>id</th>
-            <th>Longueur par relais</th>
-            <th>Longueur total</th>
+            <th>Nombre de points</th>
+            <th>Taille</th>
+            <th>Cotation</th>
         </tr>
 
         <c:forEach var="longueurs" items="${longueurs}">
             <tr>
                 <td><c:out value="${longueurs.id}"/></td>
-                <td><c:out value="${longueurs.longRelais}"/></td>
-                <td><c:out value="${longueurs.longTotal}"/></td>
+                <td><c:out value="${longueurs.nbrePoints}"/></td>
+                <td><c:out value="${longueurs.taille}"/></td>
+                <td><c:out value="${longueurs.cotation}"/></td>
                 <td><a href="<c:url value="/longueur/${longueurs.id}/delete"/>">Supprimer la longueur</a></td>
             </tr>
         </c:forEach>

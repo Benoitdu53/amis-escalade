@@ -96,12 +96,14 @@ public class VoieController
 
 
     /**
-     *              Supprimer une voie
+     *              Supprime une voie
+     * @return
      */
     @RequestMapping(value = "/voie/{idVoie}/delete", method = RequestMethod.GET)
-    public String deleteLongueur (@PathVariable("idVoie") Long idVoie, Model model){
+    public RedirectView deleteLongueur (@PathVariable("idVoie") Long idVoie){
+
         voieService.deleteVoieById(idVoie);
 
-        return "/voie";
+        return new RedirectView("/sites");
     }
 }

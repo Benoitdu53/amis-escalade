@@ -14,25 +14,11 @@ public class Voie implements Serializable {
     @Column
     private Long id;
 
-    @Column
-    private String voie;
+    @Column(name="nom")
+    private String nom;
 
-    @Column
-    private int longueur;
-
-    @Column
-    private String cotation;
-
-    @Override
-    public String toString()
-    {
-        return "Voie{" +
-                "id=" + id +
-                ", voie='" + voie + '\'' +
-                ", longueur=" + longueur +
-                ", cotation='" + cotation + '\'' +
-                '}';
-    }
+    @Column(name = "taille")
+    private int taille;
 
     @OneToMany(mappedBy = "voie")
     private List<Longueur> longueurList = new ArrayList<>();
@@ -44,6 +30,48 @@ public class Voie implements Serializable {
     public List<Longueur> getLongueurList()
     {
         return longueurList;
+    }
+
+    @Override
+    public String toString()
+    {
+        return "Voie{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", taille=" + taille +
+                ", longueurList=" + longueurList +
+                ", secteur=" + secteur +
+                '}';
+    }
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(final Long id)
+    {
+        this.id = id;
+    }
+
+    public String getNom()
+    {
+        return nom;
+    }
+
+    public void setNom(final String nom)
+    {
+        this.nom = nom;
+    }
+
+    public int getTaille()
+    {
+        return taille;
+    }
+
+    public void setTaille(final int taille)
+    {
+        this.taille = taille;
     }
 
     public void setLongueurList(final List<Longueur> longueurList)
@@ -59,45 +87,5 @@ public class Voie implements Serializable {
     public void setSecteur(final Secteur secteur)
     {
         this.secteur = secteur;
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(final Long id)
-    {
-        this.id = id;
-    }
-
-    public String getVoie()
-    {
-        return voie;
-    }
-
-    public void setVoie(final String voie)
-    {
-        this.voie = voie;
-    }
-
-    public int getLongueur()
-    {
-        return longueur;
-    }
-
-    public void setLongueur(final int longueur)
-    {
-        this.longueur = longueur;
-    }
-
-    public String getCotation()
-    {
-        return cotation;
-    }
-
-    public void setCotation(final String cotation)
-    {
-        this.cotation = cotation;
     }
 }

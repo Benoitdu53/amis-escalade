@@ -15,14 +15,14 @@
         <caption>Secteur</caption>
         <tr>
             <th>id</th>
-            <th>secteur</th>
-            <th>Nombre de voies</th>
+            <th>Nom</th>
+            <th>Description</th>
         </tr>
 
         <tr>
             <td><c:out value="${secteur.id}"/></td>
-            <td><c:out value="${secteur.secteur}"/></td>
-            <td><c:out value="${secteur.nbreVoie}"/></td>
+            <td><c:out value="${secteur.nom}"/></td>
+            <td><c:out value="${secteur.description}"/></td>
         </tr>
     </div>
 </table>
@@ -33,22 +33,20 @@
 
 <!-- Tableau des voies -->
 
-<table border="1" id="tableaVvoies">
+<table border="1" id="tableauVoies">
     <div class="titreVoies">
         <caption>Voies</caption>
         <tr>
             <th>id</th>
-            <th>Voie</th>
-            <th>Longueur</th>
-            <th>Cotation</th>
+            <th>Nom</th>
+            <th>Taille</th>
         </tr>
 
         <c:forEach var="voies" items="${voies}">
             <tr>
                 <td><c:out value="${voies.id}"/></td>
-                <td><c:out value="${voies.voie}"/></td>
-                <td><c:out value="${voies.longueur}"/></td>
-                <td><c:out value="${voies.cotation}"/></td>
+                <td><c:out value="${voies.nom}"/></td>
+                <td><c:out value="${voies.taille}"/></td>
                 <td><p><a href="<c:url value="/voie/${voies.id}/longueur"/>">Gestion de la longueur </a> </p></td>
                 <td><a href="<c:url value="/voie/${voies.id}/delete"/>">Supprimer la voie</a></td>
             </tr>

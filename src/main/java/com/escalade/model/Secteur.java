@@ -10,13 +10,14 @@ import java.util.List;
 public class Secteur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     @Column
     private Long id;
-    @Column
-    private String secteur;
-    @Column(name = "nbre_voie")
-    private int nbreVoie;
+
+    @Column(name = "nom")
+    private String nom;
+
+    @Column(name = "description")
+    private String description;
 
     @OneToMany(mappedBy = "secteur")
     private List<Voie> voieList = new ArrayList<>();
@@ -24,6 +25,49 @@ public class Secteur implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_site")
     private Site site;
+
+    @Override
+    public String toString()
+    {
+        return "Secteur{" +
+                "id=" + id +
+                ", nom='" + nom + '\'' +
+                ", description=" + description +
+                ", voieList=" + voieList +
+                ", site=" + site +
+                '}';
+    }
+
+    public Long getId()
+    {
+
+        return id;
+    }
+
+    public void setId(final Long id)
+    {
+        this.id = id;
+    }
+
+    public String getNom()
+    {
+        return nom;
+    }
+
+    public void setNom(final String nom)
+    {
+        this.nom = nom;
+    }
+
+    public String getDescription()
+    {
+        return description;
+    }
+
+    public void setDescription(final String description)
+    {
+        this.description = description;
+    }
 
     public List<Voie> getVoieList()
     {
@@ -44,45 +88,4 @@ public class Secteur implements Serializable {
     {
         this.site = site;
     }
-
-    @Override
-    public String toString()
-    {
-        return "Secteur{" +
-                "id=" + id +
-                ", secteur='" + secteur + '\'' +
-                ", nbreVoie=" + nbreVoie +
-                '}';
-    }
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(final Long id)
-    {
-        this.id = id;
-    }
-
-    public String getSecteur()
-    {
-        return secteur;
-    }
-
-    public void setSecteur(final String secteur)
-    {
-        this.secteur = secteur;
-    }
-
-    public int getNbreVoie()
-    {
-        return nbreVoie;
-    }
-
-    public void setNbreVoie(final int nbreVoie)
-    {
-        this.nbreVoie = nbreVoie;
-    }
-
 }

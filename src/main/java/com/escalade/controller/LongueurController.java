@@ -95,12 +95,13 @@ public class LongueurController {
 
 
     /**
-     *              Supprimer une longueur
+     *              Supprime une longueur
+     * @return
      */
     @RequestMapping(value = "/longueur/{idLongueur}/delete", method = RequestMethod.GET)
-    public String deleteLongueur (@PathVariable("idLongueur") Long idLongueur){
+    public RedirectView deleteLongueur (@PathVariable("idLongueur") Long idLongueur){
         longueurService.deleteById(idLongueur);
 
-        return "/longueur";
+        return new RedirectView("/sites");
     }
 }

@@ -100,12 +100,13 @@ public class SecteurController {
 
 
     /**
-     *              Supprimer un secteur
+     *              Supprime un secteur
+     * @return
      */
     @RequestMapping(value = "/secteur/{idSecteur}/delete", method = RequestMethod.GET)
-    public String deleteLongueur (@PathVariable("idSecteur") Long idSecteur){
+    public RedirectView deleteLongueur (@PathVariable("idSecteur") Long idSecteur){
         secteurService.deleteSecteurById(idSecteur);
 
-        return "/secteur";
+        return new RedirectView("/sites");
     }
 }

@@ -12,23 +12,23 @@ public class Longueur implements Serializable
     @Column
     private Long id;
 
-    @Column(name = "long_relais")
-    private int longRelais;
+    @Column(name = "nbre_points")
+    private int nbrePoints;
 
-    @Column(name = "long_total")
-    private int longTotal;
+    @Column(name = "taille")
+    private int taille;
 
-    @ManyToOne
-    @JoinColumn(name = "id_voie")
-    private Voie voie;
+    @Column(name = "cotation")
+    private String cotation;
 
     @Override
     public String toString()
     {
         return "Longueur{" +
                 "id=" + id +
-                ", longRelais=" + longRelais +
-                ", longTotal=" + longTotal +
+                ", nbrePoints=" + nbrePoints +
+                ", taille=" + taille +
+                ", cotation='" + cotation + '\'' +
                 ", voie=" + voie +
                 '}';
     }
@@ -43,24 +43,34 @@ public class Longueur implements Serializable
         this.id = id;
     }
 
-    public int getLongRelais()
+    public int getNbrePoints()
     {
-        return longRelais;
+        return nbrePoints;
     }
 
-    public void setLongRelais(final int longRelais)
+    public void setNbrePoints(final int nbrePoints)
     {
-        this.longRelais = longRelais;
+        this.nbrePoints = nbrePoints;
     }
 
-    public int getLongTotal()
+    public int getTaille()
     {
-        return longTotal;
+        return taille;
     }
 
-    public void setLongTotal(final int longTotal)
+    public void setTaille(final int taille)
     {
-        this.longTotal = longTotal;
+        this.taille = taille;
+    }
+
+    public String getCotation()
+    {
+        return cotation;
+    }
+
+    public void setCotation(final String cotation)
+    {
+        this.cotation = cotation;
     }
 
     public Voie getVoie()
@@ -72,4 +82,10 @@ public class Longueur implements Serializable
     {
         this.voie = voie;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "id_voie")
+    private Voie voie;
+
+
 }
