@@ -32,7 +32,7 @@ public class PersistenceJPAConfig {
     private String dataSourcePassword;
     @Value("${hibernate.dialect}")
     private String hibernateDialect;
-    @Value("${spring.jpa.hibernate.ddl-auto")
+    @Value("${spring.jpa.hibernate.ddl-auto}")
     private String hibernateDdl;
 
     /**

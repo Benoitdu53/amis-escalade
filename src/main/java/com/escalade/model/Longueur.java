@@ -1,6 +1,8 @@
 package com.escalade.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
@@ -11,6 +13,7 @@ public class Longueur implements Serializable
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
+
 
     @Column(name = "nbre_points")
     private int nbrePoints;

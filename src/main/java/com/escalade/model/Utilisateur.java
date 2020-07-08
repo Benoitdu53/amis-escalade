@@ -1,6 +1,8 @@
 package com.escalade.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 
 @Entity
@@ -12,20 +14,29 @@ public class Utilisateur implements Serializable
     @Column(name = "id")
     private Long id;
 
+    @NotNull(message = "Veuillez saisir un nom")
     @Column(name = "nom")
     private String nom;
 
+    @NotNull(message = "Veuillez saisir un prenom")
     @Column(name="prenom")
     private String prenom;
 
+    @NotNull(message = "Veuillez saisir un pseudo")
     @Column(name = "pseudo")
     private String pseudo;
 
+    @NotNull(message = "Veuillez saisir une adresse mail")
     @Column(name = "mail")
     private String mail;
 
+    @NotNull(message = "Veuillez saisir un mot de passe")
+    @Size(min = 6, message = "Veuillez saisir un mot de passe supérieur à 5 caractères")
     @Column(name = "password")
     private String password;
+
+    @Transient
+    private String confirmationPassword;
 
     @Column(name="isMembreOfficiel")
     private Boolean isMembreOfficiel;
@@ -40,8 +51,19 @@ public class Utilisateur implements Serializable
                 ", pseudo='" + pseudo + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
+                ", confirmationPassword='" + confirmationPassword + '\'' +
                 ", isMembreOfficiel=" + isMembreOfficiel +
                 '}';
+    }
+
+    public String getConfirmationPassword()
+    {
+        return confirmationPassword;
+    }
+
+    public void setConfirmationPassword(final String confirmationPassword)
+    {
+        this.confirmationPassword = confirmationPassword;
     }
 
     public Long getId()

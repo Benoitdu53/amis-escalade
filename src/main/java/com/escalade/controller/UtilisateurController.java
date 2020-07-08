@@ -10,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -52,7 +51,7 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/formUtilisateur", method = RequestMethod.GET)
     public ModelAndView formUtilisateur(){
-        return new ModelAndView("registrationUtilisateur", "utilisateur", new Utilisateur());
+        return new ModelAndView("addForm/addUtilisateur", "utilisateur", new Utilisateur());
     }
 
 
@@ -69,7 +68,7 @@ public class UtilisateurController
 
         try{
             if (result.hasErrors()){
-                return "registrationUtilisateur";
+                return "addForm/addUtilisateur";
             }
         }catch (Exception e){
             // TODO Exception
@@ -87,7 +86,7 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/loginUtilisateur", method = RequestMethod.GET)
     public ModelAndView formLogin(){
-        return new ModelAndView ("loginUtilisateur", "utilisateur", new Utilisateur());
+        return new ModelAndView ("addForm/loginUtilisateur", "utilisateur", new Utilisateur());
     }
 
 
@@ -115,5 +114,20 @@ public class UtilisateurController
         session.setAttribute("pseudo", pseudo);
 
         return ("/sites");
+    }
+
+
+
+
+    /**
+     *          Déconnexion de l'utilisateur
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
+    public String deconnexion(HttpSession session){
+
+        session.invalidate();
+        return "sites";
     }
 }

@@ -41,7 +41,7 @@ public class LongueurController {
     @RequestMapping(value = "/voie/{idVoie}/longueur/add", method = RequestMethod.GET)
     public ModelAndView formLongueur( @PathVariable("idVoie") Long idVoie){
 
-        ModelAndView modelAndView = new ModelAndView("addLongueur", "longueur", new Longueur());
+        ModelAndView modelAndView = new ModelAndView("addForm/addLongueur", "longueur", new Longueur());
 
         modelAndView.addObject("idVoie", idVoie);
 
@@ -80,7 +80,7 @@ public class LongueurController {
 
         try{
             if (result.hasErrors()){
-                return "addVoie";
+                return "addForm/addVoie";
             }
         }catch (Exception e){
             // TODO Exception

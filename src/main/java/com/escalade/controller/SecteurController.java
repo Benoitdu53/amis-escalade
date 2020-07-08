@@ -45,7 +45,7 @@ public class SecteurController {
     @RequestMapping(value = "/site/{idSite}/secteur/add", method = RequestMethod.GET)
     public ModelAndView formSecteur(@PathVariable("idSite") Long idSite){
 
-        ModelAndView modelAndView = new ModelAndView("addSecteur", "secteur", new Secteur());
+        ModelAndView modelAndView = new ModelAndView("addForm/addSecteur", "secteur", new Secteur());
         modelAndView.addObject("idSite",idSite);
 
         return modelAndView;
@@ -67,7 +67,7 @@ public class SecteurController {
 
         try{
             if (result.hasErrors()){
-                return "addSecteur";
+                return "addForm/addSecteur";
             }
         }catch (Exception e){
             // TODO Exception

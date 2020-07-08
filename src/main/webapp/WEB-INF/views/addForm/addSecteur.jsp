@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <jsp:include page="include/header.jsp"></jsp:include>
+    <jsp:include page="../header.jsp"></jsp:include>
 </head>
 
 <body>
@@ -13,14 +13,14 @@
             <div class="nomSecteur">
                 <tr>
                     <td><form:label id="nomSecteur" class="col-md-3 control-label" path="nom">Nom du secteur</form:label></td>
-                    <td><form:input path="nom"/></td>
+                    <td><form:input path="nom" required="required"/></td>
                 </tr>
             </div>
 
             <div class="descriptionSecteur">
                 <tr>
                     <td><form:label id="descriptionSecteur" class="col-md-3 control-label" path="description">Description du secteur</form:label></td>
-                    <td><form:input path="description"/></td>
+                    <td><form:input path="description" required="required"/></td>
                 </tr>
             </div>
 
