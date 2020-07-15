@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
 
 @Controller
 public class UtilisateurController
@@ -60,21 +58,25 @@ public class UtilisateurController
     /**
      *              Inscrit un utilisateur et renvoie a la page des utilisateurs
      * @param newUtilisateur
-     * @param result
      * @return
      */
     @RequestMapping(value = "/registrationUtilisateur", method = RequestMethod.POST)
-    public Object addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur, BindingResult result){
+    public ModelAndView addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
+                                        BindingResult result){
+        var mav = new ModelAndView();
+        utilisateurService.registrationUtilisateur(newUtilisateur);
 
         try{
-            if (result.hasErrors()){
-                return "addForm/addUtilisateur";
+            if (result == null){
+                mav.addObject(result);
+                mav.setViewName("/formUtilisateur");
             }
         }catch (Exception e){
-            // TODO Exception
+           // TODO Exception
         }
-        utilisateurService.registrationUtilisateur(newUtilisateur);
-        return new RedirectView("/utilisateurs");
+        mav.setViewName("/utilisateurs");
+
+        return mav;
     }
 
 
@@ -109,7 +111,6 @@ public class UtilisateurController
 
             return "/utilisateurs";
         }
-
 
         session.setAttribute("pseudo", pseudo);
 

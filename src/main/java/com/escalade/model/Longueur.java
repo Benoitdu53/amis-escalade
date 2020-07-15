@@ -14,7 +14,6 @@ public class Longueur implements Serializable
     @Column
     private Long id;
 
-
     @Column(name = "nbre_points")
     private int nbrePoints;
 

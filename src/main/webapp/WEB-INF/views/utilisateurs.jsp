@@ -33,7 +33,7 @@
                 <th><c:out value="${utilisateurs.pseudo}"/></th>
                 <th><c:out value="${utilisateurs.mail}"/></th>
                 <th><c:out value="${utilisateurs.password}"/></th>
-    <%--            <th><c:out value="${utilisateurs.isMembreOfficiel}"/></th>--%>
+                <th><c:out value="${utilisateurs.isMembreOfficiel}"/></th>
             </tr>
             </c:forEach>
         </table>

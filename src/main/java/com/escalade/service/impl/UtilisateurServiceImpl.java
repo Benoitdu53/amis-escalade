@@ -1,7 +1,6 @@
 package com.escalade.service.impl;
 
 import com.escalade.dao.UtilisateurDao;
-import com.escalade.model.MessageErreur;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +75,7 @@ public class UtilisateurServiceImpl implements UtilisateurService
         // TODO Faire un if, si la map des messages d'erreur est vide lancer le save
 
         utilisateurDao.save(newUtilisateur);
+
     }
 
 

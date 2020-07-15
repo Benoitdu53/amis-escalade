@@ -3,37 +3,14 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <html>
     <head>
         <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
-        <jsp:include page="header.jsp"></jsp:include><br>
+        <%@ include file="header.jsp"%>
         <jsp:include page="addForm/rechercheSite.jsp"></jsp:include><br>
     </head>
 
     <body>
-
-    <%--    Menu de navigation --%>
-<%--    <div class="navbar">--%>
-<%--        &lt;%&ndash;        <%=request.getSession().getAttribute("utilisateur")%>&ndash;%&gt;--%>
-
-<%--        <c:if test="${empty sessionScope.pseudo}">--%>
-
-<%--            <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>--%>
-<%--            <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>--%>
-<%--            <p><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></p>--%>
-<%--            <p><a href="<c:url value="/formUtilisateur"></c:url>">S'inscrire</a></p>--%>
-
-<%--        </c:if>--%>
-
-<%--        <c:if test="${not empty sessionScope.pseudo}">--%>
-
-<%--            <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>--%>
-<%--            <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>--%>
-<%--            <p><a href="<c:url value="/deconnexion"></c:url>">Se déconnecter</a></p>--%>
-
-<%--        </c:if>--%>
-<%--    </div>--%>
 
         <div class="navbarSites">
             <p><a href="<c:url value="/formSite"></c:url>">Ajouter un site </a> </p>

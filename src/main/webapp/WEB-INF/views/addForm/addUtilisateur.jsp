@@ -35,7 +35,7 @@
                 <div class="mail">
                     <tr>
                         <td><form:label id="mail" class="col-md-3 control-label" path="mail">Entrez votre mail*</form:label></td>
-                        <td><form:input path="mail" required="required"/></td>
+                        <td><form:input path="mail" required="required" type="email"/></td>
                         <td><form:errors path="mail" cssClass="error"/></td>
                     </tr>
                 </div>
