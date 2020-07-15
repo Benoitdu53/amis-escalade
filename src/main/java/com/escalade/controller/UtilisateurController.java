@@ -1,5 +1,6 @@
 package com.escalade.controller;
 
+import com.escalade.model.ExceptionMessages;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,13 +63,16 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/registrationUtilisateur", method = RequestMethod.POST)
     public ModelAndView addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
-                                        BindingResult result){
+                                        ExceptionMessages exceptionMessages){
         var mav = new ModelAndView();
+
+
+
         utilisateurService.registrationUtilisateur(newUtilisateur);
 
         try{
-            if (result == null){
-                mav.addObject(result);
+            if (exceptionMessages == null){
+                mav.addObject(exceptionMessages);
                 mav.setViewName("/formUtilisateur");
             }
         }catch (Exception e){
