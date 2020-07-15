@@ -59,7 +59,7 @@ public class VoieController
     @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
     public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur){
 
-        ModelAndView modelAndView = new ModelAndView("addVoie", "voie", new Voie());
+        ModelAndView modelAndView = new ModelAndView("addForm/addVoie", "voie", new Voie());
         modelAndView.addObject("idSecteur", idSecteur);
 
         return modelAndView;
@@ -81,7 +81,7 @@ public class VoieController
 
         try{
             if (result.hasErrors()){
-                return "addVoie";
+                return "addForm/addVoie";
             }
         }catch (Exception e){
             // TODO Exception

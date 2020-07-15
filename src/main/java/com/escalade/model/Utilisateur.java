@@ -1,7 +1,11 @@
 package com.escalade.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "utilisateur")
@@ -27,8 +31,14 @@ public class Utilisateur implements Serializable
     @Column(name = "password")
     private String password;
 
+    @Transient
+    private String confirmationPassword;
+
     @Column(name="isMembreOfficiel")
     private Boolean isMembreOfficiel;
+
+    @OneToMany(mappedBy = "utilisateur")
+    private List<Reservation> reservationList = new ArrayList<>();
 
     @Override
     public String toString()
@@ -40,8 +50,19 @@ public class Utilisateur implements Serializable
                 ", pseudo='" + pseudo + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
+                ", confirmationPassword='" + confirmationPassword + '\'' +
                 ", isMembreOfficiel=" + isMembreOfficiel +
                 '}';
+    }
+
+    public String getConfirmationPassword()
+    {
+        return confirmationPassword;
+    }
+
+    public void setConfirmationPassword(final String confirmationPassword)
+    {
+        this.confirmationPassword = confirmationPassword;
     }
 
     public Long getId()
@@ -104,12 +125,12 @@ public class Utilisateur implements Serializable
         this.password = password;
     }
 
-    public Boolean getMembreOfficiel()
+    public Boolean getIsMembreOfficiel()
     {
         return isMembreOfficiel;
     }
 
-    public void setMembreOfficiel(final Boolean membreOfficiel)
+    public void setIsMembreOfficiel(final Boolean membreOfficiel)
     {
         isMembreOfficiel = membreOfficiel;
     }

@@ -42,7 +42,40 @@ public class UtilisateurServiceImpl implements UtilisateurService
     @Override
     public void registrationUtilisateur( Utilisateur newUtilisateur)
     {
+        String pass = newUtilisateur.getPassword();
+        String confPass = newUtilisateur.getConfirmationPassword();
+        String mail = newUtilisateur.getMail();
+
+        // Validité du mot de passe
+        try{
+            if (!pass.equals(confPass))
+            {
+                // TODO ajouter un message d'erreur " Les mots de passe ne sont pas identiques"
+
+            }else
+            {
+                if (pass.length() < 6 || !pass.matches("/d"))
+                {
+                    // TODO ajouter un message d'erreur " Veuillez saisir un mot de passe d'au moins 6 caractère et qui contient au moins un chiffre"
+                }
+            }
+        }catch (Exception e){
+            // TODO Ajouter une exception si besoin
+        }
+
+        // Validité du mail
+        try{
+            if (!mail.matches("@")){
+                // TODO Ajouter un message "L'adresse mail n'est pas valide"
+            }
+        }catch (Exception e){
+            // TODO Ajouter une exception si besoin
+        }
+
+        // TODO Faire un if, si la map des messages d'erreur est vide lancer le save
+
         utilisateurDao.save(newUtilisateur);
+
     }
 
 

@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <jsp:include page="include/header.jsp"></jsp:include>
+    <jsp:include page="../header.jsp"></jsp:include>
 </head>
 
     <body>
@@ -12,12 +12,12 @@
         <form:form id="loginUtilisateur" method="post" action="/validateLogin" modelAttribute="utilisateur">
             <tr>
                 <td><form:label id="pseudo" class="col-md-3 control-label" path="pseudo">Entrez votre pseudo</form:label></td>
-                <td><form:input path="pseudo"/></td>
+                <td><form:input path="pseudo" required="required"/></td>
             </tr>
 
             <tr>
                 <td><form:label id="password" class="col-md-3 control-label" path="password">Entrez votre mot de passe</form:label></td>
-                <td><form:input path="password"></form:input></td>
+                <td><form:input path="password" type="password" required="required"></form:input></td>
             </tr>
 
             <tr>

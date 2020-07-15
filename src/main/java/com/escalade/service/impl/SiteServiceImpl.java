@@ -44,6 +44,9 @@ public class SiteServiceImpl implements SiteService
 
     }
 
+
+
+
     /**
      *
      * @return la liste des pays
@@ -53,6 +56,9 @@ public class SiteServiceImpl implements SiteService
     {
         return siteDao.findDistinctPays();
     }
+
+
+
 
     /**
      *
@@ -64,6 +70,9 @@ public class SiteServiceImpl implements SiteService
         return siteDao.findDistinctDepartement();
     }
 
+
+
+
     /**
      *
      * @return la liste des types
@@ -73,6 +82,9 @@ public class SiteServiceImpl implements SiteService
     {
         return siteDao.findDistinctType();
     }
+
+
+
 
     /**
      *
@@ -88,18 +100,40 @@ public class SiteServiceImpl implements SiteService
                 .collect(Collectors.toList());
     }
 
+
+
+
+    /**
+     *          Ajoute un site
+     * @param newSite
+     */
     @Override
     public void insertSite(Site newSite)
     {
         siteDao.save(newSite);
     }
 
+
+
+
+    /**
+     *          Récupère un site par son id
+     * @param id
+     * @return
+     */
     @Override
     public Site getSiteById(Long id)
     {
         return siteDao.getSiteById(id);
     }
 
+
+
+
+    /**
+     *          Supprime un site par son id
+     * @param idSite
+     */
     @Override
     public void deleteSiteById(final Long idSite)
     {

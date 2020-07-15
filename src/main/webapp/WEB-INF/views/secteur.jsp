@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <head>
-    <jsp:include page="include/header.jsp"></jsp:include><br>
+    <jsp:include page="header.jsp"></jsp:include><br>
 </head>
 
 <body>

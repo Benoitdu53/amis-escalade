@@ -45,7 +45,7 @@ public class SiteController {
     @RequestMapping(value = "/formSite", method = RequestMethod.GET)
     public ModelAndView formSite(){
 
-        return new ModelAndView("addSite", "site", new Site());
+        return new ModelAndView("addForm/addSite", "site", new Site());
     }
 
 
@@ -62,7 +62,7 @@ public class SiteController {
 
         try{
             if (result.hasErrors()){
-                return "addSite";
+                return "addForm/addSite";
             }
         }catch (Exception e){
             // TODO Exception
