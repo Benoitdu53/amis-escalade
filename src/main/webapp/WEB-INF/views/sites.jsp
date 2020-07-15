@@ -7,7 +7,7 @@
     <head>
         <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
         <%@ include file="header.jsp"%>
-        <jsp:include page="addForm/rechercheSite.jsp"></jsp:include><br>
+        <%@ include file="addForm/rechercheSite.jsp"%><br>
     </head>
 
     <body>

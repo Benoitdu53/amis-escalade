@@ -88,13 +88,13 @@ public class PersistenceJPAConfig {
     }
 
     /**
-     * indique le dialect utilisé, paramètre de application.properties
+     * Indique le dialect utilisé, paramètre de application.properties
      * @return
      */
     Properties additionalProperties() {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", hibernateDialect);
-        properties.setProperty("hibernate.ddl", hibernateDdl);
+        properties.setProperty("hibernate.hbm2ddl.auto", hibernateDdl);
         return properties;
     }
 }
