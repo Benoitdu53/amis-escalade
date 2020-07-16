@@ -74,7 +74,7 @@ public class UtilisateurController
     public String addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
                                         ModelMap modelMap){
 
-        Map<String,String> erreurMessage = null;
+        Map<String,String> erreurMessage = new HashMap<>();
 
         erreurMessage = validationService.validationUtilisateurRegistration(newUtilisateur);
 

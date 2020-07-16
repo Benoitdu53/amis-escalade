@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <jsp:include page="../header.jsp"></jsp:include>
+    <%@ include file="../header.jsp"%>
 </head>
 
 <body>
@@ -21,14 +21,14 @@
             <div class="taille">
                 <tr>
                     <td><form:label id="taille" class="col-md-3 control-label" path="taille">Indiquer la taille</form:label></td>
-                    <td><form:input path="taille" required="required"/></td>
+                    <td><form:input path="taille" required="required" type="number" min="0" max="1000"/></td>
                 </tr>
             </div>
 
             <div>
                 <tr>
                     <td><button value="<c:url value="site/${idSite}"></c:url> ">Retour</button> </td>
-                    <td><input type="submit" value="Submit"/></td>
+                    <td><input type="submit" value="Ajouter une voie"/></td>
                 </tr>
             </div>
         </table>

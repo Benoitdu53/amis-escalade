@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <jsp:include page="../header.jsp"></jsp:include>
+    <%@ include file="../header.jsp"%>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
             <div>
                 <tr>
                     <td><button value="<c:url value="/site/${idSite}"></c:url> ">Retour</button> </td>
-                    <td><input type="submit" value="Submit"/></td>
+                    <td><input type="submit" value="Ajouter un secteur"/></td>
                 </tr>
             </div>
         </table>

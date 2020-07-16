@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <head>
-        <jsp:include page="header.jsp"></jsp:include>
+        <%@ include file="header.jsp"%>
     </head>
 
 <%--    TODO Mettre en place la modification des données utilisateurs si il le souhaite--%>
