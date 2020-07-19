@@ -22,6 +22,11 @@ public class Topos implements Serializable {
 
     @Column
     private String lieu;
+    @Column
+    private Boolean reservation;
+
+    @Column
+    private String date;
 
     @OneToMany(mappedBy = "topos")
     private List<Reservation> reservationList = new ArrayList<>();
@@ -29,6 +34,7 @@ public class Topos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
     private Utilisateur utilisateur;
+
 
     @Override
     public String toString()
@@ -102,10 +108,4 @@ public class Topos implements Serializable {
     {
         this.date = date;
     }
-
-    @Column
-    private Boolean reservation;
-
-    @Column
-    private String date;
 }

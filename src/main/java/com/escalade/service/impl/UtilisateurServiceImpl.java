@@ -11,8 +11,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
-public class UtilisateurServiceImpl implements UtilisateurService
-{
+public class UtilisateurServiceImpl implements UtilisateurService {
 
     // ----- Injection des dépendances ----- //
     private final UtilisateurDao utilisateurDao;

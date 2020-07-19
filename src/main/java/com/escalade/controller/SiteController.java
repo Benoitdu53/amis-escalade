@@ -7,7 +7,6 @@ import com.escalade.service.contract.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
@@ -36,9 +35,6 @@ public class SiteController {
         this.secteurService = secteurService;
     }
 
-    @Autowired
-    private ValidationService validationService;
-
 
 
 
@@ -49,7 +45,7 @@ public class SiteController {
     @RequestMapping(value = "/formSite", method = RequestMethod.GET)
     public ModelAndView formSite(){
 
-        return new ModelAndView("addForm/addSite", "site", new Site());
+        return new ModelAndView("addSite", "site", new Site());
     }
 
 
@@ -58,22 +54,15 @@ public class SiteController {
     /**
      *              Ajoute un site
      * @param newSite
-     * @param result
      * @return
      */
     @RequestMapping(value = "/addSite", method = RequestMethod.POST)
-    public Object addSite (@Valid @ModelAttribute("site")Site newSite, BindingResult result){
-
-        try{
-            if (result.hasErrors()){
-                return "addForm/addSite";
-            }
-        }catch (Exception e){
-            // TODO Exception
-        }
+    public Object addSite (@Valid @ModelAttribute("site")Site newSite,
+                           HttpSession session){
 
         siteService.insertSite(newSite);
         return new RedirectView("/sites");
+
     }
 
 
@@ -128,7 +117,9 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "/site/{idSite}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idSite") Long idSite){
+    public RedirectView deleteLongueur (@PathVariable("idSite") Long idSite,
+                                        HttpSession session){
+
         siteService.deleteSiteById(idSite);
 
         return new RedirectView("/sites");

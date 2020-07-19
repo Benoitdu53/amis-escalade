@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -40,7 +41,8 @@ public class VoieController
      * @return
      */
     @RequestMapping(value = "/secteur/{idSecteur}/voie", method = RequestMethod.GET)
-    public String displayVoie (Model model, @PathVariable("idSecteur") Long idSecteur){
+    public String displayVoie (Model model, @PathVariable("idSecteur") Long idSecteur,
+                               HttpSession session){
 
         model.addAttribute("secteur", secteurService.getSectorById(idSecteur));
         model.addAttribute("voies", voieService.getVoieBySecteurId(idSecteur));
@@ -57,9 +59,10 @@ public class VoieController
      * @return
      */
     @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
-    public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur){
+    public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur,
+                                 HttpSession session){
 
-        ModelAndView modelAndView = new ModelAndView("addForm/addVoie", "voie", new Voie());
+        ModelAndView modelAndView = new ModelAndView("addVoie", "voie", new Voie());
         modelAndView.addObject("idSecteur", idSecteur);
 
         return modelAndView;
@@ -77,11 +80,12 @@ public class VoieController
      */
     @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.POST)
     public Object addVoie (@Valid @ModelAttribute("voie") Voie newVoie, BindingResult result,
-                           @PathVariable("idSecteur") Long idSecteur){
+                           @PathVariable("idSecteur") Long idSecteur,
+                           HttpSession session){
 
         try{
             if (result.hasErrors()){
-                return "addForm/addVoie";
+                return "addVoie";
             }
         }catch (Exception e){
             // TODO Exception
@@ -100,7 +104,8 @@ public class VoieController
      * @return
      */
     @RequestMapping(value = "/voie/{idVoie}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idVoie") Long idVoie){
+    public RedirectView deleteLongueur (@PathVariable("idVoie") Long idVoie,
+                                        HttpSession session){
 
         voieService.deleteVoieById(idVoie);
 

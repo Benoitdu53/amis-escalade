@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <%@ include file="../header.jsp"%>
+    <%@ include file="header.jsp"%>
 </head>
 
 <body>
@@ -27,7 +27,7 @@
 
             <div>
                 <tr>
-                    <td><button value="<c:url value="site/${idSite}"></c:url> ">Retour</button> </td>
+                    <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
                     <td><input type="submit" value="Ajouter une voie"/></td>
                 </tr>
             </div>

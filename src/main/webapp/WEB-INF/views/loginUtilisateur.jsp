@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <jsp:include page="../header.jsp"></jsp:include>
+    <jsp:include page="header.jsp"></jsp:include>
 </head>
 
     <body>
@@ -21,7 +21,8 @@
             </tr>
 
             <tr>
-                <td><input type="submit" value="Valider"></td>
+                <td><input type="submit" value="Valider"></td></br>
+                <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
             </tr>
         </form:form>
     </body>

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -43,9 +44,10 @@ public class SecteurController {
      * @return
      */
     @RequestMapping(value = "/site/{idSite}/secteur/add", method = RequestMethod.GET)
-    public ModelAndView formSecteur(@PathVariable("idSite") Long idSite){
+    public ModelAndView formSecteur(@PathVariable("idSite") Long idSite,
+                                    HttpSession session){
 
-        ModelAndView modelAndView = new ModelAndView("addForm/addSecteur", "secteur", new Secteur());
+        ModelAndView modelAndView = new ModelAndView("addSecteur", "secteur", new Secteur());
         modelAndView.addObject("idSite",idSite);
 
         return modelAndView;
@@ -63,11 +65,12 @@ public class SecteurController {
      */
     @RequestMapping(value = "/site/{idSite}/secteur/add", method = RequestMethod.POST)
     public Object addSecteur (@Valid @ModelAttribute("secteur") Secteur newSecteur, BindingResult result,
-                           @PathVariable("idSite") Long idSite){
+                              @PathVariable("idSite") Long idSite,
+                              HttpSession session){
 
         try{
             if (result.hasErrors()){
-                return "addForm/addSecteur";
+                return "addSecteur";
             }
         }catch (Exception e){
             // TODO Exception
@@ -88,7 +91,8 @@ public class SecteurController {
      * @return
      */
     @RequestMapping(value = "/site/{idSite}", method = RequestMethod.GET)
-    public String displaySecteur (Model model, @PathVariable("idSite") Long id){
+    public String displaySecteur (Model model, @PathVariable("idSite") Long id,
+                                  HttpSession session){
 
         model.addAttribute("secteurs", secteurService.getSectorByIdSite(id));
         model.addAttribute("site", siteService.getSiteById(id));
@@ -104,7 +108,9 @@ public class SecteurController {
      * @return
      */
     @RequestMapping(value = "/secteur/{idSecteur}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idSecteur") Long idSecteur){
+    public RedirectView deleteLongueur (@PathVariable("idSecteur") Long idSecteur,
+                                        HttpSession session
+    ){
         secteurService.deleteSecteurById(idSecteur);
 
         return new RedirectView("/sites");

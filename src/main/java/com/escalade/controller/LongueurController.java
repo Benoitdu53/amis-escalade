@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
@@ -39,9 +40,10 @@ public class LongueurController {
      * @return
      */
     @RequestMapping(value = "/voie/{idVoie}/longueur/add", method = RequestMethod.GET)
-    public ModelAndView formLongueur( @PathVariable("idVoie") Long idVoie){
+    public ModelAndView formLongueur( @PathVariable("idVoie") Long idVoie,
+                                      HttpSession session){
 
-        ModelAndView modelAndView = new ModelAndView("addForm/addLongueur", "longueur", new Longueur());
+        ModelAndView modelAndView = new ModelAndView("addLongueur", "longueur", new Longueur());
 
         modelAndView.addObject("idVoie", idVoie);
 
@@ -57,7 +59,8 @@ public class LongueurController {
      * @return
      */
     @RequestMapping(value = "/voie/{idVoie}/longueur", method = RequestMethod.GET)
-    public String displayVoie (Model model, @PathVariable("idVoie") Long idVoie){
+    public String displayVoie (Model model, @PathVariable("idVoie") Long idVoie,
+                               HttpSession session){
 
         model.addAttribute("voie", voieService.getVoieById(idVoie));
         model.addAttribute("longueurs", longueurService.getLongueurByVoieId(idVoie));
@@ -76,11 +79,12 @@ public class LongueurController {
      */
     @RequestMapping(value = "/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
     public Object addLongueur (@Valid @ModelAttribute("longueur") Longueur newLongueur, BindingResult result,
-                           @PathVariable("idVoie") Long idVoie){
+                               @PathVariable("idVoie") Long idVoie,
+                               HttpSession session){
 
         try{
             if (result.hasErrors()){
-                return "addForm/addVoie";
+                return "addVoie";
             }
         }catch (Exception e){
             // TODO Exception
@@ -99,7 +103,9 @@ public class LongueurController {
      * @return
      */
     @RequestMapping(value = "/longueur/{idLongueur}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idLongueur") Long idLongueur){
+    public RedirectView deleteLongueur (@PathVariable("idLongueur") Long idLongueur,
+                                        HttpSession session){
+
         longueurService.deleteById(idLongueur);
 
         return new RedirectView("/sites");

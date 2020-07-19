@@ -1,8 +1,6 @@
 package com.escalade.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +34,18 @@ public class Utilisateur implements Serializable
 
     @Column(name="isMembreOfficiel")
     private Boolean isMembreOfficiel;
+
+    @OneToMany
+    private List<Site> siteList = new ArrayList<>();
+
+    @OneToMany
+    private List<Secteur> secteurList = new ArrayList<>();
+
+    @OneToMany
+    private List<Voie> voieList = new ArrayList<>();
+
+    @OneToMany
+    private List<Longueur> longueurList = new ArrayList<>();
 
     @OneToMany(mappedBy = "utilisateur")
     private List<Reservation> reservationList = new ArrayList<>();

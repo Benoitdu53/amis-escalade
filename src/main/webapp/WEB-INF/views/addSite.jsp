@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
 
 <head>
-    <%@ include file="../header.jsp"%>
+    <%@ include file="header.jsp"%>
 </head>
 
 <body>
@@ -84,6 +84,7 @@
 
         <div>
             <tr>
+                <td><button value="<c:url value="/sites"></c:url> ">Retour</button></td>
                 <td><input type="submit" value="Ajouter un site"/></td>
             </tr>
         </div>

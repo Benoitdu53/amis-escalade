@@ -7,7 +7,7 @@
     <body>
 
         <!-- Formulaire de critère de recherche des sites -->
-        <!-- Critère : Pays, cotation min, type-->
+        <!-- Critère : Pays, département, type-->
         <form:form id="formulaireSite" method="get" action="/searchSites">
 
             <select name="pays">

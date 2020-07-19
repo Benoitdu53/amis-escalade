@@ -1,16 +1,13 @@
 package com.escalade.controller;
 
-import com.escalade.model.ExceptionMessages;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.UtilisateurService;
 import com.escalade.service.contract.ValidationService;
-import com.escalade.service.impl.ValidationServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import javax.validation.Validation;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -59,7 +55,7 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/formUtilisateur", method = RequestMethod.GET)
     public ModelAndView formUtilisateur(){
-        return new ModelAndView("addForm/addUtilisateur", "utilisateur", new Utilisateur());
+        return new ModelAndView("addUtilisateur", "utilisateur", new Utilisateur());
     }
 
 
@@ -74,13 +70,13 @@ public class UtilisateurController
     public String addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
                                         ModelMap modelMap){
 
-        Map<String,String> erreurMessage = new HashMap<>();
+        Map<String,String> erreurMessage;
 
         erreurMessage = validationService.validationUtilisateurRegistration(newUtilisateur);
 
             if (erreurMessage.size() != 0){
                 modelMap.addAttribute("erreurMessages", erreurMessage);
-                return "addForm/addUtilisateur";
+                return "addUtilisateur";
             }else {
                 utilisateurService.registrationUtilisateur(newUtilisateur);
                 return "/sites";
@@ -96,7 +92,7 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/loginUtilisateur", method = RequestMethod.GET)
     public ModelAndView formLogin(){
-        return new ModelAndView ("addForm/loginUtilisateur", "utilisateur", new Utilisateur());
+        return new ModelAndView ("loginUtilisateur", "utilisateur", new Utilisateur());
     }
 
 

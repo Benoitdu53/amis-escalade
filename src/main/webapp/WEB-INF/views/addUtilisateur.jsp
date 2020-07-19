@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
     <head>
-        <%@ include file="../header.jsp"%>
+        <%@ include file="header.jsp"%>
     </head>
 
     <body>
@@ -53,6 +53,7 @@
 
                 <div>
                     <tr>
+                        <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
                         <td><input type="submit" value="Valider"></td>
                     </tr>
                 </div>

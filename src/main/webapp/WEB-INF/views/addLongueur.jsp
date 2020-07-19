@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
-    <%@ include file="../header.jsp"%>
+    <%@ include file="header.jsp"%>
 </head>
 
 <body>
@@ -28,8 +28,8 @@
             <div class="cotation">
                 <tr>
                     <td>
-                        <form:label id="cotationMax" class="col-md-3 control-label" path="cotationMax">Cotation de la longueur</form:label>
-                        <form:select name="cotationMax" path="cotation">
+                        <form:label id="cotation" class="col-md-3 control-label" path="cotation">Cotation de la longueur</form:label>
+                        <form:select name="cotation" path="cotation">
                             <option value="3a">3a</option><option value="3b">3b</option><option value="3c">3c</option>
                             <option value="4a">4a</option><option value="4b">4b</option><option value="4c">4c</option>
                             <option value="5a">5a</option><option value="5b">5b</option><option value="5c">5c</option>
@@ -44,7 +44,7 @@
 
             <div>
                 <tr>
-                    <td><button value="<c:url value="site/${idSite}"></c:url> ">Retour</button> </td>
+                    <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
                     <td><input type="submit" value="Ajouter une longueur"/></td>
                 </tr>
             </div>

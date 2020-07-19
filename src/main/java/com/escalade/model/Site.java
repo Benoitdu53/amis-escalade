@@ -37,6 +37,10 @@ public class Site implements Serializable {
     @OneToMany(mappedBy = "site")
     private List<Secteur> secteurList = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "id_utilisateur")
+    private Utilisateur utilisateur;
+
     @Override
     public String toString()
     {
