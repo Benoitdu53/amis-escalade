@@ -13,7 +13,7 @@
     <body>
 
         <div class="navbarSites">
-            <p><a href="<c:url value="/formSite"></c:url>">Ajouter un site </a> </p>
+            <p><a href="<c:url value="/formSite"></c:url>">Ajouter un site</a></p>
         </div>
 
                 <table border="1" id="tableauSites">
@@ -46,7 +46,6 @@
                             <td><a href="<c:url value="/site/${site.id}/delete"/>">Supprimer le site</a></td>
                         </tr>
                     </c:forEach>
-
                 </table>
 
     </body>

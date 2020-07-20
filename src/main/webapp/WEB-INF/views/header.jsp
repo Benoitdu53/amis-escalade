@@ -31,6 +31,7 @@
         <c:if test="${not empty sessionScope.pseudo}">
 
             <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
+            <p><a href="<c:url value="/topos"></c:url>">Topos</a></p>
             <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
             <p><a href="<c:url value="/deconnexion"></c:url>">Se déconnecter</a></p>
 

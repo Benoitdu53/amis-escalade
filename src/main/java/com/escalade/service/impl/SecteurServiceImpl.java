@@ -13,6 +13,9 @@ import java.util.List;
 @Service
 public class SecteurServiceImpl implements SecteurService
 {
+
+    // ----- Injection des dépendances ----- //
+
     @Autowired
     private SiteService siteService;
 

@@ -22,8 +22,9 @@ public class Topos implements Serializable {
 
     @Column
     private String lieu;
-    @Column
-    private Boolean reservation;
+
+    @Column(name = "is_reserve")
+    private Boolean isReserve;
 
     @Column
     private String date;
@@ -35,7 +36,6 @@ public class Topos implements Serializable {
     @JoinColumn(name = "id_utilisateur")
     private Utilisateur utilisateur;
 
-
     @Override
     public String toString()
     {
@@ -44,9 +44,41 @@ public class Topos implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", description='" + description + '\'' +
                 ", lieu='" + lieu + '\'' +
-                ", reservation=" + reservation +
+                ", isReserve=" + isReserve +
                 ", date='" + date + '\'' +
+                ", reservationList=" + reservationList +
+                ", utilisateur=" + utilisateur +
                 '}';
+    }
+
+    public Boolean getReserve()
+    {
+        return isReserve;
+    }
+
+    public void setReserve(final Boolean reserve)
+    {
+        isReserve = reserve;
+    }
+
+    public List<Reservation> getReservationList()
+    {
+        return reservationList;
+    }
+
+    public void setReservationList(final List<Reservation> reservationList)
+    {
+        this.reservationList = reservationList;
+    }
+
+    public Utilisateur getUtilisateur()
+    {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(final Utilisateur utilisateur)
+    {
+        this.utilisateur = utilisateur;
     }
 
     public Long getId()
@@ -89,14 +121,14 @@ public class Topos implements Serializable {
         this.lieu = lieu;
     }
 
-    public Boolean getReservation()
+    public Boolean getIsReserve()
     {
-        return reservation;
+        return isReserve;
     }
 
-    public void setReservation(final Boolean reservation)
+    public void setIsReserve(final Boolean reservation)
     {
-        this.reservation = reservation;
+        this.isReserve = isReserve;
     }
 
     public String getDate()
