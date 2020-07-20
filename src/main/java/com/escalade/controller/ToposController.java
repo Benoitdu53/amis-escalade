@@ -31,7 +31,8 @@ public class ToposController {
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayTopos (@SessionAttribute("pseudo") String pseudo , HttpSession session, Model model){
 
-        model.addAttribute("topos",toposService.getToposByUtilisateur(pseudo));
+        model.addAttribute("topos",toposService.getToposByPseudo(pseudo));
+        model.addAttribute("toposDispo",toposService.getAllToposNotPseudo(pseudo));
 
         return "/topos";
     }
@@ -53,7 +54,7 @@ public class ToposController {
 
 
     /**
-     *
+     *          Ajouter un topo
      * @param topos
      * @return
      */

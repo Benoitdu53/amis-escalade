@@ -6,7 +6,8 @@ import java.util.List;
 
 public interface ToposService {
 
-    List<Topos> getToposByUtilisateur(String pseudo);
+    List<Topos> getToposByPseudo(String pseudo);
     void insertToposByUtilisateur(String pseudo, Topos topos);
+    List<Topos> getAllToposNotPseudo(String pseudo);
 
 }

@@ -30,14 +30,19 @@ public class ToposServiceImpl implements ToposService
      * @return
      */
     @Override
-    public List<Topos> getToposByUtilisateur(String pseudo) {
+    public List<Topos> getToposByPseudo(String pseudo) {
 
-        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
-        Long idUtilisateur = utilisateur.getId();
-
-        return toposDao.getToposByUtilisateur(idUtilisateur);
+        return toposDao.getToposByPseudo(pseudo);
     }
 
+
+
+
+    /**
+     *          Récupère les topos de l'utilisateur
+     * @param pseudo
+     * @param topos
+     */
     @Override
     public void insertToposByUtilisateur(String pseudo, Topos topos)
     {
@@ -46,6 +51,21 @@ public class ToposServiceImpl implements ToposService
 
         toposDao.save(topos);
 
+    }
+
+
+
+
+    /**
+     *          Récupère les topos qui ne sont pas de l'utilisateur
+     * @param pseudo
+     * @return
+     */
+    @Override
+    public List<Topos> getAllToposNotPseudo(final String pseudo)
+    {
+
+        return toposDao.getAllToposNotPseudo(pseudo);
     }
 
 }
