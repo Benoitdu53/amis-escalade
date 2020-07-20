@@ -20,6 +20,7 @@ public class Voie implements Serializable {
     @Column(name = "taille")
     private int taille;
 
+
     @OneToMany(mappedBy = "voie")
     private List<Longueur> longueurList = new ArrayList<>();
 
@@ -27,10 +28,9 @@ public class Voie implements Serializable {
     @JoinColumn(name = "id_secteur")
     private Secteur secteur;
 
-    public List<Longueur> getLongueurList()
-    {
-        return longueurList;
-    }
+    @ManyToOne
+    @JoinColumn(name = "id_utilisateur")
+    private Utilisateur utilisateur;
 
     @Override
     public String toString()
@@ -42,6 +42,11 @@ public class Voie implements Serializable {
                 ", longueurList=" + longueurList +
                 ", secteur=" + secteur +
                 '}';
+    }
+
+    public List<Longueur> getLongueurList()
+    {
+        return longueurList;
     }
 
     public Long getId()

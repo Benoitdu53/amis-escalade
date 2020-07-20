@@ -26,16 +26,31 @@ public class Secteur implements Serializable {
     @JoinColumn(name = "id_site")
     private Site site;
 
+    @ManyToOne
+    @JoinColumn(name = "id_utilisateur")
+    private Utilisateur utilisateur;
+
     @Override
     public String toString()
     {
         return "Secteur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
-                ", description=" + description +
+                ", description='" + description + '\'' +
                 ", voieList=" + voieList +
                 ", site=" + site +
+                ", utilisateur=" + utilisateur +
                 '}';
+    }
+
+    public Utilisateur getUtilisateur()
+    {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(final Utilisateur utilisateur)
+    {
+        this.utilisateur = utilisateur;
     }
 
     public Long getId()

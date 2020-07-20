@@ -23,6 +23,15 @@ public class Longueur implements Serializable
     @Column(name = "cotation")
     private String cotation;
 
+
+    @ManyToOne
+    @JoinColumn(name = "id_utilisateur")
+    private Utilisateur utilisateur;
+
+    @ManyToOne
+    @JoinColumn(name = "id_voie")
+    private Voie voie;
+
     @Override
     public String toString()
     {
@@ -33,6 +42,16 @@ public class Longueur implements Serializable
                 ", cotation='" + cotation + '\'' +
                 ", voie=" + voie +
                 '}';
+    }
+
+    public Utilisateur getUtilisateur()
+    {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(final Utilisateur utilisateur)
+    {
+        this.utilisateur = utilisateur;
     }
 
     public Long getId()
@@ -84,10 +103,6 @@ public class Longueur implements Serializable
     {
         this.voie = voie;
     }
-
-    @ManyToOne
-    @JoinColumn(name = "id_voie")
-    private Voie voie;
 
 
 }

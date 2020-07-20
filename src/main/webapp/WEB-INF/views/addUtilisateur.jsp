@@ -27,12 +27,14 @@
                     <tr>
                         <td><form:label id="pseudo" class="col-md-3 control-label" path="pseudo">Entrez votre pseudo*</form:label></td>
                         <td><form:input path="pseudo" required="required"/></td>
+                        <td><span class="erreur"><c:out value="${erreurMessages['pseudoErreur']}"/></span></td>
                     </tr>
                 </div>
                 <div class="mail">
                     <tr>
                         <td><form:label id="mail" class="col-md-3 control-label" path="mail">Entrez votre mail*</form:label></td>
                         <td><form:input path="mail" required="required" type="email"/></td>
+                        <td><span class="erreur"><c:out value="${erreurMessages['mailErreur']}"/></span></td>
                     </tr>
                 </div>
                 <div class="password">

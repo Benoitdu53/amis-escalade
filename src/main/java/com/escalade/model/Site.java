@@ -49,12 +49,23 @@ public class Site implements Serializable {
                 ", nom='" + nom + '\'' +
                 ", departement='" + departement + '\'' +
                 ", pays='" + pays + '\'' +
-                ", cotationMin=" + cotationMin +
-                ", cotationMax=" + cotationMax +
+                ", cotationMin='" + cotationMin + '\'' +
+                ", cotationMax='" + cotationMax + '\'' +
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
                 ", secteurList=" + secteurList +
+                ", utilisateur=" + utilisateur +
                 '}';
+    }
+
+    public Utilisateur getUtilisateur()
+    {
+        return utilisateur;
+    }
+
+    public void setUtilisateur(final Utilisateur utilisateur)
+    {
+        this.utilisateur = utilisateur;
     }
 
     public Long getId()

@@ -7,6 +7,8 @@ import java.util.List;
 public interface UtilisateurService
 {
     List<Utilisateur> getUtilisateurs();
+    List<String> getAllMail();
+    List<String> getAllPseudo();
     void registrationUtilisateur(Utilisateur newUtilisateur);
     void deleteUtilisateur(Long idUtilisateur);
     Utilisateur loginUtilisateur(String pseudo, String password);
