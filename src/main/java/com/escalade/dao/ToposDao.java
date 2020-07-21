@@ -17,4 +17,6 @@ public interface ToposDao extends CrudRepository<Topos, Long> {
     @Query("SELECT t FROM Topos t WHERE t.utilisateur.pseudo NOT LIKE :pseudo")
     List<Topos> getAllToposNotPseudo(@Param("pseudo") String pseudo);
 
+    @Query("SELECT t FROM Topos t Where t.id = :idToposDispo")
+    Topos getToposById(@Param("idToposDispo") Long idToposDispo);
 }

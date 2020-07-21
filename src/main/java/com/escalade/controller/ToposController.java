@@ -45,7 +45,7 @@ public class ToposController {
      *          Affichage du formulaire d'enregistrement de topos
      * @return
      */
-    @RequestMapping(value = "formTopos", method = RequestMethod.GET)
+    @RequestMapping(value = "/formTopos", method = RequestMethod.GET)
     public ModelAndView formTopos (){
 
         return new ModelAndView("addTopos","topos", new Topos());
@@ -59,13 +59,22 @@ public class ToposController {
      * @param topos
      * @return
      */
-    @RequestMapping(value = "addTopos", method = RequestMethod.POST)
+    @RequestMapping(value = "/addTopos", method = RequestMethod.POST)
     public Object addTopos(@Valid @ModelAttribute("topos")Topos topos,
                            @SessionAttribute("pseudo") String pseudo
                            ){
 
         toposService.insertToposByUtilisateur(pseudo, topos);
 
+
+        return new RedirectView("/topos");
+    }
+
+    @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
+    public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
+                                      @SessionAttribute("pseudo") String pseudo){
+
+        toposService.reservationOn(idToposDispo, pseudo);
 
         return new RedirectView("/topos");
     }

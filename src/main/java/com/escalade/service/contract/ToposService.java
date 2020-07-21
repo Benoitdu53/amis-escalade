@@ -9,5 +9,5 @@ public interface ToposService {
     List<Topos> getToposByPseudo(String pseudo);
     void insertToposByUtilisateur(String pseudo, Topos topos);
     List<Topos> getAllToposNotPseudo(String pseudo);
-
+    void reservationOn(Long idToposDispo, String pseudo);
 }

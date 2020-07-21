@@ -27,14 +27,22 @@ public class Reservation implements Serializable
     @JoinColumn(name = "id_topos")
     private Topos topos;
 
+    public Topos getTopos() {
+        return topos;
+    }
+
+    public void setTopos(Topos topos) {
+        this.topos = topos;
+    }
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Reservation{" +
                 "id=" + id +
                 ", status='" + status + '\'' +
                 ", dateReservation='" + dateReservation + '\'' +
                 ", utilisateur=" + utilisateur +
+                ", topos=" + topos +
                 '}';
     }
 
