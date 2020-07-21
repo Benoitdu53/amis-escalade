@@ -40,7 +40,7 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/utilisateurs", method = RequestMethod.GET)
-    public String findAllUtilisateurs(Model model){
+    public Object findAllUtilisateurs(Model model){
 
         model.addAttribute("utilisateurs",utilisateurService.getUtilisateurs());
 

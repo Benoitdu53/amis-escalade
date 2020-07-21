@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -60,10 +61,12 @@ public class ToposController {
      */
     @RequestMapping(value = "addTopos", method = RequestMethod.POST)
     public Object addTopos(@Valid @ModelAttribute("topos")Topos topos,
-                           @SessionAttribute("pseudo") String pseudo){
+                           @SessionAttribute("pseudo") String pseudo
+                           ){
 
         toposService.insertToposByUtilisateur(pseudo, topos);
 
-        return "topos";
+
+        return new RedirectView("/topos");
     }
 }

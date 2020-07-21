@@ -34,7 +34,7 @@
             <td><c:out value="${topos.nom}"/></td>
             <td><c:out value="${topos.description}"/></td>
             <td><c:out value="${topos.lieu}"/></td>
-            <td><c:out value="${topos.isReserve}"/></td>
+            <td><c:out value="${empty topos.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
             <td><c:out value="${topos.date}"/></td>
         </tr>
     </c:forEach>
@@ -85,6 +85,7 @@
             <td><c:out value="${toposDispo.nom}"/></td>
             <td><c:out value="${toposDispo.description}"/></td>
             <td><c:out value="${toposDispo.lieu}"/></td>
+            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
             <td><c:out value="${toposDispo.date}"/></td>
         </tr>
     </c:forEach>
