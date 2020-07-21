@@ -32,6 +32,7 @@ public class ToposController {
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayTopos (@SessionAttribute("pseudo") String pseudo , HttpSession session, Model model){
 
+        model.addAttribute("reservation", toposService.getReservationByPseudo);
         model.addAttribute("topos",toposService.getToposByPseudo(pseudo));
         model.addAttribute("toposDispo",toposService.getAllToposNotPseudo(pseudo));
 
@@ -61,11 +62,9 @@ public class ToposController {
      */
     @RequestMapping(value = "/addTopos", method = RequestMethod.POST)
     public Object addTopos(@Valid @ModelAttribute("topos")Topos topos,
-                           @SessionAttribute("pseudo") String pseudo
-                           ){
+                           @SessionAttribute("pseudo") String pseudo){
 
         toposService.insertToposByUtilisateur(pseudo, topos);
-
 
         return new RedirectView("/topos");
     }

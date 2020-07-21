@@ -1,5 +1,6 @@
 package com.escalade.service.contract;
 
+import com.escalade.model.Reservation;
 import com.escalade.model.Topos;
 
 import java.util.List;
@@ -10,4 +11,5 @@ public interface ToposService {
     void insertToposByUtilisateur(String pseudo, Topos topos);
     List<Topos> getAllToposNotPseudo(String pseudo);
     void reservationOn(Long idToposDispo, String pseudo);
+    List<Reservation> getReservationByPseudo(String pseudo);
 }

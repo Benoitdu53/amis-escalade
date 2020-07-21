@@ -7,7 +7,6 @@ import java.io.Serializable;
 @Table(name = "reservation")
 public class Reservation implements Serializable
 {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column

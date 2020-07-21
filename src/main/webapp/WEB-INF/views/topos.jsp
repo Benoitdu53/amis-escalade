@@ -85,9 +85,9 @@
             <td><c:out value="${toposDispo.nom}"/></td>
             <td><c:out value="${toposDispo.description}"/></td>
             <td><c:out value="${toposDispo.lieu}"/></td>
-            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/>
-                <c:if test="${empty toposDispo.isReserve}"/><a href="<c:out value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a></td>
             <td><c:out value="${toposDispo.date}"/></td>
+            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
+            <td><span><c:if test="${empty toposDispo.isReserve}"/><a href="<c:out value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a></span></td>
         </tr>
     </c:forEach>
 

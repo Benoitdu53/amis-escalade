@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -83,18 +84,24 @@ public class ToposServiceImpl implements ToposService
      */
     @Override
     public void reservationOn(Long idToposDispo, String pseudo) {
-        Reservation reservation=null;
-        DateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        DateFormat dateFormat = DateFormat.getDateTimeInstance();
+        Reservation reservation= new Reservation();
+        String status = "En attente de réponse";
+
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         Topos topos = toposDao.getToposById(idToposDispo);
 
-        reservation.setDateReservation(format.format(dateFormat));
-        reservation.setStatus("En attente de réponse");
+        reservation.setStatus(status);
         reservation.setUtilisateur(utilisateur);
         reservation.setTopos(topos);
 
         reservationDao.save(reservation);
+    }
+
+    @Override
+    public List<Reservation> getReservationByPseudo(String pseudo) {
+        utilisateurDao.getUtilisateurByPseudo(pseudo);
+
+        return null;
     }
 
 }
