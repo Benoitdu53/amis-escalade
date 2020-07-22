@@ -48,7 +48,7 @@ public class ToposServiceImpl implements ToposService
 
 
     /**
-     *          Récupère les topos de l'utilisateur
+     *          On ajoute les topos
      * @param pseudo
      * @param topos
      */
@@ -71,37 +71,9 @@ public class ToposServiceImpl implements ToposService
      * @return
      */
     @Override
-    public List<Topos> getAllToposNotPseudo(final String pseudo)
+    public List<Topos> getAllToposNotPseudo(String pseudo)
     {
         return toposDao.getAllToposNotPseudo(pseudo);
-    }
-
-
-    /**
-     *          Demande de réservation d'un topo
-     * @param idToposDispo
-     * @param pseudo
-     */
-    @Override
-    public void reservationOn(Long idToposDispo, String pseudo) {
-        Reservation reservation= new Reservation();
-        String status = "En attente de réponse";
-
-        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
-        Topos topos = toposDao.getToposById(idToposDispo);
-
-        reservation.setStatus(status);
-        reservation.setUtilisateur(utilisateur);
-        reservation.setTopos(topos);
-
-        reservationDao.save(reservation);
-    }
-
-    @Override
-    public List<Reservation> getReservationByPseudo(String pseudo) {
-        utilisateurDao.getUtilisateurByPseudo(pseudo);
-
-        return null;
     }
 
 }

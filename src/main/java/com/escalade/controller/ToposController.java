@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Topos;
+import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.ToposService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class ToposController {
     @Autowired
     private ToposService toposService;
 
+    @Autowired
+    private ReservationService reservationService;
 
 
 
@@ -32,9 +35,10 @@ public class ToposController {
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayTopos (@SessionAttribute("pseudo") String pseudo , HttpSession session, Model model){
 
-        model.addAttribute("reservation", toposService.getReservationByPseudo);
         model.addAttribute("topos",toposService.getToposByPseudo(pseudo));
         model.addAttribute("toposDispo",toposService.getAllToposNotPseudo(pseudo));
+        model.addAttribute("reservationToposUtilisateur",reservationService.getReservationByUtilisateur(pseudo));
+        //model.addAttribute("reservationTopos",reservationService.getReservationByNotUtilisateur);
 
         return "/topos";
     }
@@ -73,7 +77,7 @@ public class ToposController {
     public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
                                       @SessionAttribute("pseudo") String pseudo){
 
-        toposService.reservationOn(idToposDispo, pseudo);
+        reservationService.reservationOn(idToposDispo, pseudo);
 
         return new RedirectView("/topos");
     }

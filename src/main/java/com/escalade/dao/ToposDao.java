@@ -1,6 +1,7 @@
 package com.escalade.dao;
 
 import com.escalade.model.Topos;
+import com.escalade.model.Utilisateur;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -11,7 +12,7 @@ import java.util.List;
 @Repository
 public interface ToposDao extends CrudRepository<Topos, Long> {
 
-    @Query("SELECT t FROM Topos t WHERE t.utilisateur.pseudo = :pseudo")
+    @Query("SELECT t, r FROM Topos t, Reservation r WHERE t.utilisateur.pseudo = :pseudo ")
     List<Topos> getToposByPseudo(@Param("pseudo") String pseudo);
 
     @Query("SELECT t FROM Topos t WHERE t.utilisateur.pseudo NOT LIKE :pseudo")
