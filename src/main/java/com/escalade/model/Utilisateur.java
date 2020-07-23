@@ -35,16 +35,16 @@ public class Utilisateur implements Serializable
     @Column(name="isMembreOfficiel")
     private Boolean isMembreOfficiel;
 
-    @OneToMany
+    @OneToMany(mappedBy = "utilisateur")
     private List<Site> siteList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "utilisateur")
     private List<Secteur> secteurList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "utilisateur")
     private List<Voie> voieList = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "utilisateur")
     private List<Longueur> longueurList = new ArrayList<>();
 
     @OneToMany(mappedBy = "utilisateur")
