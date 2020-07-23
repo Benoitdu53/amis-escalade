@@ -20,6 +20,7 @@
 <table border="1" id="tableauTopos">
     <caption>Mes topos</caption>
     <tr>
+        <th>Id</th>
         <th>Nom</th>
         <th>Description</th>
         <th>Lieu</th>
@@ -34,6 +35,7 @@
                 <td><c:out value="Vous n'avez aucun topo(s)"></c:out></td>
             </c:if>
             <c:if test="${not empty topos}">
+                <td><c:out value="${topos.id}"/></td>
                 <td><c:out value="${topos.nom}"/></td>
                 <td><c:out value="${topos.description}"/></td>
                 <td><c:out value="${topos.lieu}"/></td>
@@ -84,7 +86,6 @@
     </tr>
 
     <c:forEach var="toposDispo" items="${toposDispo}">
-        <c:forEach var="reservation" items="${reservation}">
         <tr>
             <td><c:out value="${toposDispo.id}"/></td>
             <td><c:out value="${toposDispo.nom}"/></td>
@@ -93,29 +94,7 @@
             <td><c:out value="${toposDispo.date}"/></td>
             <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
             <td><span><c:if test="${empty toposDispo.isReserve}"/></span></td>
-            <td>
-                    <span>
-                        <c:choose>
-                            <c:when test="${reservation.status = 'En attente de réponse'}">
-                                <c:out value="En attente de réponse"/>
-                            </c:when>
-                        </c:choose>
-
-                        <c:choose>
-                            <c:when test="${reservation.status = 'accepter'}">
-                                <c:out value="Demande accepter"/>
-                            </c:when>
-                        </c:choose>
-
-                        <c:choose>
-                            <c:when test="${reservation.status = null }">
-                                <a href="<c:out value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a>
-                            </c:when>
-                        </c:choose>
-                    </span>
-            </td>
         </tr>
-        </c:forEach>
     </c:forEach>
 
 </table>
