@@ -1,19 +1,16 @@
 package com.escalade.service.impl;
 
 import com.escalade.dao.ReservationDao;
+import com.escalade.dao.SiteDao;
 import com.escalade.dao.ToposDao;
 import com.escalade.dao.UtilisateurDao;
-import com.escalade.model.Reservation;
+import com.escalade.model.Site;
 import com.escalade.model.Topos;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.ToposService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -30,6 +27,9 @@ public class ToposServiceImpl implements ToposService
     @Autowired
     private ReservationDao reservationDao;
 
+    @Autowired
+    private SiteDao siteDao;
+
 
 
 
@@ -40,6 +40,7 @@ public class ToposServiceImpl implements ToposService
      */
     @Override
     public List<Topos> getToposByPseudo(String pseudo) {
+
 
         return toposDao.getToposByPseudo(pseudo);
     }
@@ -71,7 +72,7 @@ public class ToposServiceImpl implements ToposService
      * @return
      */
     @Override
-    public List<Topos> getAllToposNotPseudo(String pseudo)
+    public List<Topos> getReservationByPseudoIsNull(String pseudo)
     {
         return toposDao.getAllToposNotPseudo(pseudo);
     }

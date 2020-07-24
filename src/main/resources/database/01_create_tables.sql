@@ -56,68 +56,19 @@ create table topos
 
 create table reservation
 (
-    id               int          not null
+    id               int auto_increment
         primary key,
-    status           varchar(50)  not null,
-    date_reservation datetime     not null,
-    id_utilisateur   int          not null,
-    id_topos         int          not null,
-    dateReservation  varchar(255) null,
+    status           varchar(50)                         not null,
+    date_reservation timestamp default CURRENT_TIMESTAMP not null,
+    id_utilisateur   int                                 not null,
+    id_topos         int                                 not null,
     constraint FK3kt9mawec4sqdm8j6830e8yp9
         foreign key (id_utilisateur) references utilisateur (id),
     constraint topos_reservation_fk
         foreign key (id_topos) references topos (id),
     constraint utilisateur_reservation_fk
-        foreign key (id) references utilisateur (id)
+        foreign key (id_utilisateur) references utilisateur (id)
 );
-
-create table utilisateur_longueur
-(
-    Utilisateur_id  bigint not null,
-    longueurList_id bigint not null,
-    constraint UK_b6rqoruwoaunrj5uy4tl9f7vb
-        unique (longueurList_id)
-)
-    engine = MyISAM;
-
-create index FKoip4y1m3sipv5a5iic5gg2cq5
-    on utilisateur_longueur (Utilisateur_id);
-
-create table utilisateur_secteur
-(
-    Utilisateur_id bigint not null,
-    secteurList_id bigint not null,
-    constraint UK_2s62sov01s823ipjt8hjre30t
-        unique (secteurList_id)
-)
-    engine = MyISAM;
-
-create index FKmltx9y1qx73bwfngevxd4tnhd
-    on utilisateur_secteur (Utilisateur_id);
-
-create table utilisateur_site
-(
-    Utilisateur_id bigint not null,
-    siteList_id    bigint not null,
-    constraint UK_4b0v8of28fyl1t1wt0bkveadl
-        unique (siteList_id)
-)
-    engine = MyISAM;
-
-create index FKl0ajxy98ioa1u9hrg61f38tc9
-    on utilisateur_site (Utilisateur_id);
-
-create table utilisateur_voie
-(
-    Utilisateur_id bigint not null,
-    voieList_id    bigint not null,
-    constraint UK_nc0h3xbdi8cws6ygte8b9butc
-        unique (voieList_id)
-)
-    engine = MyISAM;
-
-create index FKowxnufac0l4bk2fcmc526mfn4
-    on utilisateur_voie (Utilisateur_id);
 
 create table voie
 (

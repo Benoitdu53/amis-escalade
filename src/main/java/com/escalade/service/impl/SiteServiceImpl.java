@@ -87,6 +87,16 @@ public class SiteServiceImpl implements SiteService
 
 
     /**
+     *      Retourne le nom des sites
+     * @return
+     */
+    @Override
+    public List<Site> getNomSite()
+    {
+        return siteDao.getDistinctNomSite();
+    }
+
+    /**
      *
      * @param pays
      * @param departement

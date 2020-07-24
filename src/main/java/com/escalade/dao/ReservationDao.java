@@ -13,6 +13,9 @@ import java.util.List;
 @Repository
 public interface ReservationDao extends CrudRepository<Reservation, Long> {
 
-    @Query("SELECT r FROM Reservation r WHERE r.utilisateur = :utilisateur")
-    List<Reservation> getReservationByUtilisateurAndTopos(@Param("utilisateur") Utilisateur utilisateur);
+    @Query("SELECT t FROM Topos t JOIN t.reservationList r WHERE (r.status='En attente de réponse') AND (r.utilisateur.pseudo =:pseudo)")
+    List<Topos> getReservationByPseudoAttente(@Param("pseudo") String pseudo);
+
+    @Query("SELECT t FROM Topos t JOIN t.reservationList r WHERE (r.size is null ) AND (r.utilisateur.pseudo NOT LIKE :pseudo)")
+    List<Topos> getReservationByPseudoIsNull(@Param("pseudo") String pseudo);
 }

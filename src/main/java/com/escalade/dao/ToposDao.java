@@ -11,9 +11,6 @@ import java.util.List;
 @Repository
 public interface ToposDao extends CrudRepository<Topos, Long> {
 
-//    @Query("SELECT t FROM Topos t JOIN t.reservationList r WHERE (r.status= :status) AND (r.utilisateur.pseudo =:pseudo )")
-//    List<Topos> getToposByPseudo(@Param("pseudo") String pseudo);
-
     @Query("SELECT t FROM Topos t WHERE t.utilisateur.pseudo = :pseudo ")
     List<Topos> getToposByPseudo(@Param("pseudo") String pseudo);
 
@@ -22,4 +19,5 @@ public interface ToposDao extends CrudRepository<Topos, Long> {
 
     @Query("SELECT t FROM Topos t Where t.id = :idToposDispo")
     Topos getToposById(@Param("idToposDispo") Long idToposDispo);
+
 }

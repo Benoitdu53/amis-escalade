@@ -11,6 +11,7 @@ public interface SiteService
     List<String> getPays();
     List<String> getDepartement();
     List<String> getType();
+    List<Site> getNomSite();
     List<Site> getSearchSites(String pays, String departement, String type);
     void insertSite(Site newSite);
     Site getSiteById(Long id);

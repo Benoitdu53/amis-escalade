@@ -47,12 +47,29 @@ public class ReservationServiceImpl implements ReservationService {
         reservationDao.save(reservation);
     }
 
+    /**
+     *          Récupère les topos des autres utilisateurs qui n'ont aucune demandes
+     * @param pseudo
+     * @return
+     */
     @Override
-    public List<Reservation> getReservationByUtilisateur(String pseudo) {
-        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
+    public List<Topos> getReservationByPseudoIsNull(String pseudo) {
 
-        return reservationDao.getReservationByUtilisateurAndTopos(utilisateur);
+        return reservationDao.getReservationByPseudoIsNull(pseudo);
     }
 
+
+
+
+    /**
+     *          Récupère les topos des en attente de réponse.
+     * @param pseudo
+     * @return
+     */
+    @Override
+    public List<Topos> getReservationByPseudoAttente(String pseudo) {
+
+        return reservationDao.getReservationByPseudoAttente(pseudo);
+    }
 
 }

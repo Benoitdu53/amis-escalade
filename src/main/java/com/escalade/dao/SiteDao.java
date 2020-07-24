@@ -1,6 +1,7 @@
 package com.escalade.dao;
 
 import com.escalade.model.Site;
+import com.escalade.model.Topos;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -29,5 +30,8 @@ public interface SiteDao extends CrudRepository<Site, Long>
 
     @Query("SELECT s FROM Site s WHERE s.id = :id")
     Site getSiteById(@Param("id") Long id);
+
+    @Query("SELECT DISTINCT s.nom FROM Site s")
+    List<Site> getDistinctNomSite();
 
 }

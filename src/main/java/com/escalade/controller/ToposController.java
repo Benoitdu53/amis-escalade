@@ -1,7 +1,9 @@
 package com.escalade.controller;
 
+import com.escalade.model.Reservation;
 import com.escalade.model.Topos;
 import com.escalade.service.contract.ReservationService;
+import com.escalade.service.contract.SiteService;
 import com.escalade.service.contract.ToposService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class ToposController {
@@ -24,6 +27,9 @@ public class ToposController {
     @Autowired
     private ReservationService reservationService;
 
+    @Autowired
+    private SiteService siteService;
+
 
 
     /**
@@ -33,12 +39,9 @@ public class ToposController {
      * @return
      */
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
-    public String displayTopos (@SessionAttribute("pseudo") String pseudo , HttpSession session, Model model){
+    public String displayAllTopos (@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
 
-        model.addAttribute("topos",toposService.getToposByPseudo(pseudo));
-        model.addAttribute("toposDispo",toposService.getAllToposNotPseudo(pseudo));
-        model.addAttribute("reservationToposUtilisateur",reservationService.getReservationByUtilisateur(pseudo));
-        //model.addAttribute("reservationTopos",reservationService.getReservationByNotUtilisateur);
+        model.addAttribute("toposDispo",reservationService.getReservationByPseudoIsNull(pseudo));
 
         return "/topos";
     }
@@ -51,7 +54,9 @@ public class ToposController {
      * @return
      */
     @RequestMapping(value = "/formTopos", method = RequestMethod.GET)
-    public ModelAndView formTopos (){
+    public ModelAndView formTopos (Model model){
+
+        model.addAttribute("nom",siteService.getNomSite());
 
         return new ModelAndView("addTopos","topos", new Topos());
     }
@@ -73,6 +78,15 @@ public class ToposController {
         return new RedirectView("/topos");
     }
 
+
+
+
+    /**
+     *          Réservation des topos
+     * @param idToposDispo
+     * @param pseudo
+     * @return
+     */
     @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
     public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
                                       @SessionAttribute("pseudo") String pseudo){

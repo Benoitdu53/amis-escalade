@@ -7,17 +7,24 @@
 
 <html>
     <head>
-        <jsp:include page="header.jsp"/>
+        <%@ include file="header.jsp"%>
     </head>
 
     <body>
+
 
     <form:form id="formulaireTopos" method="post" action="/addTopos" modelAttribute="topos">
         <table>
             <div class="nomTopos">
                 <tr>
-                    <td><form:label path="nom" id="nom">Nom du topos</form:label></td>
-                    <td><form:input path="nom" required="required"/></td>
+                    <td><label id="nom">Sélectionner un nom de site</label></td>
+                    <td>
+                        <select name="nom">
+                            <c:forEach var="nom" items="${nom}">
+                                <option value="${nom}" ${nom==param["nom"]?'selected="selected"':''}>${nom}</option>
+                            </c:forEach>
+                        </select>
+                    </td>
                 </tr>
             </div>
 
@@ -44,7 +51,7 @@
 
             <div>
                 <tr>
-                    <td><button value="<c:url value="/topos"></c:url> ">Retour</button></td>
+                    <td><button value="/profil">Retour</button></td>
                     <td><input type="submit" value="Ajouter un topo"/></td>
                 </tr>
             </div>

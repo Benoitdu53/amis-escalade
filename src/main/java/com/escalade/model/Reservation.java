@@ -15,7 +15,7 @@ public class Reservation implements Serializable
     @Column
     private String status;
 
-    @Column
+    @Column(name = "date_reservation")
     private String dateReservation;
 
     @ManyToOne

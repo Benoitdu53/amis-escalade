@@ -7,97 +7,44 @@
 
 <html>
     <head>
+        <title>Liste des topos</title>
         <%@include file="header.jsp"%>
     </head>
 
     <body>
-<%--        On affiche la liste des topos possédé par l'utilisateur--%>
-
-<div class="navbarSites">
-    <p><a href="<c:url value="/formTopos"></c:url>">Enregistrer un topo</a></p>
-</div>
-
-<table border="1" id="tableauTopos">
-    <caption>Mes topos</caption>
-    <tr>
-        <th>Id</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Lieu</th>
-        <th>Réserver</th>
-        <th>Date</th>
-    </tr>
-
-
-    <c:forEach var="topos" items="${topos}">
-        <tr>
-            <c:if test="${empty topos}">
-                <td><c:out value="Vous n'avez aucun topo(s)"></c:out></td>
-            </c:if>
-            <c:if test="${not empty topos}">
-                <td><c:out value="${topos.id}"/></td>
-                <td><c:out value="${topos.nom}"/></td>
-                <td><c:out value="${topos.description}"/></td>
-                <td><c:out value="${topos.lieu}"/></td>
-                <td><c:out value="${empty topos.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-                <td><c:out value="${topos.date}"/></td>
-            </c:if>
-        </tr>
-    </c:forEach>
-
-</table>
-<%--        On affiche ces demandes en cours ( mes demandes reçus, mes demandes envoyés, mes topos loués )--%>
-
-<%--<table border="1" id="tableauTopos">--%>
-<%--    <caption>Mes topos</caption>--%>
-<%--    <tr>--%>
-<%--        <th>Id</th>--%>
-<%--        <th>Nom</th>--%>
-<%--        <th>Description</th>--%>
-<%--        <th>Lieu</th>--%>
-<%--        <th>Réserver</th>--%>
-<%--        <th>Date</th>--%>
-<%--    </tr>--%>
-
-<%--    <c:forEach var="topos" items="${topos}">--%>
-<%--        <tr>--%>
-<%--            <td><c:out value="${topos.id}"/></td>--%>
-<%--            <td><c:out value="${topos.nom}"/></td>--%>
-<%--            <td><c:out value="${topos.description}"/></td>--%>
-<%--            <td><c:out value="${topos.lieu}"/></td>--%>
-<%--            <td><c:out value="${topos.isReserve}"/></td>--%>
-<%--            <td><c:out value="${topos.date}"/></td>--%>
-<%--        </tr>--%>
-<%--    </c:forEach>--%>
-
-<%--</table>--%>
 
 <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
 
-<table border="1" id="tableauTopos">
-    <caption>Les topos dispos</caption>
-    <tr>
-        <th>Id</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Lieu</th>
-        <th>Date</th>
-        <th>Réserver</th>
-    </tr>
+        <div class="allTopos">
+        <table border="1" id="tableauTopos">
+            <caption>Les topos dispos</caption>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Date</th>
+                <th>Réserver</th>
+            </tr>
 
-    <c:forEach var="toposDispo" items="${toposDispo}">
-        <tr>
-            <td><c:out value="${toposDispo.id}"/></td>
-            <td><c:out value="${toposDispo.nom}"/></td>
-            <td><c:out value="${toposDispo.description}"/></td>
-            <td><c:out value="${toposDispo.lieu}"/></td>
-            <td><c:out value="${toposDispo.date}"/></td>
-            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-            <td><span><c:if test="${empty toposDispo.isReserve}"/></span></td>
-        </tr>
-    </c:forEach>
+            <c:forEach var="reservationToposUtilisateur" items="${reservationToposUtilisateur}">
+<%--                <c:forEach var="toposDispo" items="${toposDispo}">--%>
+                        <tr>
+                            <td><c:out value="${reservationToposUtilisateur.id}"/></td>
+                            <td><c:out value="${reservationToposUtilisateur.nom}"/></td>
+                            <td><c:out value="${reservationToposUtilisateur.description}"/></td>
+                            <td><c:out value="${reservationToposUtilisateur.lieu}"/></td>
+                            <td><c:out value="${reservationToposUtilisateur.date}"/></td>
+                            <td><c:out value="${empty reservationToposUtilisateur.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
+                            <td><c:if test="${reservationToposUtilisateur}"></c:if>
+                                <a href="<c:url value="/reservationOn/${reservationToposUtilisateur.id}"/>">Demande de réservation</a>
+                            </td>
 
-</table>
+                        </tr>
+                </c:forEach>
+<%--            </c:forEach>--%>
+        </table>
+        </div>
 
     </body>
 </html>
