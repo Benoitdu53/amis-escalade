@@ -36,7 +36,7 @@ public class ProfilController
     public String displayMyTopos(@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
 
         // Récupère les demandes reçus
-
+        model.addAttribute("toposAttenteReponse", reservationService.getReservationAttente(pseudo));
         // Récupère les demandes expédié
         model.addAttribute("toposDemandeAttente", reservationService.getReservationByPseudoAttente(pseudo));
         // Récupère les topos de l'utilisateur

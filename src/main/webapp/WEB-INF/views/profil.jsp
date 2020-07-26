@@ -48,5 +48,70 @@
         </c:forEach>
     </table>
     </div>
+
+
+    <div class="mesDemandesTopos">
+        <table border="1" id="tableau Topos">
+            <caption>Mes demandes</caption>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Réserver</th>
+                <th>Date</th>
+            </tr>
+
+
+            <c:forEach var="toposDemandeAttente" items="${toposDemandeAttente}">
+                <tr>
+                    <c:if test="${empty toposDemandeAttente}">
+                        <td>Vous n'avez aucun topo(s)</td>
+                    </c:if>
+                    <c:if test="${not empty toposDemandeAttente}">
+                        <td><c:out value="${toposDemandeAttente.id}"/></td>
+                        <td><c:out value="${toposDemandeAttente.nom}"/></td>
+                        <td><c:out value="${toposDemandeAttente.description}"/></td>
+                        <td><c:out value="${toposDemandeAttente.lieu}"/></td>
+                        <td><c:out value="${empty toposDemandeAttente.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
+                        <td><c:out value="${toposDemandeAttente.date}"/></td>
+                    </c:if>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+
+    <div class="AttenteReponse">
+        <table border="1" id="ToposattenteReponse">
+            <caption>Mes demandes reçu(s)</caption>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Réserver</th>
+                <th>Date</th>
+            </tr>
+
+
+            <c:forEach var="toposAttenteReponse" items="${toposAttenteReponse}">
+                <tr>
+                    <c:if test="${empty toposAttenteReponse}">
+                        <td>Vous n'avez aucun topo(s)</td>
+                    </c:if>
+                    <c:if test="${not empty toposAttenteReponse}">
+                        <td><c:out value="${toposAttenteReponse.id}"/></td>
+                        <td><c:out value="${toposAttenteReponse.nom}"/></td>
+                        <td><c:out value="${toposAttenteReponse.description}"/></td>
+                        <td><c:out value="${toposAttenteReponse.lieu}"/></td>
+                        <td><c:out value="${toposAttenteReponse.date}"/></td>
+                        <td><a href="<c:url value="/accepterDemande">Accepter la demande</c:url>"/></td>
+                        <td><a href="<c:url value="/refuserDemande">Refuser la demande</c:url>"/></td>
+                    </c:if>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
     </body>
 </html>

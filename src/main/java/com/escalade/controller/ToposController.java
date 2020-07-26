@@ -95,4 +95,32 @@ public class ToposController {
 
         return new RedirectView("/topos");
     }
+
+
+
+
+    /**
+     *          Change le status de la demande en accepter
+     */
+    @RequestMapping(value = "/accepterDemande",method = RequestMethod.GET)
+    public RedirectView accepterDemande(){
+
+        // TODO Faire modif Accepter demande
+
+        return new RedirectView("/profil");
+    }
+
+
+
+
+    /**
+     *      Change le status de la demande en refuser
+     */
+    @RequestMapping(value = "/accepterDemande",method = RequestMethod.GET)
+    public RedirectView refuserDemande(){
+
+        // TODO Faire modif refuser demande
+
+        return new RedirectView("/profil");
+    }
 }

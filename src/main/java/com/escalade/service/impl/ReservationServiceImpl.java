@@ -72,4 +72,11 @@ public class ReservationServiceImpl implements ReservationService {
         return reservationDao.getReservationByPseudoAttente(pseudo);
     }
 
+    @Override
+    public List<Topos> getReservationAttente(String pseudo) {
+
+        return reservationDao.getReservationAttente(pseudo);
+    }
+
+
 }

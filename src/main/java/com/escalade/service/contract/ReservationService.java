@@ -10,4 +10,5 @@ public interface ReservationService {
     void reservationOn(Long idToposDispo, String pseudo);
     List<Topos> getReservationByPseudoIsNull(String pseudo);
     List<Topos> getReservationByPseudoAttente(String pseudo);
+    List<Topos> getReservationAttente(String pseudo);
 }
