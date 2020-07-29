@@ -31,17 +31,47 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         return StreamSupport.stream(utilisateurDao.findAll().spliterator(),false).collect(Collectors.toList());
     }
 
+
+
+
+    /**
+     *          Retourne l'utilisateur connecté via son pseudo
+     * @param pseudo
+     * @return
+     */
+    @Override
+    public Utilisateur getUtilisateurByPseudo(String pseudo) {
+        return utilisateurDao.getUtilisateurByPseudo(pseudo);
+    }
+
+
+
+
+    /**
+     *          Retourne tout les pseudo
+     * @return
+     */
     @Override
     public List<String> getAllPseudo()
     {
         return utilisateurDao.getAllPseudo();
     }
 
+
+
+
+    /**
+     *          Retourne tout les mails des utilisateurs en base
+     * @return
+     */
     @Override
     public List<String> getAllMail()
     {
         return utilisateurDao.getAllMail();
     }
+
+
+
 
     /**
      *          Inscription d'un nouvel utilisateur

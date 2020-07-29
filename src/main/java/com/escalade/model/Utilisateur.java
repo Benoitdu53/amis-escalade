@@ -50,9 +50,67 @@ public class Utilisateur implements Serializable
     @OneToMany(mappedBy = "utilisateur")
     private List<Reservation> reservationList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "utilisateur")
+    private List<Topos> topos =new ArrayList<>();
+
+    public List<Topos> getTopos() {
+        return topos;
+    }
+
+    public void setTopos(List<Topos> topos) {
+        this.topos = topos;
+    }
+
+    public Boolean getMembreOfficiel() {
+        return isMembreOfficiel;
+    }
+
+    public void setMembreOfficiel(Boolean membreOfficiel) {
+        isMembreOfficiel = membreOfficiel;
+    }
+
+    public List<Site> getSiteList() {
+        return siteList;
+    }
+
+    public void setSiteList(List<Site> siteList) {
+        this.siteList = siteList;
+    }
+
+    public List<Secteur> getSecteurList() {
+        return secteurList;
+    }
+
+    public void setSecteurList(List<Secteur> secteurList) {
+        this.secteurList = secteurList;
+    }
+
+    public List<Voie> getVoieList() {
+        return voieList;
+    }
+
+    public void setVoieList(List<Voie> voieList) {
+        this.voieList = voieList;
+    }
+
+    public List<Longueur> getLongueurList() {
+        return longueurList;
+    }
+
+    public void setLongueurList(List<Longueur> longueurList) {
+        this.longueurList = longueurList;
+    }
+
+    public List<Reservation> getReservationList() {
+        return reservationList;
+    }
+
+    public void setReservationList(List<Reservation> reservationList) {
+        this.reservationList = reservationList;
+    }
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Utilisateur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
@@ -62,6 +120,12 @@ public class Utilisateur implements Serializable
                 ", password='" + password + '\'' +
                 ", confirmationPassword='" + confirmationPassword + '\'' +
                 ", isMembreOfficiel=" + isMembreOfficiel +
+                ", siteList=" + siteList +
+                ", secteurList=" + secteurList +
+                ", voieList=" + voieList +
+                ", longueurList=" + longueurList +
+                ", reservationList=" + reservationList +
+                ", topos=" + topos +
                 '}';
     }
 

@@ -106,11 +106,45 @@
                         <td><c:out value="${toposAttenteReponse.description}"/></td>
                         <td><c:out value="${toposAttenteReponse.lieu}"/></td>
                         <td><c:out value="${toposAttenteReponse.date}"/></td>
+
                         <td><a href="<c:url value="/accepterDemande">Accepter la demande</c:url>"/></td>
                         <td><a href="<c:url value="/refuserDemande">Refuser la demande</c:url>"/></td>
                     </c:if>
                 </tr>
             </c:forEach>
+        </table>
+    </div>
+
+    <div class="toposUtilisateur">
+        <table border="1" id="toposUtilisateur">
+            <caption>Mes demandes reçu(s)</caption>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Lieu</th>
+                <th>Réserver</th>
+                <th>Date</th>
+            </tr>
+
+
+
+                <tr>
+                    <c:if test="${empty toposUtilisateur}">
+                        <td>Vous n'avez aucun topo(s)</td>
+                    </c:if>
+                    <c:if test="${not empty toposUtilisateur}">
+                        <td><c:out value="${toposUtilisateur.topos}"/></td>
+                        <td><c:out value="${toposUtilisateur.nom}"/></td>
+                        <td><c:out value="${toposUtilisateur.description}"/></td>
+                        <td><c:out value="${toposUtilisateur.lieu}"/></td>
+                        <td><c:out value="${toposUtilisateur.date}"/></td>
+
+                        <td><a href="<c:url value="/accepterDemande">Accepter la demande</c:url>"/></td>
+                        <td><a href="<c:url value="/refuserDemande">Refuser la demande</c:url>"/></td>
+                    </c:if>
+                </tr>
+
         </table>
     </div>
     </body>

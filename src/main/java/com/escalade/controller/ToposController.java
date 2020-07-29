@@ -116,7 +116,7 @@ public class ToposController {
     /**
      *      Change le status de la demande en refuser
      */
-    @RequestMapping(value = "/accepterDemande",method = RequestMethod.GET)
+    @RequestMapping(value = "/refuserDemande",method = RequestMethod.GET)
     public RedirectView refuserDemande(){
 
         // TODO Faire modif refuser demande

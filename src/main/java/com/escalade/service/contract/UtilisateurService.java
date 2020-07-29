@@ -7,6 +7,7 @@ import java.util.List;
 public interface UtilisateurService
 {
     List<Utilisateur> getUtilisateurs();
+    Utilisateur getUtilisateurByPseudo(String pseudo);
     List<String> getAllMail();
     List<String> getAllPseudo();
     void registrationUtilisateur(Utilisateur newUtilisateur);
