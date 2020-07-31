@@ -41,11 +41,14 @@ public class ReservationServiceImpl implements ReservationService {
         Topos topos = toposDao.getToposById(idToposDispo);
 
         topos.setIsReserve(false);
-        toposDao.save(topos);
 
-        reservation.setStatus(status);
+        toposDao.updateTopos(topos);
+
+
         reservation.setUtilisateur(utilisateur);
         reservation.setTopos(topos);
+
+        reservation.setStatus(status);
 
         reservationDao.save(reservation);
     }

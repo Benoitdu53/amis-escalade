@@ -29,7 +29,7 @@ public class Topos implements Serializable {
     @Column
     private String date;
 
-    @OneToMany(mappedBy = "topos", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "topos")
     private List<Reservation> reservationList = new ArrayList<>();
 
     @ManyToOne
