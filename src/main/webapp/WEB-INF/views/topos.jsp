@@ -7,7 +7,6 @@
 
 <html>
     <head>
-        <title>Liste des topos</title>
         <%@include file="header.jsp"%>
     </head>
 
@@ -24,25 +23,26 @@
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date</th>
+                <th>Propriétaire</th>
                 <th>Réserver</th>
             </tr>
 
             <c:forEach var="toposDispo" items="${toposDispo}">
-<%--                <c:forEach var="toposDispo" items="${toposDispo}">--%>
                         <tr>
                             <td><c:out value="${toposDispo.id}"/></td>
                             <td><c:out value="${toposDispo.nom}"/></td>
                             <td><c:out value="${toposDispo.description}"/></td>
                             <td><c:out value="${toposDispo.lieu}"/></td>
                             <td><c:out value="${toposDispo.date}"/></td>
-                            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-                            <td><c:if test="${reservationToposUtilisateur}"></c:if>
-                                <a href="<c:url value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a>
-                            </td>
-
+                            <td><c:out value="${toposDispo.utilisateur.pseudo}"/></td>
+                            <td><c:out value="${topo.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
+                            <td><a href="<c:url value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a></td>
                         </tr>
+                        <c:if test="${empty toposDispo}">
+                            <p>Pas de topos Disponible</p>
+                        </c:if>
                 </c:forEach>
-<%--            </c:forEach>--%>
+
         </table>
         </div>
 

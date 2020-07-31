@@ -1,6 +1,5 @@
 package com.escalade.controller;
 
-import com.escalade.model.Reservation;
 import com.escalade.model.Topos;
 import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.SiteService;
@@ -14,7 +13,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class ToposController {
@@ -41,7 +39,7 @@ public class ToposController {
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayAllTopos (@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
 
-        model.addAttribute("toposDispo",reservationService.getReservationByPseudoIsNull(pseudo));
+        model.addAttribute("toposDispo",toposService.getToposDispos(pseudo));
 
         return "/topos";
     }
@@ -93,7 +91,7 @@ public class ToposController {
 
         reservationService.reservationOn(idToposDispo, pseudo);
 
-        return new RedirectView("/topos");
+        return new RedirectView("/profil");
     }
 
 

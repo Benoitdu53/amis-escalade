@@ -20,4 +20,7 @@ public interface ToposDao extends CrudRepository<Topos, Long> {
     @Query("SELECT t FROM Topos t Where t.id = :idToposDispo")
     Topos getToposById(@Param("idToposDispo") Long idToposDispo);
 
+    @Query("SELECT t FROM Topos t WHERE (t.utilisateur.pseudo NOT LIKE :pseudo) AND (t.isReserve = false )")
+    List<Topos> getToposDispos(@Param("pseudo") String pseudo);
+
 }

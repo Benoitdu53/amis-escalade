@@ -40,6 +40,9 @@ public class ReservationServiceImpl implements ReservationService {
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         Topos topos = toposDao.getToposById(idToposDispo);
 
+        topos.setIsReserve(false);
+        toposDao.save(topos);
+
         reservation.setStatus(status);
         reservation.setUtilisateur(utilisateur);
         reservation.setTopos(topos);
@@ -47,36 +50,16 @@ public class ReservationServiceImpl implements ReservationService {
         reservationDao.save(reservation);
     }
 
-    /**
-     *          Récupère les topos des autres utilisateurs qui n'ont aucune demandes
-     * @param pseudo
-     * @return
-     */
     @Override
-    public List<Topos> getReservationByPseudoIsNull(String pseudo) {
-
-        return reservationDao.getReservationByPseudoIsNull(pseudo);
-    }
-
-
-
-
-    /**
-     *          Récupère les topos des en attente de réponse.
-     * @param pseudo
-     * @return
-     */
-    @Override
-    public List<Topos> getReservationByPseudoAttente(String pseudo) {
-
-        return reservationDao.getReservationByPseudoAttente(pseudo);
+    public List<Reservation> getDemandeReçus(final String pseudo)
+    {
+        return reservationDao.getReservationsRecus(pseudo);
     }
 
     @Override
-    public List<Topos> getReservationAttente(String pseudo) {
-
-        return reservationDao.getReservationAttente(pseudo);
+    public List<Reservation> getDemandeExpedie(final String pseudo)
+    {
+        return reservationDao.getReservationExpedies(pseudo);
     }
-
 
 }

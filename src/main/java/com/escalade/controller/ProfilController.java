@@ -39,14 +39,12 @@ public class ProfilController
     @RequestMapping(value = "/profil", method = RequestMethod.GET)
     public String displayMyTopos(@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
 
-        // Récupère les demandes reçus
-        model.addAttribute("toposAttenteReponse", reservationService.getReservationAttente(pseudo));
-        // Récupère les demandes expédié
-        model.addAttribute("toposDemandeAttente", reservationService.getReservationByPseudoAttente(pseudo));
         // Récupère les topos de l'utilisateur
         model.addAttribute("topos",toposService.getToposByPseudo(pseudo));
-        //Récupère l'utilisateur
-        model.addAttribute("toposUtilisateur",utilisateurService.getUtilisateurByPseudo(pseudo));
+        //Récupère les demandes reçus
+        model.addAttribute("demandeRecus",reservationService.getDemandeReçus(pseudo));
+        //Récupère les demandes expédiés
+        model.addAttribute("demandeEnvoye",reservationService.getDemandeExpedie(pseudo));
 
         return "profil";
     }
