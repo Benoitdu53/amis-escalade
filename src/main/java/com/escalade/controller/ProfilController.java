@@ -6,9 +6,11 @@ import com.escalade.service.contract.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,4 +51,57 @@ public class ProfilController
         return "profil";
     }
 
+
+
+
+    /**
+     *          Réservation des topos
+     * @param idToposDispo
+     * @param pseudo
+     * @return
+     */
+    @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
+    public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
+                                      @SessionAttribute("pseudo") String pseudo){
+
+        reservationService.reservationOn(idToposDispo, pseudo);
+
+        return new RedirectView("/profil");
+    }
+
+    @RequestMapping(value = "/deleteReservation/{idReservation}/{idTopos}", method = RequestMethod.GET)
+    public RedirectView deleteReservation(@PathVariable("idReservation")Long idReservation,
+                                          @PathVariable("idTopos")Long idTopos){
+
+        reservationService.deleteReservation(idReservation, idTopos);
+
+        return new RedirectView("/profil");
+    }
+
+    /**
+     *          Change le status de la demande en "En location"
+     */
+    @RequestMapping(value = "/accepterDemande/{idReservation}/{idTopos}",method = RequestMethod.GET)
+    public RedirectView accepterDemande(@PathVariable("idReservation") Long idReservation,
+                                        @PathVariable("idTopos")Long idTopos){
+
+        reservationService.updateReservation(idReservation, idTopos);
+
+        return new RedirectView("/profil");
+    }
+
+
+
+
+    /**
+     *      Refuse la demande de réservation, remis disponible et suppression de la réservation
+     */
+    @RequestMapping(value = "/refuserDemande/{idReservation}/{idTopos}",method = RequestMethod.GET)
+    public RedirectView refuserDemande(@PathVariable("idReservation")Long idReservation,
+                                       @PathVariable("idTopos")Long idTopos){
+
+        reservationService.deleteReservation(idReservation, idTopos);
+
+        return new RedirectView("/profil");
+    }
 }

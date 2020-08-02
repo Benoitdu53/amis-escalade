@@ -76,49 +76,4 @@ public class ToposController {
         return new RedirectView("/topos");
     }
 
-
-
-
-    /**
-     *          Réservation des topos
-     * @param idToposDispo
-     * @param pseudo
-     * @return
-     */
-    @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
-    public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
-                                      @SessionAttribute("pseudo") String pseudo){
-
-        reservationService.reservationOn(idToposDispo, pseudo);
-
-        return new RedirectView("/profil");
-    }
-
-
-
-
-    /**
-     *          Change le status de la demande en accepter
-     */
-    @RequestMapping(value = "/accepterDemande",method = RequestMethod.GET)
-    public RedirectView accepterDemande(){
-
-        // TODO Faire modif Accepter demande
-
-        return new RedirectView("/profil");
-    }
-
-
-
-
-    /**
-     *      Change le status de la demande en refuser
-     */
-    @RequestMapping(value = "/refuserDemande",method = RequestMethod.GET)
-    public RedirectView refuserDemande(){
-
-        // TODO Faire modif refuser demande
-
-        return new RedirectView("/profil");
-    }
 }

@@ -10,4 +10,6 @@ public interface ReservationService {
     void reservationOn(Long idToposDispo, String pseudo);
     List<Reservation> getDemandeReçus(String pseudo);
     List<Reservation> getDemandeExpedie(String pseudo);
+    void deleteReservation(Long idReservation, Long idTopos);
+    void updateReservation(Long idReservation, Long idTopos);
 }

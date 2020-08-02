@@ -30,7 +30,6 @@
             <th>Date</th>
         </tr>
 
-
         <c:forEach var="topo" items="${topos}">
             <tr>
                 <c:if test="${empty topos}">
@@ -75,11 +74,11 @@
                     <td><c:out value="${demandeRecus.topos.date}"/></td>
                     <td><c:out value="${demandeRecus.utilisateur.pseudo}"/></td>
                         <c:if test="${demandeRecus.status.equals('En attente de réponse')}">
-                        <td>Accepter</td>
-                        <td>Refuser</td>
+                            <td><a href="<c:url value="/accepterDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Accepter</a></td>
+                            <td><a href="<c:url value="/refuserDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Refuser</a></td>
                         </c:if>
                         <c:if test="${demandeRecus.status.equals('En location')}">
-                        <td>Rendre dipsonible</td>
+                            <td><a href="<c:url value="/deleteReservation/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Remettre disponible</a></td>
                         </c:if>
                 </tr>
             </c:forEach>
@@ -109,6 +108,7 @@
                     <td><c:out value="${demandeEnvoye.topos.lieu}"/></td>
                     <td><c:out value="${demandeEnvoye.topos.date}"/></td>
                     <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                    <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>">Annuler la réservation</a></td>
                 </tr>
             </c:forEach>
         </table>

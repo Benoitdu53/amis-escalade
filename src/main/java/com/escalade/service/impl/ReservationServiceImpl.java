@@ -40,10 +40,7 @@ public class ReservationServiceImpl implements ReservationService {
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         Topos topos = toposDao.getToposById(idToposDispo);
 
-        topos.setIsReserve(false);
-
-        toposDao.updateTopos(topos);
-
+        toposDao.updateToposTrue(topos);
 
         reservation.setUtilisateur(utilisateur);
         reservation.setTopos(topos);
@@ -53,16 +50,67 @@ public class ReservationServiceImpl implements ReservationService {
         reservationDao.save(reservation);
     }
 
+
+
+
+    /**
+     *          Récupérer les demandes de réservation Topos reçus
+     * @param pseudo
+     * @return
+     */
     @Override
     public List<Reservation> getDemandeReçus(final String pseudo)
     {
         return reservationDao.getReservationsRecus(pseudo);
     }
 
+
+
+
+    /**
+     *          Récupérer les demandes de réservation Topos expédiés
+     * @param pseudo
+     * @return
+     */
     @Override
     public List<Reservation> getDemandeExpedie(final String pseudo)
     {
         return reservationDao.getReservationExpedies(pseudo);
+    }
+
+
+
+
+    /**
+     *          Supprime une réservation et met le status du topos en disponible
+     * @param idReservation
+     * @param idTopos
+     */
+    @Override
+    public void deleteReservation(Long idReservation, Long idTopos)
+    {
+        Topos topos = toposDao.getToposById(idTopos);
+
+        toposDao.updateToposFalse(topos);
+
+        reservationDao.deleteById(idReservation);
+    }
+
+
+
+
+    /**
+     *          Accepter la réservation et change le status de la réservation en "En location"
+     * @param idReservation
+     */
+    @Override
+    public void updateReservation(Long idReservation, Long idTopos)
+    {
+        Topos topos = toposDao.getToposById(idTopos);
+
+        toposDao.updateToposTrue(topos);
+
+        reservationDao.updateReservation(idReservation);
     }
 
 }
