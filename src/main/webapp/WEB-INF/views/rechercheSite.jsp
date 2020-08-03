@@ -6,7 +6,6 @@
 <!-- Formulaire de critère de recherche des sites -->
 <!-- Critère : Pays, département, type-->
 <section id="rechercheSites">
-    <div class="wrapper">
         <form:form id="formulaireSite" method="get" action="/searchSites">
             <label>
                 <select name="pays">
@@ -26,7 +25,6 @@
                         <c:forEach var="departement" items="${departement}">
                             <option value="${departement}" ${departement==param["departement"]?'selected="selected"':''}> ${departement}</option>
                         </c:forEach>
-                    </div>
                 </select>
             </label>
 

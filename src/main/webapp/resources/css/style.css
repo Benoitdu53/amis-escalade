@@ -17,7 +17,6 @@ footer {
 }
 
 .wrapper {
-    width: 940px;
     margin: 0 auto;
     padding: 0 10px;
 }
@@ -43,6 +42,13 @@ a {
 small {
     font-size: 13px;
     font-style: italic;
+}
+
+.titre {
+    font-size: 25px;
+    color: #1d2124;
+    margin-left: 50px;
+    margin-top: 5px;
 }
 
 /* HEADER */
@@ -111,6 +117,7 @@ header nav ul li a{
 }
 
 #sitesSection article:first-child {
+    margin-left: 150px;
     margin-right: 20px;
 }
 
@@ -166,12 +173,14 @@ article h5 {
     float: left;
     margin-top: 10px;
     padding-top: 10px;
+    text-align: center;
+    border-radius: 2px;
 }
 
 #rechercheSites select {
     display: inline-block;
     padding: 10px 20px;
-    border-radius: 3px;
+    border-radius: 8px;
     background: #ff7a00;
     color: #ffffff;
 }
@@ -233,10 +242,80 @@ footer h1 {
     padding-top: 20px;
 }
 
-#secteur {
+#secteur article{
+    background-color: #6c757d;
     width: 400px;
-    height: 250px;
+    height: 200px;
     float: left;
     border-radius: 10px;
+    border: #6c757d solid 1px;
     margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+#secteur article:first-child {
+    margin-left: 150px;
+}
+
+#secteur {
+
+}
+
+.button3 {
+    color: #fff;
+    background-color: #FF0000;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+.button3:hover {
+    color: #fff;
+    background-color: #02b8dd;
+}
+
+.button4 {
+    color: #fff;
+    background-color: #5a6268;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+.button4:hover {
+    color: #fff;
+    background-color: #02b8dd;
+}
+
+/* Commentaire du site */
+
+#commentaires {
+    margin-left: 40px;
+    float: left;
+    width: 90%;
+}
+
+#commentaire {
+    padding-left: 4px;
+    border-radius: 10px;
+    border-top: 1px solid #1d2124;
+    border-bottom: 1px solid #1d2124;
+    background-color: #adb5bd;
+    margin-bottom: 5px;
+}
+
+#noCommentaire {
+    text-align: center;
+}
+
+#commentaire h5 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.buttonAdd .button4 {
+    margin-left: 20px;
+}
+
+#commentaire .button3 {
+    float: right;
 }

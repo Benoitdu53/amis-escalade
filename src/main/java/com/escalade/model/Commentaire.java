@@ -18,6 +18,9 @@ public class Commentaire implements Serializable {
     @Column(name = "commentaire")
     private String commentaire;
 
+    @Column(name = "date_commentaire")
+    private String dateCommentaire;
+
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
     private Utilisateur utilisateur;
@@ -33,9 +36,20 @@ public class Commentaire implements Serializable {
                 "id=" + id +
                 ", titre='" + titre + '\'' +
                 ", commentaire='" + commentaire + '\'' +
+                ", dateCommentaire='" + dateCommentaire + '\'' +
                 ", utilisateur=" + utilisateur +
                 ", site=" + site +
                 '}';
+    }
+
+    public String getDateCommentaire()
+    {
+        return dateCommentaire;
+    }
+
+    public void setDateCommentaire(final String dateCommentaire)
+    {
+        this.dateCommentaire = dateCommentaire;
     }
 
     public Long getId()

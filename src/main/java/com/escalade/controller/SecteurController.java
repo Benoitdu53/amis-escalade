@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Secteur;
+import com.escalade.service.contract.CommentaireService;
 import com.escalade.service.contract.SecteurService;
 import com.escalade.service.contract.SiteService;
 import com.escalade.service.contract.VoieService;
@@ -24,9 +25,6 @@ public class SecteurController {
     // ----- Injection des dépendances ----- //
 
     @Autowired
-    private VoieService voieService;
-
-    @Autowired
     private SiteService siteService;
 
     private final SecteurService secteurService;
@@ -34,6 +32,9 @@ public class SecteurController {
     public SecteurController(SecteurService secteurService){
         this.secteurService = secteurService;
     }
+
+    @Autowired
+    private CommentaireService commentaireService;
 
 
 
@@ -94,6 +95,7 @@ public class SecteurController {
     public String displaySecteur (Model model, @PathVariable("idSite") Long id,
                                   HttpSession session){
 
+        model.addAttribute("commentaire", commentaireService.getCommentaireBySite(id));
         model.addAttribute("secteurs", secteurService.getSectorByIdSite(id));
         model.addAttribute("site", siteService.getSiteById(id));
 
