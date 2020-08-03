@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.net.http.HttpClient;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -106,7 +108,7 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-    public String validateLogin(HttpSession session,
+    public Object validateLogin(HttpSession session,
                                 @Param("pseudo") String pseudo,
                                 @Param("password") String password){
 
@@ -119,7 +121,7 @@ public class UtilisateurController
 
         session.setAttribute("pseudo", pseudo);
 
-        return ("/sites");
+        return new RedirectView("/sites");
     }
 
 
@@ -131,9 +133,9 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
-    public String deconnexion(HttpSession session){
+    public Object deconnexion(HttpSession session){
 
         session.invalidate();
-        return "sites";
+        return new RedirectView ("/sites");
     }
 }

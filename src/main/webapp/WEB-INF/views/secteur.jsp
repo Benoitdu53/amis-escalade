@@ -3,39 +3,44 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<head>
+    <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
     <%@ include file="header.jsp"%>
-</head>
 
 <body>
 
-    <!-- Informations du site séléctionner -->
-    <table border="1" id="tableauSite">
-        <div class="titreSite">
-            <caption>Site</caption>
-            <tr>
-                <th>id</th>
-                <th>nom</th>
-                <th>Departement</th>
-                <th>Pays</th>
-                <th>Type</th>
-                <th>Cotation-min</th>
-                <th>Cotation-max</th>
-                <th>Description</th>
-            </tr>
-
-            <tr>
-                <td><c:out value="${site.id}"/></td>
-                <td><c:out value="${site.nom}"/></td>
-                <td><c:out value="${site.departement}"/></td>
-                <td><c:out value="${site.pays}"/></td>
-                <td><c:out value="${site.type}"/></td>
-                <td><c:out value="${site.cotationMin}"/></td>
-                <td><c:out value="${site.cotationMax}"/></td>
-                <td><c:out value="${site.description}"/></td>
-            </tr>
+    <section id="image_site">
+        <div class="wrapper">
+            <h2><c:out value="${site.nom}"/></h2>
         </div>
-</table>
+    </section>
+
+    <section id="secteurSection">
+        <div class="wrapper">
+            <div id="siteDetail">
+                <ul>
+                    <li><strong>Département</strong> : <c:out value="${site.departement}"/></li>
+                    <li><strong>Pays : </strong><c:out value="${site.pays}"/></li>
+                    <li><strong>Cotation minimum : </strong><c:out value="${site.cotationMin}"/></li>
+                    <li><strong>Cotation maximum : </strong><c:out value="${site.cotationMax}"/></li
+                    <li><br><strong>Description : </strong><c:out value="${site.description}"/></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="secteur">
+        <div class="wrapper">
+            <c:forEach var="secteurs" items="${secteurs}">
+            <article>
+                <div class="overlay">
+                    <h4><c:out value="${secteurs.nom}"/></h4>
+                    <p><small><c:out value="${secteurs.description}"/></small></p>
+                </div>
+            </article>
+            </c:forEach>
+        </div>
+    </section>
+
 
     <div class="ajoutSecteur">
         <p><a href="<c:url value="/site/${site.id}/secteur/add"/>">Ajouter un secteur</a> </p>
@@ -64,3 +69,5 @@
         </div>
     </table>
 </body>
+
+<%@ include file="footer.jsp"%>

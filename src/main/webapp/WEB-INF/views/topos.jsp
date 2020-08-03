@@ -35,7 +35,7 @@
                             <td><c:out value="${toposDispo.lieu}"/></td>
                             <td><c:out value="${toposDispo.date}"/></td>
                             <td><c:out value="${toposDispo.utilisateur.pseudo}"/></td>
-                            <td><c:out value="${topo.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
+                            <td><c:out value="${toposDispo.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
                             <td><a href="<c:url value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a></td>
                         </tr>
                         <c:if test="${empty toposDispo}">
