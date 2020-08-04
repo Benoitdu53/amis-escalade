@@ -1,4 +1,199 @@
-h1
-{
-    color: red;
+/* Général */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+}
+
+body {
+    font-family: Arial, sans-serif;
+    font-size: 15px;
+}
+
+footer {
+}
+
+.wrapper {
+    width: 940px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+h2 {
+    color: white;
+    font-size: 55px;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color :#444;
+}
+
+.clear {
+    clear: both;
+}
+
+small {
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* HEADER */
+
+h1{
+    font-family: 'Crete Round', sans-serif;
+    font-size: 45px;
+    color: #444;
+}
+
+header{
+    height: 120px;
+}
+
+header h1 {
+    float: left;
+    margin-top: 32px;
+}
+
+header nav {
+    margin-top: 50px;
+    float: right;
+}
+
+header nav ul li{
+    float: left;
+    display: inline-block;
+}
+
+header nav ul li a{
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+/* Main image */
+
+#main-image {
+    height: 580px;
+    background: url('/resources/img/montagne01.jpg') center no-repeat;
+    background-size: cover;
+}
+
+#main-image h2 {
+    font-weight: normal;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 200px 0 50px 0;
+}
+
+/* Sites, secteurs, voies, longueurs */
+
+#sitesSection {
+
+}
+
+#sitesSection article {
+    width: 400px;
+    height: 250px;
+    float: left;
+    border-radius: 10px;
+    margin-bottom: 20px;
+
+    background: url('/resources/img/montagne04.jpg') center no-repeat;
+    background-size: cover;
+}
+
+#sitesSection article:first-child {
+    margin-right: 20px;
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.95);
+    height: 100%;
+    width: 190px;
+    padding: 20px;
+    border-radius: 10px 0 0 10px;
+    text-align: center;
+}
+
+article h4 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+article h5 {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#sites p {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.button2 {
+    color: #fff;
+    background-color: #ff7a00;
+    padding: 6px 20px;
+    border-radius: 3px;
+}
+
+.button2:hover {
+    color: #fff;
+    background-color: #02b8dd;
+}
+
+#sites {
+
+}
+
+/* Recherche de sites */
+
+#rechercheSites {
+    background-color: #efefef;
+    height: 50px;
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+#rechercheSites select {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 3px;
+    background: #ff7a00;
+    color: #ffffff;
+}
+
+/* Footer */
+
+footer {
+    height: 260px;
+    background-color: #444;
+    padding-top: 30px;
+    margin-top: 650px;
+}
+
+footer h1 {
+    color: #fff;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.copyright {
+    text-align: center;
+    font-weight: bold;
+    padding-top: 30px;
+    color: #777;
 }

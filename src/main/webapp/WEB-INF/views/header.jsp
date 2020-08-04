@@ -7,37 +7,34 @@
 <html>
     <head>
         <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+        <link href="https://fr.allfont.net/allfont.css?fonts=crete-round" rel="stylesheet" type="text/css" />
     </head>
-    <body>
-    <div class="header-title">
-        <div class="header-title">
+        <header>
             <h1>Les amis de l'escalade</h1>
-            <h2>Le site communautaire des amis de l'escalade</h2>
-        </div>
-    </div>
+            <nav>
+                <ul>
+                    <c:if test="${empty sessionScope.pseudo}">
+                        <li><a href="<c:url value="/sites"></c:url>">Tout les sites</a></li>
+                        <li><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></li>
+                        <li><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></li>
+                        <li><a href="<c:url value="/formUtilisateur"></c:url>">S'inscrire</a></li>
+                    </c:if>
+                    <c:if test="${ not empty sessionScope.pseudo}">
 
-    <%--    Menu de navigation --%>
-    <div class="navbar">
+                        <li><a href="<c:url value="/sites"></c:url>">Tout les sites</a></li>
+                        <li><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></li>
+                        <li><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></li>
+                        <li><a href="<c:url value="/formUtilisateur"></c:url>">S'inscrire</a></li>
 
-        <c:if test="${empty sessionScope.pseudo}">
+                    </c:if>
 
-            <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
-            <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
-            <p><a href="<c:url value="/loginUtilisateur"></c:url>">S'authentifier</a></p>
-            <p><a href="<c:url value="/formUtilisateur"></c:url>">S'inscrire</a></p>
+                </ul>
+            </nav>
+        </header>
 
-        </c:if>
+            <section id="main-image">
+                <div class="wrapper">
+                    <h2><strong>Site d'escalade <br>en France</strong></h2>
+                </div>
+            </section>
 
-        <c:if test="${not empty sessionScope.pseudo}">
-
-            <p><a href="<c:url value="/sites"></c:url>">Tout les sites</a></p>
-            <p><a href="<c:url value="/topos"></c:url>">Topos</a></p>
-            <p><a href="<c:url value="/utilisateurs"></c:url>">Gestion des utilisateurs</a></p>
-            <p><a href="<c:url value="/profil"></c:url>">Mon profil</a></p>
-            <p><a href="<c:url value="/deconnexion"></c:url>">Se déconnecter</a></p>
-
-        </c:if>
-    </div>
-
-    </body>
-</html>

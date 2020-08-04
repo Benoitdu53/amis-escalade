@@ -16,6 +16,9 @@
     <!-- Spécifie les composants à scanner -->
     <context:component-scan base-package="com.escalade"/>
 
+    <mvc:annotation-driven />
+    <mvc:resources mapping="/resources/**" location="/resources/" />
+
     <!-- Permet le mapping des pages web -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/views/"/>

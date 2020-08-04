@@ -13,6 +13,20 @@
 
     <body>
 
+    <c:forEach var="toposDispo" items="${toposDispo}">
+    <section id="topos">
+        <div class="wrapper">
+            <article>
+                <div class="overlay">
+                    <h4><c:out value="${toposDispo.nom}"/></h4>
+                    <h5><c:out value="${toposDispo.lieu}"/></h5>
+                    <p><small><c:out value="${toposDispo.description}"/></small></p>
+                </div>
+            </article>
+        </div>
+    </section>
+    </c:forEach>
+
 <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
 
         <div class="allTopos">
@@ -28,7 +42,6 @@
             </tr>
 
             <c:forEach var="toposDispo" items="${toposDispo}">
-<%--                <c:forEach var="toposDispo" items="${toposDispo}">--%>
                         <tr>
                             <td><c:out value="${toposDispo.id}"/></td>
                             <td><c:out value="${toposDispo.nom}"/></td>
@@ -42,7 +55,6 @@
 
                         </tr>
                 </c:forEach>
-<%--            </c:forEach>--%>
         </table>
         </div>
 
