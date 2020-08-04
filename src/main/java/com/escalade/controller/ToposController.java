@@ -1,6 +1,5 @@
 package com.escalade.controller;
 
-import com.escalade.model.Reservation;
 import com.escalade.model.Topos;
 import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.SiteService;
@@ -14,7 +13,6 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.List;
 
 @Controller
 public class ToposController {
@@ -41,7 +39,7 @@ public class ToposController {
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayAllTopos (@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
 
-        model.addAttribute("toposDispo",reservationService.getReservationByPseudoIsNull(pseudo));
+        model.addAttribute("toposDispo",toposService.getToposDispos(pseudo));
 
         return "/topos";
     }
@@ -78,49 +76,4 @@ public class ToposController {
         return new RedirectView("/topos");
     }
 
-
-
-
-    /**
-     *          Réservation des topos
-     * @param idToposDispo
-     * @param pseudo
-     * @return
-     */
-    @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
-    public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
-                                      @SessionAttribute("pseudo") String pseudo){
-
-        reservationService.reservationOn(idToposDispo, pseudo);
-
-        return new RedirectView("/topos");
-    }
-
-
-
-
-    /**
-     *          Change le status de la demande en accepter
-     */
-    @RequestMapping(value = "/accepterDemande",method = RequestMethod.GET)
-    public RedirectView accepterDemande(){
-
-        // TODO Faire modif Accepter demande
-
-        return new RedirectView("/profil");
-    }
-
-
-
-
-    /**
-     *      Change le status de la demande en refuser
-     */
-    @RequestMapping(value = "/refuserDemande",method = RequestMethod.GET)
-    public RedirectView refuserDemande(){
-
-        // TODO Faire modif refuser demande
-
-        return new RedirectView("/profil");
-    }
 }

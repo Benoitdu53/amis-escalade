@@ -1,13 +1,12 @@
-<%@ page isELIgnored="false"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html>
-<head>
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
     <%@ include file="header.jsp"%>
-</head>
+
+<div class="idForm">
+    <h3>Authentification</h3>
+</div>
 
     <body>
+        <div class="formulaire">
         <%--@elvariable id="utilisateur" type="com.escalade.model.Utilisateur"--%>
         <form:form id="loginUtilisateur" method="post" action="/validateLogin" modelAttribute="utilisateur">
             <tr>
@@ -21,9 +20,11 @@
             </tr>
 
             <tr>
-                <td><input type="submit" value="Valider"></td></br>
-                <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
+                <td><input type="submit" value="Valider" class="button2"></td></br>
+                <td><button><a href="<c:url value="/sites"></c:url>" class="button3">Retour</a></button></td>
             </tr>
         </form:form>
+        </div>
     </body>
-</html>
+
+    <%@ include file="footer.jsp"%>

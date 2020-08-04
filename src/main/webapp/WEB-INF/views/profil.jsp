@@ -30,29 +30,29 @@
             <th>Date</th>
         </tr>
 
-
-        <c:forEach var="topos" items="${topos}">
+        <c:forEach var="topo" items="${topos}">
             <tr>
                 <c:if test="${empty topos}">
                     <td>Vous n'avez aucun topo(s)</td>
                 </c:if>
-                <c:if test="${not empty topos}">
-                    <td><c:out value="${topos.id}"/></td>
-                    <td><c:out value="${topos.nom}"/></td>
-                    <td><c:out value="${topos.description}"/></td>
-                    <td><c:out value="${topos.lieu}"/></td>
-                    <td><c:out value="${empty topos.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-                    <td><c:out value="${topos.date}"/></td>
+                <c:if test="${not empty topo}">
+                    <td><c:out value="${topo.id}"/></td>
+                    <td><c:out value="${topo.nom}"/></td>
+                    <td><c:out value="${topo.description}"/></td>
+                    <td><c:out value="${topo.lieu}"/></td>
+                    <td><c:out value="${topo.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
+                    <td><c:out value="${topo.date}"/></td>
                 </c:if>
             </tr>
         </c:forEach>
     </table>
     </div>
 
+    <br><br>
 
-    <div class="mesDemandesTopos">
-        <table border="1" id="tableau Topos">
-            <caption>Mes demandes</caption>
+    <div class="DemandeRecus">
+        <table border="1" id="tableau DemandeRecus">
+            <caption>Mes demandes de réservation reçu(s)</caption>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
@@ -60,92 +60,59 @@
                 <th>Lieu</th>
                 <th>Réserver</th>
                 <th>Date</th>
+                <th>Demandeur</th>
             </tr>
 
 
-            <c:forEach var="toposDemandeAttente" items="${toposDemandeAttente}">
+            <c:forEach var="demandeRecus" items="${demandeRecus}">
                 <tr>
-                    <c:if test="${empty toposDemandeAttente}">
-                        <td>Vous n'avez aucun topo(s)</td>
-                    </c:if>
-                    <c:if test="${not empty toposDemandeAttente}">
-                        <td><c:out value="${toposDemandeAttente.id}"/></td>
-                        <td><c:out value="${toposDemandeAttente.nom}"/></td>
-                        <td><c:out value="${toposDemandeAttente.description}"/></td>
-                        <td><c:out value="${toposDemandeAttente.lieu}"/></td>
-                        <td><c:out value="${empty toposDemandeAttente.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-                        <td><c:out value="${toposDemandeAttente.date}"/></td>
-                    </c:if>
+                    <td><c:out value="${demandeRecus.topos.id}"/></td>
+                    <td><c:out value="${demandeRecus.topos.nom}"/></td>
+                    <td><c:out value="${demandeRecus.topos.description}"/></td>
+                    <td><c:out value="${demandeRecus.topos.lieu}"/></td>
+                    <td><c:out value="${demandeRecus.topos.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
+                    <td><c:out value="${demandeRecus.topos.date}"/></td>
+                    <td><c:out value="${demandeRecus.utilisateur.pseudo}"/></td>
+                        <c:if test="${demandeRecus.status.equals('En attente de réponse')}">
+                            <td><a href="<c:url value="/accepterDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Accepter</a></td>
+                            <td><a href="<c:url value="/refuserDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Refuser</a></td>
+                        </c:if>
+                        <c:if test="${demandeRecus.status.equals('En location')}">
+                            <td><a href="<c:url value="/deleteReservation/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Remettre disponible</a></td>
+                        </c:if>
                 </tr>
             </c:forEach>
         </table>
     </div>
 
+    <br><br>
 
-    <div class="AttenteReponse">
-        <table border="1" id="ToposattenteReponse">
-            <caption>Mes demandes reçu(s)</caption>
+    <div class="DemandeEnvoye">
+        <table border="1" id="DemandeEnvoye">
+            <caption>Mes demandes envoyé(s)</caption>
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Lieu</th>
-                <th>Réserver</th>
                 <th>Date</th>
+                <th>Propriétaire du topo</th>
             </tr>
 
 
-            <c:forEach var="toposAttenteReponse" items="${toposAttenteReponse}">
+            <c:forEach var="demandeEnvoye" items="${demandeEnvoye}">
                 <tr>
-                    <c:if test="${empty toposAttenteReponse}">
-                        <td>Vous n'avez aucun topo(s)</td>
-                    </c:if>
-                    <c:if test="${not empty toposAttenteReponse}">
-                        <td><c:out value="${toposAttenteReponse.id}"/></td>
-                        <td><c:out value="${toposAttenteReponse.nom}"/></td>
-                        <td><c:out value="${toposAttenteReponse.description}"/></td>
-                        <td><c:out value="${toposAttenteReponse.lieu}"/></td>
-                        <td><c:out value="${toposAttenteReponse.date}"/></td>
-
-                        <td><a href="<c:url value="/accepterDemande">Accepter la demande</c:url>"/></td>
-                        <td><a href="<c:url value="/refuserDemande">Refuser la demande</c:url>"/></td>
-                    </c:if>
+                    <td><c:out value="${demandeEnvoye.topos.id}"/></td>
+                    <td><c:out value="${demandeEnvoye.topos.nom}"/></td>
+                    <td><c:out value="${demandeEnvoye.topos.description}"/></td>
+                    <td><c:out value="${demandeEnvoye.topos.lieu}"/></td>
+                    <td><c:out value="${demandeEnvoye.topos.date}"/></td>
+                    <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                    <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>">Annuler la réservation</a></td>
                 </tr>
             </c:forEach>
         </table>
     </div>
 
-    <div class="toposUtilisateur">
-        <table border="1" id="toposUtilisateur">
-            <caption>Mes demandes reçu(s)</caption>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Description</th>
-                <th>Lieu</th>
-                <th>Réserver</th>
-                <th>Date</th>
-            </tr>
-
-
-
-                <tr>
-                    <c:if test="${empty toposUtilisateur}">
-                        <td>Vous n'avez aucun topo(s)</td>
-                    </c:if>
-                    <c:if test="${not empty toposUtilisateur}">
-                        <td><c:out value="${toposUtilisateur.topos}"/></td>
-                        <td><c:out value="${toposUtilisateur.nom}"/></td>
-                        <td><c:out value="${toposUtilisateur.description}"/></td>
-                        <td><c:out value="${toposUtilisateur.lieu}"/></td>
-                        <td><c:out value="${toposUtilisateur.date}"/></td>
-
-                        <td><a href="<c:url value="/accepterDemande">Accepter la demande</c:url>"/></td>
-                        <td><a href="<c:url value="/refuserDemande">Refuser la demande</c:url>"/></td>
-                    </c:if>
-                </tr>
-
-        </table>
-    </div>
     </body>
 </html>

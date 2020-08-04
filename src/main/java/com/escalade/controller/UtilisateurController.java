@@ -12,11 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -68,8 +67,8 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/registrationUtilisateur", method = RequestMethod.POST)
-    public String addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
-                                        ModelMap modelMap){
+    public Object addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
+                                  ModelMap modelMap){
 
         Map<String,String> erreurMessage;
 
@@ -80,7 +79,7 @@ public class UtilisateurController
                 return "addUtilisateur";
             }else {
                 utilisateurService.registrationUtilisateur(newUtilisateur);
-                return "/sites";
+                return new RedirectView("/sites");
             }
     }
 
@@ -106,7 +105,7 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-    public String validateLogin(HttpSession session,
+    public Object validateLogin(HttpSession session,
                                 @Param("pseudo") String pseudo,
                                 @Param("password") String password){
 
@@ -119,7 +118,7 @@ public class UtilisateurController
 
         session.setAttribute("pseudo", pseudo);
 
-        return ("/sites");
+        return new RedirectView("/sites");
     }
 
 
@@ -131,9 +130,9 @@ public class UtilisateurController
      * @return
      */
     @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
-    public String deconnexion(HttpSession session){
+    public Object deconnexion(HttpSession session){
 
         session.invalidate();
-        return "sites";
+        return new RedirectView ("/sites");
     }
 }

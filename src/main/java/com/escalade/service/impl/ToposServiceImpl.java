@@ -40,8 +40,6 @@ public class ToposServiceImpl implements ToposService
      */
     @Override
     public List<Topos> getToposByPseudo(String pseudo) {
-
-
         return toposDao.getToposByPseudo(pseudo);
     }
 
@@ -72,9 +70,9 @@ public class ToposServiceImpl implements ToposService
      * @return
      */
     @Override
-    public List<Topos> getReservationByPseudoIsNull(String pseudo)
+    public List<Topos> getToposDispos(String pseudo)
     {
-        return toposDao.getAllToposNotPseudo(pseudo);
+        return toposDao.getToposDispos(pseudo);
     }
 
 }

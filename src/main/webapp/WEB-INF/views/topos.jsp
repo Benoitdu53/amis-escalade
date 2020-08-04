@@ -7,25 +7,10 @@
 
 <html>
     <head>
-        <title>Liste des topos</title>
         <%@include file="header.jsp"%>
     </head>
 
     <body>
-
-    <c:forEach var="toposDispo" items="${toposDispo}">
-    <section id="topos">
-        <div class="wrapper">
-            <article>
-                <div class="overlay">
-                    <h4><c:out value="${toposDispo.nom}"/></h4>
-                    <h5><c:out value="${toposDispo.lieu}"/></h5>
-                    <p><small><c:out value="${toposDispo.description}"/></small></p>
-                </div>
-            </article>
-        </div>
-    </section>
-    </c:forEach>
 
 <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
 
@@ -38,6 +23,7 @@
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date</th>
+                <th>Propriétaire</th>
                 <th>Réserver</th>
             </tr>
 
@@ -48,13 +34,15 @@
                             <td><c:out value="${toposDispo.description}"/></td>
                             <td><c:out value="${toposDispo.lieu}"/></td>
                             <td><c:out value="${toposDispo.date}"/></td>
-                            <td><c:out value="${empty toposDispo.isReserve ? 'Disponible' : ' Non disponible'}"/></td>
-                            <td><c:if test="${reservationToposUtilisateur}"></c:if>
-                                <a href="<c:url value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a>
-                            </td>
-
+                            <td><c:out value="${toposDispo.utilisateur.pseudo}"/></td>
+                            <td><c:out value="${toposDispo.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
+                            <td><a href="<c:url value="/reservationOn/${toposDispo.id}"/>">Demande de réservation</a></td>
                         </tr>
+                        <c:if test="${empty toposDispo}">
+                            <p>Pas de topos Disponible</p>
+                        </c:if>
                 </c:forEach>
+
         </table>
         </div>
 

@@ -50,7 +50,7 @@ public class Utilisateur implements Serializable
     @OneToMany(mappedBy = "utilisateur")
     private List<Reservation> reservationList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "utilisateur")
+    @OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
     private List<Topos> topos =new ArrayList<>();
 
     public List<Topos> getTopos() {

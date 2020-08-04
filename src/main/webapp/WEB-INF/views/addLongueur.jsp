@@ -1,14 +1,13 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
-
-<head>
-    <%@ include file="header.jsp"%>
-</head>
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+<%@ include file="header.jsp"%>
 
 <body>
-<div id="formulaireLongueur">
+
+    <div class="idForm">
+        <h3>Ajouter une longueur</h3>
+    </div>
+
+    <div class="formulaire">
     <%--@elvariable id="longueur" type="com.escalade.model.Longueur"--%>
     <form:form id="formulaireLongueur" method="post" modelAttribute="longueur">
         <table>
@@ -45,11 +44,13 @@
 
             <div>
                 <tr>
-                    <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
-                    <td><input type="submit" value="Ajouter une longueur"/></td>
+                    <td><button><a href="<c:url value="/sites"></c:url>" class="button3">Retour</a></button></td>
+                    <td><input type="submit" value="Ajouter une longueur" class="button2"/></td>
                 </tr>
             </div>
         </table>
     </form:form>
-</div>
+    </div>
 </body>
+
+<%@ include file="footer.jsp"%>

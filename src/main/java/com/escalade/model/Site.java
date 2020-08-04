@@ -37,6 +37,9 @@ public class Site implements Serializable {
     @OneToMany(mappedBy = "site")
     private List<Secteur> secteurList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "site")
+    private List<Commentaire> commentaireList = new ArrayList<>();
+
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
     private Utilisateur utilisateur;
@@ -54,8 +57,19 @@ public class Site implements Serializable {
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
                 ", secteurList=" + secteurList +
+                ", commentaireList=" + commentaireList +
                 ", utilisateur=" + utilisateur +
                 '}';
+    }
+
+    public List<Commentaire> getCommentaireList()
+    {
+        return commentaireList;
+    }
+
+    public void setCommentaireList(final List<Commentaire> commentaireList)
+    {
+        this.commentaireList = commentaireList;
     }
 
     public Utilisateur getUtilisateur()

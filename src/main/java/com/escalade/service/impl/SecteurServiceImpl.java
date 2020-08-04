@@ -26,6 +26,13 @@ public class SecteurServiceImpl implements SecteurService
     }
 
 
+
+
+    /**
+     *
+     * @param newSecteur
+     * @param idSite
+     */
     @Override
     public void insertSecteur(final Secteur newSecteur, final Long idSite)
     {
@@ -34,12 +41,27 @@ public class SecteurServiceImpl implements SecteurService
         secteurDao.save(newSecteur);
     }
 
+
+
+
+    /**
+     *          Supprime un secteur
+     * @param idSecteur
+     */
     @Override
     public void deleteSecteurById(final Long idSecteur)
     {
         secteurDao.deleteById(idSecteur);
     }
 
+
+
+
+    /**
+     *          Récupère les secteurs d'un site
+     * @param id
+     * @return
+     */
     @Override
     public List<Secteur> getSectorByIdSite(final Long id)
     {

@@ -1,18 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
-<%@ page isELIgnored="false"%>
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+<%@ include file="header.jsp"%>
 
-<html>
-    <head>
-        <%@ include file="header.jsp"%>
-    </head>
+<body>
 
-    <body>
+    <div class="idForm">
+        <h3>Ajouter un topo</h3>
+    </div>
 
-
+    <div class="formulaire">
     <form:form id="formulaireTopos" method="post" action="/addTopos" modelAttribute="topos">
         <table>
             <div class="nomTopos">
@@ -51,13 +46,14 @@
 
             <div>
                 <tr>
-                    <td><button value="/profil">Retour</button></td>
-                    <td><input type="submit" value="Ajouter un topo"/></td>
+                    <td><button value="/profil" class="button3">Retour</button></td>
+                    <td><input type="submit" value="Ajouter un topo" class="button2"/></td>
                 </tr>
             </div>
-
         </table>
     </form:form>
+    </div>
 
-    </body>
-</html>
+</body>
+
+<%@include file="footer.jsp"%>
