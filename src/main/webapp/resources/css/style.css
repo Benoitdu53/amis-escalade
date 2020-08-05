@@ -360,3 +360,31 @@ footer h1 {
 .formulaire select {
     border-radius: 5px;
 }
+
+/* Topos dispo */
+
+table #topos {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#topos td, #topos th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#topos tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+#topos tr:hover {
+    background-color: #ddd;
+}
+
+#tableauTopos th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

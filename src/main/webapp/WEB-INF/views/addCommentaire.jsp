@@ -1,15 +1,10 @@
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page isELIgnored="false"%>
-
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@ include file="header.jsp"%>
 
 <body>
 
     <div class="idForm">
-        <h2>Ajouter un commentaire</h2>
+        <h3>Ajouter un commentaire</h3>
     </div>
 
     <div class="formulaire">
@@ -32,7 +27,6 @@
 
             <div>
                 <tr>
-                    <td><button><a href="<c:url value="/sites"></c:url>">Retour</a></button></td>
                     <td><input type="submit" value="Ajouter un commentaire"/></td>
                 </tr>
             </div>

@@ -35,7 +35,7 @@ public class ReservationServiceImpl implements ReservationService {
     @Override
     public void reservationOn(Long idToposDispo, String pseudo) {
         Reservation reservation= new Reservation();
-        String status = "En attente de réponse";
+        String status = "En attente de reponse";
 
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         Topos topos = toposDao.getToposById(idToposDispo);

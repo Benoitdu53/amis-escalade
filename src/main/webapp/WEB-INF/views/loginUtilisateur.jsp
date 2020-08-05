@@ -1,5 +1,5 @@
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
-    <%@ include file="header.jsp"%>
+<%@ include file="header.jsp"%>
 
 <div class="idForm">
     <h3>Authentification</h3>
@@ -21,7 +21,6 @@
 
             <tr>
                 <td><input type="submit" value="Valider" class="button2"></td></br>
-                <td><button><a href="<c:url value="/sites"></c:url>" class="button3">Retour</a></button></td>
             </tr>
         </form:form>
         </div>

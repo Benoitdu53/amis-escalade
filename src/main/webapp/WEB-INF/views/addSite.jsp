@@ -82,7 +82,6 @@
 
         <div>
             <tr>
-                <td><button value="<c:url value="/sites"></c:url>" class="button3">Retour</button></td>
                 <td><input type="submit" value="Ajouter un site" class="button2"/></td>
             </tr>
         </div>

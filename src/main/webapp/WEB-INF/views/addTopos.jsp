@@ -46,7 +46,6 @@
 
             <div>
                 <tr>
-                    <td><button value="/profil" class="button3">Retour</button></td>
                     <td><input type="submit" value="Ajouter un topo" class="button2"/></td>
                 </tr>
             </div>

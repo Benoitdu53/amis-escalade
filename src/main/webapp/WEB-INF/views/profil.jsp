@@ -1,15 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="input" uri="http://www.springframework.org/tags/form" %>
-<%@ page isELIgnored="false"%>
+<link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
+<%@include file="header.jsp"%>
 
-<html>
-    <head>
-        <title>Mon profil</title>
-        <%@include file="header.jsp"%>
-    </head>
 
         <%--    On affiche le profil de l'utilisateur--%>
         <%--    Avec l'adresse mail et le pseudo + ses topos et ses demandes en cours--%>
@@ -73,7 +64,7 @@
                     <td><c:out value="${demandeRecus.topos.isReserve == false ? 'Disponible' : ' Non disponible'}"/></td>
                     <td><c:out value="${demandeRecus.topos.date}"/></td>
                     <td><c:out value="${demandeRecus.utilisateur.pseudo}"/></td>
-                        <c:if test="${demandeRecus.status.equals('En attente de réponse')}">
+                        <c:if test="${demandeRecus.status == 'En attente de reponse'}">
                             <td><a href="<c:url value="/accepterDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Accepter</a></td>
                             <td><a href="<c:url value="/refuserDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Refuser</a></td>
                         </c:if>
@@ -96,7 +87,6 @@
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date</th>
-                <th>Propriétaire du topo</th>
             </tr>
 
 
@@ -107,12 +97,19 @@
                     <td><c:out value="${demandeEnvoye.topos.description}"/></td>
                     <td><c:out value="${demandeEnvoye.topos.lieu}"/></td>
                     <td><c:out value="${demandeEnvoye.topos.date}"/></td>
-                    <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                    <c:if test="${demandeEnvoye.status == 'En attente de reponse'}">
                     <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>">Annuler la réservation</a></td>
+                    </c:if>
+                    <c:if test="${demandeEnvoye.status == 'En location'}">
+                        <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                        <td><c:out value="${demandeEnvoye.topos.utilisateur.mail}"/></td>
+                    </c:if>
                 </tr>
+                <br>
             </c:forEach>
         </table>
     </div>
 
     </body>
-</html>
+
+<%@ include file="footer.jsp"%>

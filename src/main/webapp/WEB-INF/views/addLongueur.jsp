@@ -44,7 +44,6 @@
 
             <div>
                 <tr>
-                    <td><button><a href="<c:url value="/sites"></c:url>" class="button3">Retour</a></button></td>
                     <td><input type="submit" value="Ajouter une longueur" class="button2"/></td>
                 </tr>
             </div>

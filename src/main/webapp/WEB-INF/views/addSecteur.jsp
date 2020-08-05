@@ -31,7 +31,6 @@
 
                 <div>
                     <tr>
-                        <td><button><a href="<c:url value="/sites"></c:url>"class="button2">Retour</a></button></td>
                         <td><input type="submit" value="Ajouter un secteur" class="button3"/></td>
                     </tr>
                 </div>
