@@ -10,10 +10,27 @@
         </div>
     </section>
 
+                <c:if test="${sessionScope.isMembre == true}">
+                    <div id="tagueSite">
+                        <c:choose>
+                            <c:when test="${site.tague == false}">
+                                <p><a href="<c:url value="/taguerSite/${site.id}"/>" class="button2">Taguer ce site</a></p>
+                            </c:when>
+                            <c:when test="${site.tague == true}">
+                                <p><a href="<c:url value="/deleteTagueSite/${site.id}"/>" class="button2">Supprimer le tague du site</a></p>
+                            </c:when>
+                        </c:choose>
+                    </div>
+                </c:if>
+
+
                 <%-- Affichage des caractéristique du site demandé --%>
     <section id="secteurSection">
         <div class="wrapper">
             <div id="siteDetail">
+                <c:if test="${site.tague == true}">
+                        <img src="/resources/img/star.png" alt="Les amis de l'escalade">
+                </c:if>
                 <ul>
                     <li><strong>Département</strong> : <c:out value="${site.departement}"/></li>
                     <li><strong>Pays : </strong><c:out value="${site.pays}"/></li>
@@ -81,7 +98,8 @@
 
                         <h4><c:out value="${commentaire.titre}"/></h4>
                         <h5><c:out value="${commentaire.dateCommentaire}"/></h5>
-                        <c:if test="${not empty sessionScope.pseudo}">
+                        <c:if test="${not empty sessionScope.isMembre == true}">
+                            <p><a href="<c:url value="/site/${site.id}/secteur/modifier/commentaire"/>"class="button2">Modifier le commentaire</a></p>
                             <p><a href="<c:url value="/site/${site.id}/secteur/delete/commentaire"/>"class="button3">Supprime le commentaire</a></p>
                         </c:if>
                         <p><small>

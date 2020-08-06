@@ -117,6 +117,7 @@ public class UtilisateurController
         }
 
         session.setAttribute("pseudo", pseudo);
+        session.setAttribute("isMembre", utilisateur.getMembreOfficiel());
 
         return new RedirectView("/sites");
     }

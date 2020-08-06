@@ -34,6 +34,19 @@ public class Site implements Serializable {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "tague")
+    private boolean tague;
+
+    public boolean isTague()
+    {
+        return tague;
+    }
+
+    public void setTague(final boolean tague)
+    {
+        this.tague = tague;
+    }
+
     @OneToMany(mappedBy = "site")
     private List<Secteur> secteurList = new ArrayList<>();
 
@@ -56,6 +69,7 @@ public class Site implements Serializable {
                 ", cotationMax='" + cotationMax + '\'' +
                 ", description='" + description + '\'' +
                 ", type='" + type + '\'' +
+                ", tague=" + tague +
                 ", secteurList=" + secteurList +
                 ", commentaireList=" + commentaireList +
                 ", utilisateur=" + utilisateur +

@@ -223,6 +223,16 @@ footer h1 {
     padding-top: 60px;
 }
 
+#secteur img {
+    float: left;
+    padding-top: 0;
+}
+
+#sitesSection img {
+    float: left;
+    padding-top: 0;
+}
+
 /* page d'un site */
 
 #secteurSection {
@@ -293,15 +303,18 @@ footer h1 {
     margin-left: 40px;
     float: left;
     width: 90%;
+    border-radius: 10px;
 }
 
 #commentaire {
     padding-left: 4px;
-    border-radius: 10px;
+
+    margin-bottom: 5px;
+}
+
+#commentaire textarea {
     border-top: 1px solid #1d2124;
     border-bottom: 1px solid #1d2124;
-    background-color: #adb5bd;
-    margin-bottom: 5px;
 }
 
 #noCommentaire {
@@ -387,4 +400,8 @@ table #topos {
     text-align: left;
     background-color: #4CAF50;
     color: white;
+}
+
+#tagueSite .button2 {
+
 }

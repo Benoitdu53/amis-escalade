@@ -13,6 +13,9 @@
         <div class="wrapper">
             <article>
                 <div class="overlay">
+                    <c:if test="${sites.tague == true}">
+                            <img src="/resources/img/star.png" alt="Les amis de l'escalade">
+                    </c:if>
                     <h4><c:out value="${sites.nom}"/></h4>
                     <h5><c:out value="${sites.departement}"/></h5>
                     <p><small><c:out value="${sites.description}"/></small></p>

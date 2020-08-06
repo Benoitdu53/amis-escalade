@@ -2,11 +2,13 @@ package com.escalade.dao;
 
 import com.escalade.model.Site;
 import com.escalade.model.Topos;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -34,4 +36,13 @@ public interface SiteDao extends CrudRepository<Site, Long>
     @Query("SELECT DISTINCT s.nom FROM Site s")
     List<Site> getDistinctNomSite();
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE Site s SET s.tague = true WHERE s.id = :idSite")
+    void taguerSite(@Param("idSite")Long idSite);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE Site s SET s.tague = false WHERE s.id = :idSite")
+    void deleteTagueSite(@Param("idSite")Long idSite);
 }

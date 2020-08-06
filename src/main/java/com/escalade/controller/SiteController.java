@@ -123,4 +123,23 @@ public class SiteController {
 
         return new RedirectView("/sites");
     }
+
+    @RequestMapping(value = "/taguerSite/{idSite}",method = RequestMethod.GET)
+    public RedirectView taguerSite (@PathVariable("idSite")Long idSite,
+                                    HttpSession session){
+
+        siteService.taguerSite(idSite);
+
+        return new RedirectView("/site/{idSite}");
+    }
+
+
+    @RequestMapping(value = "/deleteTagueSite/{idSite}",method = RequestMethod.GET)
+    public RedirectView deleteTagueSite (@PathVariable("idSite")Long idSite,
+                                         HttpSession session){
+
+        siteService.deleteTagueSite(idSite);
+
+        return new RedirectView("/site/{idSite}");
+    }
 }

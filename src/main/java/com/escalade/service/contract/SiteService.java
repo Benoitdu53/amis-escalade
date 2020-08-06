@@ -16,4 +16,6 @@ public interface SiteService
     void insertSite(Site newSite);
     Site getSiteById(Long id);
     void deleteSiteById(Long idSite);
+    void taguerSite(Long idSite);
+    void deleteTagueSite(Long idSite);
 }

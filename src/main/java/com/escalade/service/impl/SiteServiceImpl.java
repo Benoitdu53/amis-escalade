@@ -150,4 +150,28 @@ public class SiteServiceImpl implements SiteService
         siteDao.deleteById(idSite);
     }
 
+
+
+
+    /**
+     *          Taguer un site
+     * @param idSite
+     */
+    @Override
+    public void taguerSite(final Long idSite)
+    {
+        siteDao.taguerSite(idSite);
+    }
+
+
+
+    /**
+     *          Supprime le tague d'un site
+     * @param idSite
+     */
+    @Override
+    public void deleteTagueSite(final Long idSite)
+    {
+        siteDao.deleteTagueSite(idSite);
+    }
 }
