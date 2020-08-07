@@ -1,7 +1,9 @@
 package com.escalade.service.impl;
 
 import com.escalade.dao.LongueurDao;
+import com.escalade.dao.UtilisateurDao;
 import com.escalade.model.Longueur;
+import com.escalade.model.Utilisateur;
 import com.escalade.model.Voie;
 import com.escalade.service.contract.LongueurService;
 import com.escalade.service.contract.VoieService;
@@ -20,30 +22,67 @@ public class LongueurServiceImpl implements LongueurService
     @Autowired
     public LongueurServiceImpl(LongueurDao longueurDao){this.longueurDao = longueurDao;}
 
-    @Override
-    public void insertLongueur( Longueur newLongueur, Long idVoie)
-    {
-        String cotation = newLongueur.getCotation();
+    @Autowired
+    private UtilisateurDao utilisateurDao;
 
-        if (!cotation.substring(0).matches("a") || !cotation.substring(1).matches("1")){
-            // TODO Ajoute un message "Veuillez saisir un chiffre ( minimum 3 maximum 8 ) et une lettre (a, b, ou c ) ex : 5a"
-        }else
-        {
+
+
+
+    /**
+     *          Ajouter une longueur
+     * @param newLongueur
+     * @param idVoie
+     */
+    @Override
+    public void insertLongueur( Longueur newLongueur, Long idVoie, String pseudo)
+    {
             Voie voie = voieService.getVoieById(idVoie);
+            Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
+
+            newLongueur.setUtilisateur(utilisateur);
             newLongueur.setVoie(voie);
             longueurDao.save(newLongueur);
-        }
+
     }
 
+
+
+
+    /**
+     *          Récupère les longeurs de la voie par son idVoie
+     * @param idVoie
+     * @return
+     */
     @Override
     public List<Longueur> getLongueurByVoieId(final Long idVoie)
     {
         return longueurDao.getLongueurByVoieId(voieService.getVoieById(idVoie));
     }
 
+
+
+
+    /**
+     *          Supprime la longueur
+     * @param idLongueur
+     */
     @Override
     public void deleteById(final Long idLongueur)
     {
         longueurDao.deleteById(idLongueur);
+    }
+
+
+
+
+    /**
+     *      Récupère les longueurs par son idSecteur
+     * @param idSecteur
+     * @return
+     */
+    @Override
+    public List<Longueur> getLongueursByIdSecteur(final Long idSecteur)
+    {
+        return longueurDao.getLongueursByIdSecteur(idSecteur);
     }
 }

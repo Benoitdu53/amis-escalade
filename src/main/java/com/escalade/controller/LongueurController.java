@@ -7,10 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -54,23 +51,6 @@ public class LongueurController {
 
 
     /**
-     *              Affiche la page des longueurs
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/voie/{idVoie}/longueur", method = RequestMethod.GET)
-    public String displayVoie (Model model, @PathVariable("idVoie") Long idVoie,
-                               HttpSession session){
-
-        model.addAttribute("voie", voieService.getVoieById(idVoie));
-        model.addAttribute("longueurs", longueurService.getLongueurByVoieId(idVoie));
-
-        return "/longueur";
-    }
-
-
-
-    /**
      *              Ajoute une longueur à une voie
      * @param newLongueur
      * @param result
@@ -80,19 +60,12 @@ public class LongueurController {
     @RequestMapping(value = "/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
     public Object addLongueur (@Valid @ModelAttribute("longueur") Longueur newLongueur, BindingResult result,
                                @PathVariable("idVoie") Long idVoie,
+                               @SessionAttribute("pseudo") String pseudo,
                                HttpSession session){
 
-        try{
-            if (result.hasErrors()){
-                return "addVoie";
-            }
-        }catch (Exception e){
-            // TODO Exception
-        }
+        longueurService.insertLongueur(newLongueur, idVoie, pseudo);
 
-        longueurService.insertLongueur(newLongueur, idVoie);
-
-        return new RedirectView("/voie/{idVoie}/longueur");
+        return new RedirectView("/sites");
     }
 
 

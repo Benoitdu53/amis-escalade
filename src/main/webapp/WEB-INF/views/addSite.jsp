@@ -1,4 +1,4 @@
- <%@include file="header.jsp"%>
+    <%@include file="header.jsp"%>
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 
 <body>

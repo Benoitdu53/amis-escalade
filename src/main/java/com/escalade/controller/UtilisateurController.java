@@ -34,22 +34,6 @@ public class UtilisateurController
 
 
     /**
-     *          Affiche tout les utilisateurs
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/utilisateurs", method = RequestMethod.GET)
-    public Object findAllUtilisateurs(Model model){
-
-        model.addAttribute("utilisateurs",utilisateurService.getUtilisateurs());
-
-        return "/utilisateurs";
-    }
-
-
-
-
-    /**
      *          Affiche le formulaire d'inscription utilisateur
      * @return
      */
@@ -62,7 +46,7 @@ public class UtilisateurController
 
 
     /**
-     *              Inscrit un utilisateur et renvoie a la page des utilisateurs
+     *              Inscrit un utilisateur
      * @param newUtilisateur
      * @return
      */

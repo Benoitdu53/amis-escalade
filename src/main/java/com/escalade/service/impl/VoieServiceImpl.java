@@ -28,12 +28,28 @@ public class VoieServiceImpl implements VoieService
         return voieDao.getVoieBySecteurId(secteurService.getSectorById(idSecteur));
     }
 
+
+
+
+    /**
+     *          Récupère les voies par son id
+     * @param idVoie
+     * @return
+     */
     @Override
     public Voie getVoieById(final Long idVoie)
     {
         return voieDao.getVoieById(idVoie);
     }
 
+
+
+
+    /**
+     *          Ajoute une voie
+     * @param newVoie
+     * @param idSecteur
+     */
     @Override
     public void insertVoie(Voie newVoie, Long idSecteur)
     {
@@ -42,6 +58,13 @@ public class VoieServiceImpl implements VoieService
         voieDao.save(newVoie);
     }
 
+
+
+
+    /**
+     *          Supprime une voie
+     * @param idVoie
+     */
     @Override
     public void deleteVoieById(final Long idVoie)
     {

@@ -31,13 +31,13 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     /**
      *          Récupére les commentaires du site
-     * @param id
+     * @param idCommentaire
      * @return
      */
     @Override
-    public List<Commentaire> getCommentaireBySite(final Long id)
+    public List<Commentaire> getCommentaireById(final Long idCommentaire)
     {
-        return commentaireDao.getCommentaireBySite(id);
+        return commentaireDao.getCommentaireBySite(idCommentaire);
     }
 
 

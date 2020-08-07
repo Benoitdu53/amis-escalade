@@ -9,7 +9,7 @@
 
     <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
 
-        <table id="topos">
+        <table class="topos">
             <tr>
                 <th>Nom</th>
                 <th>Description</th>

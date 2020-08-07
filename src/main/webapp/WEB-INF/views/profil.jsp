@@ -5,13 +5,17 @@
         <%--    On affiche le profil de l'utilisateur--%>
         <%--    Avec l'adresse mail et le pseudo + ses topos et ses demandes en cours--%>
     <body>
+
     <div class="navbarSites">
-        <p><a href="<c:url value="/formTopos"></c:url>">Enregistrer un topo</a></p>
+        <p><a href="<c:url value="/formTopos"></c:url>" class="button2">Enregistrer un topo</a></p>
+    </div>
+
+    <div class="idForm">
+        <h3>Mes topos</h3>
     </div>
 
     <div class="mesTopos">
-    <table border="1" id="tableauTopos">
-        <caption>Mes topos</caption>
+    <table class="topos">
         <tr>
             <th>Id</th>
             <th>Nom</th>
@@ -41,9 +45,12 @@
 
     <br><br>
 
+    <div class="idForm">
+        <h3>Mes demandes reçus</h3>
+    </div>
+
     <div class="DemandeRecus">
-        <table border="1" id="tableau DemandeRecus">
-            <caption>Mes demandes de réservation reçu(s)</caption>
+        <table class="topos">
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
@@ -65,11 +72,11 @@
                     <td><c:out value="${demandeRecus.topos.date}"/></td>
                     <td><c:out value="${demandeRecus.utilisateur.pseudo}"/></td>
                         <c:if test="${demandeRecus.status == 'En attente de reponse'}">
-                            <td><a href="<c:url value="/accepterDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Accepter</a></td>
-                            <td><a href="<c:url value="/refuserDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Refuser</a></td>
+                            <td><a href="<c:url value="/accepterDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>" class="button2">Accepter</a></td>
+                            <td><a href="<c:url value="/refuserDemande/${demandeRecus.id}/${demandeRecus.topos.id}"/>" class="button3">Refuser</a></td>
                         </c:if>
                         <c:if test="${demandeRecus.status.equals('En location')}">
-                            <td><a href="<c:url value="/deleteReservation/${demandeRecus.id}/${demandeRecus.topos.id}"/>">Remettre disponible</a></td>
+                            <td><a href="<c:url value="/deleteReservation/${demandeRecus.id}/${demandeRecus.topos.id}"/>" class="button2">Remettre disponible</a></td>
                         </c:if>
                 </tr>
             </c:forEach>
@@ -78,15 +85,20 @@
 
     <br><br>
 
+    <div class="idForm">
+        <h3>Mes demandes expedié(s)</h3>
+    </div>
+
     <div class="DemandeEnvoye">
-        <table border="1" id="DemandeEnvoye">
-            <caption>Mes demandes envoyé(s)</caption>
+        <table class="topos">
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date</th>
+                    <th>Pseudo du propriétaire</th>
+                    <th>Mail du propriétaire</th>
             </tr>
 
 
@@ -98,7 +110,7 @@
                     <td><c:out value="${demandeEnvoye.topos.lieu}"/></td>
                     <td><c:out value="${demandeEnvoye.topos.date}"/></td>
                     <c:if test="${demandeEnvoye.status == 'En attente de reponse'}">
-                    <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>">Annuler la réservation</a></td>
+                    <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>" class="button3">Annuler la réservation</a></td>
                     </c:if>
                     <c:if test="${demandeEnvoye.status == 'En location'}">
                         <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>

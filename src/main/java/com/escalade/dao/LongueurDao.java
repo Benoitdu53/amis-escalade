@@ -14,4 +14,7 @@ public interface LongueurDao extends CrudRepository<Longueur, Long>
 {
     @Query("SELECT l FROM Longueur l WHERE l.voie = :Voie")
     List<Longueur> getLongueurByVoieId(@Param("Voie")Voie voie);
+
+    @Query("SELECT l FROM Longueur l where l.voie.secteur.id = :idSecteur")
+    List<Longueur> getLongueursByIdSecteur(@Param("idSecteur") Long idSecteur);
 }

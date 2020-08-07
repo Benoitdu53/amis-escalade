@@ -98,12 +98,12 @@
 
                         <h4><c:out value="${commentaire.titre}"/></h4>
                         <h5><c:out value="${commentaire.dateCommentaire}"/></h5>
+                        <p><small><c:out value="${commentaire.utilisateur.pseudo}"/></small></p>
                         <c:if test="${not empty sessionScope.isMembre == true}">
-                            <p><a href="<c:url value="/site/${site.id}/secteur/modifier/commentaire"/>"class="button2">Modifier le commentaire</a></p>
-                            <p><a href="<c:url value="/site/${site.id}/secteur/delete/commentaire"/>"class="button3">Supprime le commentaire</a></p>
+                            <p><a href="<c:url value="/commentaire/modifier/${commentaire.id}"/>"class="button4">Modifier le commentaire</a></p>
+                            <p><a href="<c:url value="/commentaire/delete/${commentaire.id}"/>"class="button3">Supprime le commentaire</a></p>
                         </c:if>
                         <p><small>
-                            <c:out value="${commentaire.utilisateur.pseudo}"/>
                             <br>
                             <h4><c:out value="${commentaire.commentaire}"/></h4>
                         </small></p>

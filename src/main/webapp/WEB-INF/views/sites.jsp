@@ -3,10 +3,14 @@
     <%@ include file="rechercheSite.jsp"%>
 
 <body>
-<div class="navbarSites">
-    <p><a href="<c:url value="/formSite"/> ">Ajouter un site</a></p>
-</div>
 
+<c:if test="${ not empty sessionScope.pseudo}">
+    <div class="navbarSites">
+        <p><a href="<c:url value="/formSite"/> " class="button2">Ajouter un site</a></p>
+    </div>
+</c:if>
+
+        <%--Affichage des sites--%>
 
 <c:forEach var="sites" items="${sites}">
     <section id="sitesSection">

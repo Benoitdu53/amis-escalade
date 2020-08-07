@@ -17,7 +17,6 @@
         <ul>
             <c:if test="${empty sessionScope.pseudo}">
                 <li><a href="<c:url value="/sites"/>">Tout les sites</a></li>
-                <li><a href="<c:url value="/utilisateurs"/>">Gestion des utilisateurs</a></li>
                 <li><a href="<c:url value="/loginUtilisateur"/>">S'authentifier</a></li>
                 <li><a href="<c:url value="/formUtilisateur"/>">S'inscrire</a></li>
             </c:if>
@@ -25,7 +24,6 @@
 
                 <li><a href="<c:url value="/sites"/>">Tout les sites</a></li>
                 <li><a href="<c:url value="/topos"/>">Topos</a></li>
-                <li><a href="<c:url value="/utilisateurs"/>">Gestion des utilisateurs</a></li>
                 <li><a href="<c:url value="/profil"/>">Mon profil</a></li>
                 <li><a href="<c:url value="/deconnexion"/>">Se déconnecter</a></li>
 

@@ -64,25 +64,25 @@ public class CommentaireController {
 
     /**
      *          Supprimer un commentaire
-     * @param idSite
+     * @param idCommentaire
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/delete/commentaire",method = RequestMethod.GET)
-    public RedirectView deleteCommentaire(@PathVariable("idSite") Long idSite){
+    @RequestMapping(value = "/commentaire/delete/{idCommentaire}",method = RequestMethod.GET)
+    public RedirectView deleteCommentaire(@PathVariable("idCommentaire") Long idCommentaire){
 
-        commentaireService.deleteCommentaire(idSite);
+        commentaireService.deleteCommentaire(idCommentaire);
 
         return new RedirectView("/site/{idSite}");
     }
 
-    @RequestMapping(value = "/site/{idSite}/secteur/modifier/commentaire", method = RequestMethod.GET)
-    public ModelAndView modifierCommentaire(@PathVariable("idSite")Long idSite,
+    @RequestMapping(value = "/commentaire/modifier/{idCommentaire}", method = RequestMethod.GET)
+    public ModelAndView modifierCommentaire(@PathVariable("idCommentaire")Long idCommentaire,
                                             Model model,
                                             HttpSession session){
-        model.addAttribute("commentaire",commentaireService.getCommentaireBySite(idSite));
+        model.addAttribute("commentaire",commentaireService.getCommentaireById(idCommentaire));
 
         ModelAndView modelAndView =new ModelAndView ("addCommentaire","commentaire",new Commentaire());
-        modelAndView.addObject("idSite",idSite);
+        modelAndView.addObject("idCommentaire",idCommentaire);
 
         return modelAndView;
     }

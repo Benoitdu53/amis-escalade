@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class Commentaire implements Serializable {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 

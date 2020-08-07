@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Voie;
+import com.escalade.service.contract.LongueurService;
 import com.escalade.service.contract.SecteurService;
 import com.escalade.service.contract.VoieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,9 @@ public class VoieController
         this.voieService = voieService;
     }
 
+    @Autowired
+    private LongueurService longueurService;
+
 
 
 
@@ -46,6 +50,7 @@ public class VoieController
 
         model.addAttribute("secteur", secteurService.getSectorById(idSecteur));
         model.addAttribute("voies", voieService.getVoieBySecteurId(idSecteur));
+        model.addAttribute("longueurs", longueurService.getLongueursByIdSecteur(idSecteur));
 
         return "/voie";
     }
@@ -111,4 +116,5 @@ public class VoieController
 
         return new RedirectView("/sites");
     }
+
 }

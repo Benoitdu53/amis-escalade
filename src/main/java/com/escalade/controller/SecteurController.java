@@ -4,7 +4,6 @@ import com.escalade.model.Secteur;
 import com.escalade.service.contract.CommentaireService;
 import com.escalade.service.contract.SecteurService;
 import com.escalade.service.contract.SiteService;
-import com.escalade.service.contract.VoieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -95,7 +94,7 @@ public class SecteurController {
     public String displaySecteur (Model model, @PathVariable("idSite") Long id,
                                   HttpSession session){
 
-        model.addAttribute("commentaire", commentaireService.getCommentaireBySite(id));
+        model.addAttribute("commentaire", commentaireService.getCommentaireById(id));
         model.addAttribute("secteurs", secteurService.getSectorByIdSite(id));
         model.addAttribute("site", siteService.getSiteById(id));
 
