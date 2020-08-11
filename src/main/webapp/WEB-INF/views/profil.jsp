@@ -1,3 +1,5 @@
+
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@include file="header.jsp"%>
 
@@ -97,8 +99,6 @@
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date</th>
-                    <th>Pseudo du propriétaire</th>
-                    <th>Mail du propriétaire</th>
             </tr>
 
 
@@ -113,8 +113,8 @@
                     <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>" class="button3">Annuler la réservation</a></td>
                     </c:if>
                     <c:if test="${demandeEnvoye.status == 'En location'}">
-                        <td><c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
-                        <td><c:out value="${demandeEnvoye.topos.utilisateur.mail}"/></td>
+                        <td>Pseudo du propriétaire : <c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                        <td>Mail du propriétaire : <c:out value="${demandeEnvoye.topos.utilisateur.mail}"/></td>
                     </c:if>
                 </tr>
                 <br>

@@ -13,4 +13,7 @@ public interface CommentaireDao extends CrudRepository<Commentaire,Long> {
 
     @Query("SELECT c FROM Commentaire c WHERE c.site.id = :id")
     List<Commentaire> getCommentaireBySite(@Param("id")Long id);
+
+    @Query("SELECT c FROM Commentaire c WHERE c.id = :idCommentaire")
+    Commentaire getCommentaireById(@Param("idCommentaire") Long id);
 }

@@ -1,6 +1,3 @@
-<%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <!-- Formulaire de critère de recherche des sites -->
@@ -42,4 +39,6 @@
             <input class="button2" type="submit" value="Rechecher"/>
         </form:form>
     </div>
+
+    <div class="clear"></div>
 </section>

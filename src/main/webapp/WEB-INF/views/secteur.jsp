@@ -72,7 +72,7 @@
         </div>
     </section>
 
-    <div class="clear"></div>
+                <div class="clear"></div>
 
                 <%-- Affichage des commentaires du site --%>
         <div class="titre">
@@ -84,33 +84,36 @@
                 <p><a href="<c:url value="/site/${site.id}/add/commentaire"/>"class="button4">Ajouter un commentaire</a></p>
             </c:if>
         </div>
-        <br>
 
-    <section id="commentaires">
-        <c:forEach var="commentaire" items="${commentaire}">
+                <br><br>
 
-            <div id="commentaire">
-                <c:if test="${empty commentaire.titre}">
-                        <h4>Pas de commentaire</h4>
-                </c:if>
+                <section id="commentaires">
+                    <c:forEach var="commentaire" items="${commentaire}">
 
-                <c:if test="${not empty commentaire}">
-
-                        <h4><c:out value="${commentaire.titre}"/></h4>
-                        <h5><c:out value="${commentaire.dateCommentaire}"/></h5>
-                        <p><small><c:out value="${commentaire.utilisateur.pseudo}"/></small></p>
-                        <c:if test="${not empty sessionScope.isMembre == true}">
-                            <p><a href="<c:url value="/commentaire/modifier/${commentaire.id}"/>"class="button4">Modifier le commentaire</a></p>
-                            <p><a href="<c:url value="/commentaire/delete/${commentaire.id}"/>"class="button3">Supprime le commentaire</a></p>
+                        <div id="commentaire">
+                        <c:if test="${empty commentaire.titre}">
+                            <h4>Pas de commentaire</h4>
                         </c:if>
-                        <p><small>
-                            <br>
-                            <h4><c:out value="${commentaire.commentaire}"/></h4>
-                        </small></p>
-            </div>
-            </c:if>
-        </c:forEach>
-    </section>
+
+                        <c:if test="${not empty commentaire}">
+
+                            <h4><c:out value="${commentaire.titre}"/></h4>
+                            <h5><c:out value="${commentaire.dateCommentaire}"/></h5>
+                            <h5><small><c:out value="${commentaire.utilisateur.pseudo}"/></small></h5>
+                            <c:if test="${not empty sessionScope.isMembre == true}">
+                                <p><a href="<c:url value="/commentaire/modifier/${commentaire.id}"/>"class="button4">Modifier le commentaire</a></p>
+                                <p><a href="<c:url value="/commentaire/delete/${commentaire.id}"/>"class="button3">Supprime le commentaire</a></p>
+                            </c:if>
+                            <p><small>
+                                <br>
+                                <h4><c:out value="${commentaire.commentaire}"/></h4>
+                            </small></p>
+                        </c:if>
+                        </div>
+                    </c:forEach>
+                </section>
+
+        <br>
 
 </body>
 

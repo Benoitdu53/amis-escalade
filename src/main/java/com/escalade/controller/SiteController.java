@@ -112,7 +112,7 @@ public class SiteController {
 
 
     /**
-     *              Supprime une voie
+     *              Supprime un site
      * @return
      */
     @RequestMapping(value = "/site/{idSite}/delete", method = RequestMethod.GET)
@@ -124,6 +124,15 @@ public class SiteController {
         return new RedirectView("/sites");
     }
 
+
+
+
+    /**
+     *          Tague un site
+     * @param idSite
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/taguerSite/{idSite}",method = RequestMethod.GET)
     public RedirectView taguerSite (@PathVariable("idSite")Long idSite,
                                     HttpSession session){
@@ -134,6 +143,14 @@ public class SiteController {
     }
 
 
+
+
+    /**
+     *          Supprimer le tague d'un site
+     * @param idSite
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/deleteTagueSite/{idSite}",method = RequestMethod.GET)
     public RedirectView deleteTagueSite (@PathVariable("idSite")Long idSite,
                                          HttpSession session){

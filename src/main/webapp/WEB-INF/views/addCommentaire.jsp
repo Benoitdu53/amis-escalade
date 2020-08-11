@@ -7,6 +7,8 @@
         <h3>Ajouter un commentaire</h3>
     </div>
 
+    <div class="clear"></div>
+
     <div class="formulaire">
     <%--@elvariable id="commentaire" type="com.escalade.model.Commentaire"--%>
     <form:form id="formulaireCommentaire" method="post" action="/addCommentaire/${idSite}" modelAttribute="commentaire">
@@ -14,14 +16,14 @@
             <div class="titre">
                 <tr>
                     <td><form:label id="titre" class="col-md-3 control-label" path="titre">Titre du commentaire</form:label></td>
-                    <td><form:input path="titre" required="required" value="${commentaire.titre}"/></td>
+                    <td><form:input path="titre" required="required"/></td>
                 </tr>
             </div>
 
             <div class="commentaire">
                 <tr>
                     <td><form:label id="commentaire" class="col-md-3 control-label" path="commentaire">Commentaire</form:label></td>
-                    <td><form:textarea rows="5" cols="35" path="commentaire" required="required" />${commentaire.commentaire}</td>
+                    <td><form:textarea rows="5" cols="35" path="commentaire" required="required"/></td>
                 </tr>
             </div>
 

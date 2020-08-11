@@ -87,16 +87,16 @@ public class SecteurController {
     /**
      *              Affiche les secteurs d'un site
      * @param model
-     * @param id
+     * @param idSite
      * @return
      */
     @RequestMapping(value = "/site/{idSite}", method = RequestMethod.GET)
-    public String displaySecteur (Model model, @PathVariable("idSite") Long id,
+    public String displaySecteur (Model model, @PathVariable("idSite") Long idSite,
                                   HttpSession session){
 
-        model.addAttribute("commentaire", commentaireService.getCommentaireById(id));
-        model.addAttribute("secteurs", secteurService.getSectorByIdSite(id));
-        model.addAttribute("site", siteService.getSiteById(id));
+        model.addAttribute("commentaire", commentaireService.getCommentaireBySiteId(idSite));
+        model.addAttribute("secteurs", secteurService.getSectorByIdSite(idSite));
+        model.addAttribute("site", siteService.getSiteById(idSite));
 
         return "/secteur";
     }

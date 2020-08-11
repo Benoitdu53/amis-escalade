@@ -35,9 +35,23 @@ public class CommentaireServiceImpl implements CommentaireService {
      * @return
      */
     @Override
-    public List<Commentaire> getCommentaireById(final Long idCommentaire)
+    public List<Commentaire> getCommentaireBySiteId(final Long idCommentaire)
     {
         return commentaireDao.getCommentaireBySite(idCommentaire);
+    }
+
+
+
+
+    /**
+     *          Récupère un commentaire par son id
+     * @param idCommentaire
+     * @return
+     */
+    @Override
+    public Commentaire getCommentaireById(final Long idCommentaire)
+    {
+        return commentaireDao.getCommentaireById(idCommentaire);
     }
 
 
@@ -72,4 +86,6 @@ public class CommentaireServiceImpl implements CommentaireService {
 
         commentaireDao.deleteById(idSite);
     }
+
+
 }

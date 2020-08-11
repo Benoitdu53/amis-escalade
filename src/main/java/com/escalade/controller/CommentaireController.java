@@ -75,6 +75,16 @@ public class CommentaireController {
         return new RedirectView("/site/{idSite}");
     }
 
+
+
+
+    /**
+     *          Modifier un commentaire
+     * @param idCommentaire
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/commentaire/modifier/{idCommentaire}", method = RequestMethod.GET)
     public ModelAndView modifierCommentaire(@PathVariable("idCommentaire")Long idCommentaire,
                                             Model model,
