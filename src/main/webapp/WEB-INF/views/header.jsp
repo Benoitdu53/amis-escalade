@@ -14,25 +14,26 @@
 <header>
     <h1>Les amis de l'escalade</h1>
     <nav>
+<%--            Si utilisateur non connecté affiché : --%>
         <ul>
             <c:if test="${empty sessionScope.pseudo}">
                 <li><a href="<c:url value="/sites"/>">Tout les sites</a></li>
                 <li><a href="<c:url value="/loginUtilisateur"/>">S'authentifier</a></li>
                 <li><a href="<c:url value="/formUtilisateur"/>">S'inscrire</a></li>
             </c:if>
-            <c:if test="${ not empty sessionScope.pseudo}">
 
+<%--            Si utilisateur connecté affiché : --%>
+            <c:if test="${ not empty sessionScope.pseudo}">
                 <li><a href="<c:url value="/sites"/>">Tout les sites</a></li>
                 <li><a href="<c:url value="/topos"/>">Topos</a></li>
                 <li><a href="<c:url value="/profil"/>">Mon profil</a></li>
                 <li><a href="<c:url value="/deconnexion"/>">Se déconnecter</a></li>
-
             </c:if>
-
         </ul>
     </nav>
 </header>
 
+<%-- Image du header --%>
 <section id="main-image">
     <div class="wrapper">
         <h2><strong>Site d'escalade <br>en France</strong></h2>

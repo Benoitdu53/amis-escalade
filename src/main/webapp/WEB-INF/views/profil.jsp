@@ -1,17 +1,15 @@
-
+<%@ page contentType="text/html;charset=UTF-8" %>
 
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@include file="header.jsp"%>
 
-
-        <%--    On affiche le profil de l'utilisateur--%>
-        <%--    Avec l'adresse mail et le pseudo + ses topos et ses demandes en cours--%>
     <body>
 
     <div class="navbarSites">
         <p><a href="<c:url value="/formTopos"></c:url>" class="button2">Enregistrer un topo</a></p>
     </div>
 
+    <%--    Mes topos   --%>
     <div class="idForm">
         <h3>Mes topos</h3>
     </div>
@@ -47,6 +45,7 @@
 
     <br><br>
 
+    <%--    Mes demandes de réservation topos reçu  --%>
     <div class="idForm">
         <h3>Mes demandes reçus</h3>
     </div>
@@ -87,6 +86,8 @@
 
     <br><br>
 
+
+<%--    Mes demandes de réservation expédié(s)--%>
     <div class="idForm">
         <h3>Mes demandes expedié(s)</h3>
     </div>

@@ -1,9 +1,12 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
     <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
     <%@ include file="header.jsp"%>
     <%@ include file="rechercheSite.jsp"%>
 
 <body>
 
+<%-- Si utilisateur connecté affiché "Ajouter un site"--%>
 <c:if test="${ not empty sessionScope.pseudo}">
     <div class="navbarSites">
         <p><a href="<c:url value="/formSite"/> " class="button2">Ajouter un site</a></p>
@@ -11,7 +14,6 @@
 </c:if>
 
         <%--Affichage des sites--%>
-
 <c:forEach var="sites" items="${sites}">
     <section id="sitesSection">
         <div class="wrapper">
@@ -30,6 +32,9 @@
         </div>
     </section>
 </c:forEach>
+
+<div class="clear"></div>
+
 </body>
 
 <%@include file="footer.jsp"%>

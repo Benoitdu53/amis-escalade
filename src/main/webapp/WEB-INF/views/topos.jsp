@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@include file="header.jsp"%>
 
@@ -8,7 +10,6 @@
     </div>
 
     <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
-
         <table class="topos">
             <tr>
                 <th>Nom</th>

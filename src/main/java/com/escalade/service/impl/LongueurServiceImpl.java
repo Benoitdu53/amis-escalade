@@ -77,12 +77,12 @@ public class LongueurServiceImpl implements LongueurService
 
     /**
      *      Récupère les longueurs par son idSecteur
-     * @param idSecteur
+     * @param idVoie
      * @return
      */
     @Override
-    public List<Longueur> getLongueursByIdSecteur(final Long idSecteur)
+    public List<Longueur> getLongueursByIdVoie(final Long idVoie)
     {
-        return longueurDao.getLongueursByIdSecteur(idSecteur);
+        return longueurDao.getLongueursByIdVoie(idVoie);
     }
 }

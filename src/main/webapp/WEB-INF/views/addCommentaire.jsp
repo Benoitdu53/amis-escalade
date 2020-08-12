@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@ include file="header.jsp"%>
 
@@ -23,13 +25,13 @@
             <div class="commentaire">
                 <tr>
                     <td><form:label id="commentaire" class="col-md-3 control-label" path="commentaire">Commentaire</form:label></td>
-                    <td><form:textarea rows="5" cols="35" path="commentaire" required="required"/></td>
+                    <td><form:textarea rows="5" cols="35" path="commentaire" required="required"/>toto</td>
                 </tr>
             </div>
 
             <div>
                 <tr>
-                    <td><input type="submit" value="Ajouter un commentaire" class="button2"/></td>
+                    <td><form:button type="submit" value="Ajouter un commentaire" class="button2">Ajouter un commentaire</form:button></td>
                 </tr>
             </div>
 

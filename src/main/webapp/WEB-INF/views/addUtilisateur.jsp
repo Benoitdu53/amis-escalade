@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@ include file="header.jsp"%>
 
@@ -7,6 +9,7 @@
         <h3>S'inscrire</h3>
     </div>
 
+<%--    Formulaire d'inscription utilisateur --%>
     <div class="formulaire">
     <form:form id="formulaireUtilisateur" method="post" action="/registrationUtilisateur" modelAttribute="utilisateur">
         <table>
@@ -17,12 +20,17 @@
                 </tr>
             </div>
 
+            <br>
+
             <div class="prenom">
                 <tr>
                     <td><form:label id="prenom" class="col-md-3 control-label" path="prenom">Entrez votre prénom*</form:label></td>
                     <td><form:input path="prenom" required="required"/></td>
                 </tr>
             </div>
+
+            <br>
+
             <div class="pseudo">
                 <tr>
                     <td><form:label id="pseudo" class="col-md-3 control-label" path="pseudo">Entrez votre pseudo*</form:label></td>
@@ -30,6 +38,9 @@
                     <td><span class="erreur"><c:out value="${erreurMessages['pseudoErreur']}"/></span></td>
                 </tr>
             </div>
+
+            <br>
+
             <div class="mail">
                 <tr>
                     <td><form:label id="mail" class="col-md-3 control-label" path="mail">Entrez votre mail*</form:label></td>
@@ -37,6 +48,9 @@
                     <td><span class="erreur"><c:out value="${erreurMessages['mailErreur']}"/></span></td>
                 </tr>
             </div>
+
+            <br>
+
             <div class="password">
                 <tr>
                     <td><form:label id="password" class="col-md-3 control-label" path="password">Entrez votre mot de passe*</form:label></td>
@@ -44,6 +58,8 @@
                     <td><span class="erreur"><c:out value="${erreurMessages['confirmationMdp']}"/></span></td>
                 </tr>
             </div>
+
+            <br>
 
             <div class="confirmationPassword">
                 <tr>
@@ -53,12 +69,14 @@
                 </tr>
             </div>
 
+            <br>
+
             <div>
                 <tr>
                     <td><input type="submit" value="Valider" class="button2"></td>
                 </tr>
             </div>
-            <p>* Champ obligatoire</p>
+            <p><FONT color="red">* Champ obligatoire</FONT></p>
         </table>
     </form:form>
     </div>

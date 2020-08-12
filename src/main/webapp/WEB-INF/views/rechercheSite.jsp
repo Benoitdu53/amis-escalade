@@ -40,5 +40,4 @@
         </form:form>
     </div>
 
-    <div class="clear"></div>
 </section>

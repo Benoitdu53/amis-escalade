@@ -87,16 +87,8 @@ header nav ul li a{
 /* Main image */
 
 #main-image {
-    height: 400px;
     background: url('/resources/img/montagne01.jpg') center no-repeat;
     background-size: cover;
-}
-
-#main-image h2 {
-    font-weight: normal;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 100px 0 50px 0;
 }
 
 /* Sites, secteurs, voies, longueurs */
@@ -116,10 +108,6 @@ header nav ul li a{
     background-size: cover;
 }
 
-#sitesSection article:first-child {
-    margin-left: 150px;
-    margin-right: 20px;
-}
 
 .overlay {
     background: rgba(255, 255, 255, 0.95);
@@ -162,27 +150,6 @@ article h5 {
 
 #sites {
 
-}
-
-/* Recherche de sites */
-
-#rechercheSites {
-    background-color: #efefef;
-    height: 50px;
-    width: 100%;
-    float: left;
-    margin-top: 10px;
-    padding-top: 10px;
-    text-align: center;
-    border-radius: 2px;
-}
-
-#rechercheSites select {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 8px;
-    background: #ff7a00;
-    color: #ffffff;
 }
 
 /* Footer */
@@ -237,7 +204,7 @@ footer h1 {
 
 #secteurSection {
     background: #efefef;
-    height: 200px;
+    height: 300px;
     width: 50%;
     margin-top: 50px;
     margin-right: auto;
@@ -252,6 +219,7 @@ footer h1 {
 
 #siteDetail{
     padding-top: 20px;
+    height: 100%;
 }
 
 #secteur article{
@@ -266,7 +234,7 @@ footer h1 {
 }
 
 #secteur article:first-child {
-    margin-left: 150px;
+
 }
 
 #secteur {
@@ -338,10 +306,6 @@ footer h1 {
     margin-left: 20px;
 }
 
-/*#commentaire .button2 {*/
-/*    float: right;*/
-/*}*/
-
 #commentaire p {
     float: right;
 }
@@ -349,12 +313,11 @@ footer h1 {
 /* Formulaire d'ajout */
 
 .idForm {
+    float: left;
     background-color: #007bff;
     border-radius: 5px;
     height: 50px;
     margin-top: 20px;
-    width: 80%;
-    margin-left: 100px;
     margin-bottom: 10px;
 }
 
@@ -369,13 +332,11 @@ footer h1 {
     margin-top: 80px;
     background-color: #007bff;
     border-radius: 5px;
-    width: 50%;
+    width: 450px;
     height: auto;
     padding-top: 10px;
     padding-bottom: 10px;
-    padding-left: 200px;
-    margin-left: auto;
-    margin-right: auto;
+    padding-left: 5px;
 }
 
 .formulaire input {
@@ -470,4 +431,96 @@ table #longueurs {
     text-align: left;
     background-color: #5a6268;
     color: white;
+}
+
+/* Extra small ( phones , etc... ) */
+@media only screen and (max-width: 800px){
+
+    .formulaire {
+        margin-left: 20px;
+    }
+
+    .idForm {
+        width: 100%;
+    }
+
+    #main-image {
+        height: 200px;
+    }
+
+    #main-image h2 {
+        display: none;
+    }
+
+    #image_site {
+        display: none;
+    }
+
+    #rechercheSites {
+        margin-bottom: 30px;
+        height: 30px;
+        width: 100%;
+        float: left;
+        margin-top: 10px;
+        text-align: center;
+        border-radius: 2px;
+    }
+
+    #rechercheSites select {
+        border-radius: 8px;
+        background: #ff7a00;
+        color: #ffffff;
+    }
+
+    #sitesSection article {
+        margin-top: 10px;
+    }
+
+}
+
+/* Medium devices 600px and 992px */
+@media only screen and (min-width: 800px){
+
+    .formulaire {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .idForm {
+        margin-left: 100px;
+        width: 80%;
+    }
+
+    #main-image {
+        height: 400px;
+    }
+
+    #main-image h2 {
+        font-weight: normal;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 100px 0 50px 0;
+    }
+
+    /* Recherche de sites */
+
+    #rechercheSites {
+        margin-bottom: 10px;
+        background-color: #efefef;
+        height: 50px;
+        width: 100%;
+        float: left;
+        margin-top: 10px;
+        padding-top: 10px;
+        text-align: center;
+        border-radius: 2px;
+    }
+
+    #rechercheSites select {
+        display: inline-block;
+        padding: 10px 20px;
+        border-radius: 8px;
+        background: #ff7a00;
+        color: #ffffff;
+    }
 }

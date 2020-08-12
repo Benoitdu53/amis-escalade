@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@ include file="header.jsp"%>
 
@@ -7,6 +9,7 @@
         <h3>Ajouter une voie</h3>
     </div>
 
+<%--    Formulaire d'ajout d'une voie --%>
     <div class="formulaire">
         <%--@elvariable id="voie" type="com.escalade.model.Voie"--%>
         <form:form id="formulaireVoie" method="post" modelAttribute="voie">

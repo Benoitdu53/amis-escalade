@@ -50,7 +50,6 @@ public class VoieController
 
         model.addAttribute("secteur", secteurService.getSectorById(idSecteur));
         model.addAttribute("voies", voieService.getVoieBySecteurId(idSecteur));
-        model.addAttribute("longueurs", longueurService.getLongueursByIdSecteur(idSecteur));
 
         return "/voie";
     }

@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+
 <link href="<c:url value="/resources/css/style.css"/>" rel="stylesheet">
 <%@ include file="header.jsp"%>
 
@@ -32,7 +34,8 @@
                         <img src="/resources/img/star.png" alt="Les amis de l'escalade">
                 </c:if>
                 <ul>
-                    <li><strong>Département</strong> : <c:out value="${site.departement}"/></li>
+                    <li><strong>Nom du site : </strong><c:out value="${site.nom}"/></li>
+                    <li><strong>Département : </strong><c:out value="${site.departement}"/></li>
                     <li><strong>Pays : </strong><c:out value="${site.pays}"/></li>
                     <li><strong>Cotation minimum : </strong><c:out value="${site.cotationMin}"/></li>
                     <li><strong>Cotation maximum : </strong><c:out value="${site.cotationMax}"/></li
@@ -41,6 +44,8 @@
             </div>
         </div>
     </section>
+
+    <br><br>
 
                 <%-- Affiche du titre et si User connecté affiché "Ajouter un secteur" --%>
     <div class="titre">

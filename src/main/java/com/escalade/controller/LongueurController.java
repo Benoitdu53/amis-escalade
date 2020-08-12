@@ -32,6 +32,26 @@ public class LongueurController {
 
 
     /**
+     *          Affiché les longueurs
+     * @param model
+     * @param idVoie
+     * @param session
+     * @return
+     */
+    @RequestMapping(value = "/voie/{idVoie}/longueur", method = RequestMethod.GET)
+    public String displayLongueur(Model model,
+                                  @PathVariable("idVoie") Long idVoie,
+                                  HttpSession session){
+
+        model.addAttribute("longueurs", longueurService.getLongueursByIdVoie(idVoie));
+
+        return "/longueur";
+    }
+
+
+
+
+    /**
      *              Affiche le formulaire d'ajout des longueurs
      * @param idVoie
      * @return
