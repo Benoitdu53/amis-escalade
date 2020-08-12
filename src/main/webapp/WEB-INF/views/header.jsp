@@ -17,7 +17,7 @@
 <%--            Si utilisateur non connecté affiché : --%>
         <ul>
             <c:if test="${empty sessionScope.pseudo}">
-                <li><a href="<c:url value="/sites"/>">Tout les sites</a></li>
+                <li><a href="<c:url value="/sites"/>">Tous les sites</a></li>
                 <li><a href="<c:url value="/loginUtilisateur"/>">S'authentifier</a></li>
                 <li><a href="<c:url value="/formUtilisateur"/>">S'inscrire</a></li>
             </c:if>

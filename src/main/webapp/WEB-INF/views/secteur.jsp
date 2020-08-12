@@ -103,16 +103,16 @@
                         <c:if test="${not empty commentaire}">
 
                             <h4><c:out value="${commentaire.titre}"/></h4>
-                            <h5><c:out value="${commentaire.dateCommentaire}"/></h5>
+                            <h4><c:out value="${commentaire.dateCommentaire}"/></h4>
                             <h5><small><c:out value="${commentaire.utilisateur.pseudo}"/></small></h5>
                             <c:if test="${not empty sessionScope.isMembre == true}">
                                 <p><a href="<c:url value="/commentaire/modifier/${commentaire.id}"/>"class="button4">Modifier le commentaire</a></p>
                                 <p><a href="<c:url value="/commentaire/delete/${commentaire.id}"/>"class="button3">Supprime le commentaire</a></p>
                             </c:if>
-                            <p><small>
+                            <small>
                                 <br>
                                 <h4><c:out value="${commentaire.commentaire}"/></h4>
-                            </small></p>
+                            </small>
                         </c:if>
                         </div>
                     </c:forEach>

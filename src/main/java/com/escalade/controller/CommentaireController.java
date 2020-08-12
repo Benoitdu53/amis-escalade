@@ -54,7 +54,11 @@ public class CommentaireController {
                                  @PathVariable("idSite") Long idSite,
                                  HttpSession session){
 
-        commentaireService.addCommentaire(pseudo, commentaire, idSite);
+        if(commentaire.getId() == null){
+            commentaireService.addCommentaire(pseudo, commentaire, idSite);
+        } else {
+            commentaireService.updateCommentaire(pseudo, commentaire);
+        }
 
         return new RedirectView("/site/{idSite}");
     }
@@ -89,10 +93,14 @@ public class CommentaireController {
     public ModelAndView modifierCommentaire(@PathVariable("idCommentaire")Long idCommentaire,
                                             Model model,
                                             HttpSession session){
-        model.addAttribute("commentaire",commentaireService.getCommentaireById(idCommentaire));
 
-        ModelAndView modelAndView =new ModelAndView ("addCommentaire","commentaire",new Commentaire());
+        Commentaire commentaire = commentaireService.getCommentaireById(idCommentaire);
+        model.addAttribute("commentaire",commentaire);
+
+        ModelAndView modelAndView =new ModelAndView ("addCommentaire","commentaire", commentaire);
+        Long idSite = commentaire.getSite().getId();
         modelAndView.addObject("idCommentaire",idCommentaire);
+        modelAndView.addObject("idSite",idSite);
 
         return modelAndView;
     }

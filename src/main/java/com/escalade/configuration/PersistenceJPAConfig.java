@@ -35,6 +35,7 @@ public class PersistenceJPAConfig {
     @Value("${spring.jpa.hibernate.ddl-auto}")
     private String hibernateDdl;
 
+
     /**
      *Bean entityManager, persistence des entités
      * @return
@@ -95,6 +96,7 @@ public class PersistenceJPAConfig {
         Properties properties = new Properties();
         properties.setProperty("hibernate.dialect", hibernateDialect);
         properties.setProperty("hibernate.hbm2ddl.auto", hibernateDdl);
+
         return properties;
     }
 }

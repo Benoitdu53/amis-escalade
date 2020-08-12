@@ -10,6 +10,7 @@ import com.escalade.service.contract.CommentaireService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -72,6 +73,27 @@ public class CommentaireServiceImpl implements CommentaireService {
         commentaire.setSite(site);
 
         commentaireDao.save(commentaire);
+    }
+
+
+
+
+    /**
+     *          Modifie un commentaire
+     * @param pseudo
+     * @param commentaire
+     */
+    @Override
+    public void updateCommentaire(final String pseudo, final Commentaire commentaire)
+    {
+        Commentaire commentaireUpdate = commentaireDao.getCommentaireById(commentaire.getId());
+        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
+        commentaireUpdate.setUtilisateur(utilisateur);
+        commentaireUpdate.setTitre(commentaire.getTitre());
+        commentaireUpdate.setCommentaire(commentaire.getCommentaire());
+        commentaireUpdate.setDateCommentaire(new Date());
+
+        commentaireDao.save(commentaireUpdate);
     }
 
 

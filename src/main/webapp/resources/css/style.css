@@ -103,6 +103,7 @@ header nav ul li a{
     float: left;
     border-radius: 10px;
     margin-bottom: 20px;
+    margin-right: 30px;
 
     background: url('/resources/img/montagne04.jpg') center no-repeat;
     background-size: cover;
@@ -228,7 +229,6 @@ footer h1 {
     height: 200px;
     float: left;
     border-radius: 10px;
-    border: #6c757d solid 1px;
     margin-bottom: 20px;
     margin-right: 20px;
 }
@@ -276,8 +276,8 @@ footer h1 {
 }
 
 #commentaire {
+    border: 1px solid black;
     padding-left: 4px;
-
     margin-bottom: 5px;
 }
 
@@ -291,7 +291,7 @@ footer h1 {
 }
 
 #commentaire h5 {
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     padding-bottom: 20px;
     text-transform: uppercase;
 }
@@ -523,4 +523,5 @@ table #longueurs {
         background: #ff7a00;
         color: #ffffff;
     }
+
 }

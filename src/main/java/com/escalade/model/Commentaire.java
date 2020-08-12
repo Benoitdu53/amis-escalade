@@ -2,6 +2,7 @@ package com.escalade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "commentaire")
@@ -18,8 +19,9 @@ public class Commentaire implements Serializable {
     @Column(name = "commentaire")
     private String commentaire;
 
-    @Column(name = "date_commentaire")
-    private String dateCommentaire;
+    @Column(name = "date_commentaire", columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCommentaire = new Date();
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
@@ -42,12 +44,12 @@ public class Commentaire implements Serializable {
                 '}';
     }
 
-    public String getDateCommentaire()
+    public Date getDateCommentaire()
     {
         return dateCommentaire;
     }
 
-    public void setDateCommentaire(final String dateCommentaire)
+    public void setDateCommentaire(final Date dateCommentaire)
     {
         this.dateCommentaire = dateCommentaire;
     }
