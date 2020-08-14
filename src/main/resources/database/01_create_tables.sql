@@ -1,3 +1,9 @@
+create table hibernate_sequence
+(
+    next_val bigint null
+)
+    engine = MyISAM;
+
 create table utilisateur
 (
     id               int auto_increment
@@ -14,15 +20,33 @@ create table site
 (
     id             int auto_increment
         primary key,
-    nom            varchar(50)   not null,
-    departement    varchar(50)   not null,
-    pays           varchar(32)   not null,
-    cotation_min   varchar(10)   not null,
-    cotation_max   varchar(10)   not null,
-    description    varchar(1000) null,
-    type           varchar(20)   not null,
-    id_utilisateur int           null,
+    nom            varchar(50)          not null,
+    departement    varchar(50)          not null,
+    pays           varchar(32)          not null,
+    cotation_min   varchar(10)          not null,
+    cotation_max   varchar(10)          not null,
+    description    varchar(1000)        null,
+    type           varchar(20)          not null,
+    id_utilisateur int                  null,
+    tague          tinyint(1) default 0 not null,
     constraint site_utilisateur_fk
+        foreign key (id_utilisateur) references utilisateur (id)
+);
+
+create table commentaire
+(
+    id               int auto_increment
+        primary key,
+    titre            varchar(50)                        not null,
+    commentaire      varchar(10000)                     not null,
+    id_utilisateur   int                                not null,
+    id_site          int                                not null,
+    date_commentaire datetime default CURRENT_TIMESTAMP null,
+    constraint commentaire_topos_fk
+        foreign key (id_site) references utilisateur (id),
+    constraint FKkgndecm5i0gjb9q0vr7c7qpir
+        foreign key (id_site) references site (id),
+    constraint commentaire_utilisateur_fk
         foreign key (id_utilisateur) references utilisateur (id)
 );
 
@@ -44,12 +68,12 @@ create table topos
 (
     id             int auto_increment
         primary key,
-    nom            varchar(50)   not null,
-    description    varchar(1000) not null,
-    lieu           varchar(50)   not null,
-    is_reserve     tinyint(1)    null,
-    date           date          not null,
-    id_utilisateur int           not null,
+    nom            varchar(50)          not null,
+    description    varchar(1000)        not null,
+    lieu           varchar(50)          not null,
+    is_reserve     tinyint(1) default 0 not null,
+    date           date                 not null,
+    id_utilisateur int                  not null,
     constraint membre_topos_fk
         foreign key (id_utilisateur) references utilisateur (id)
 );
@@ -59,7 +83,7 @@ create table reservation
     id               int auto_increment
         primary key,
     status           varchar(50)                         not null,
-    date_reservation timestamp default CURRENT_TIMESTAMP not null,
+    date_reservation timestamp default CURRENT_TIMESTAMP null,
     id_utilisateur   int                                 not null,
     id_topos         int                                 not null,
     constraint FK3kt9mawec4sqdm8j6830e8yp9

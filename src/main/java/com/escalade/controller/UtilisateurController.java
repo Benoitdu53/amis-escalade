@@ -60,7 +60,7 @@ public class UtilisateurController
 
             if (erreurMessage.size() != 0){
                 modelMap.addAttribute("erreurMessages", erreurMessage);
-                return "addUtilisateur";
+                return new RedirectView("/addUtilisateur");
             }else {
                 utilisateurService.registrationUtilisateur(newUtilisateur);
                 return new RedirectView("/sites");
@@ -97,7 +97,7 @@ public class UtilisateurController
 
         if (utilisateur ==null){
 
-            return "/utilisateurs";
+            return new RedirectView("/utilisateurs");
         }
 
         session.setAttribute("pseudo", pseudo);

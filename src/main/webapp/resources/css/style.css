@@ -379,6 +379,10 @@ table .topos {
 
 }
 
+#topos tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
 /* Voies et longueurs d'un secteur */
 
 table #voies {
@@ -391,10 +395,7 @@ table #voies {
     padding: 8px;
 }
 
-#topos tr:nth-child(even){
-    background-color: #f2f2f2;
-}
-
+/* Voies */
 #voies tr:hover {
     background-color: #ddd;
 }
@@ -478,7 +479,7 @@ table #longueurs {
 
 }
 
-/* Medium devices 600px and 992px */
+
 @media only screen and (min-width: 800px){
 
     .formulaire {
