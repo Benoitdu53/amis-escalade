@@ -11,6 +11,7 @@
     <link href="<c:url value="/resources/css/style.css">"</c:url> rel="stylesheet">
     <link href="https://fr.allfont.net/allfont.css?fonts=crete-round" rel="stylesheet" type="text/css" />
 </head>
+
 <header>
     <h1>Les amis de l'escalade</h1>
     <nav>
