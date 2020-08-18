@@ -18,7 +18,7 @@ public interface ReservationDao extends CrudRepository<Reservation, Long> {
     @Query("SELECT r FROM Reservation r WHERE r.topos.utilisateur.pseudo = :pseudo")
     List<Reservation> getReservationsRecus(@Param("pseudo") String pseudo);
 
-    @Query("SELECT r FROM Reservation r WHERE r.topos.utilisateur.pseudo NOT LIKE :pseudo")
+    @Query("SELECT r FROM Reservation r WHERE r.utilisateur.pseudo = :pseudo")
     List<Reservation> getReservationExpedies(@Param("pseudo") String pseudo);
 
     @Transactional
