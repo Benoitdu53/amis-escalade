@@ -37,8 +37,8 @@ public class ReservationServiceImpl implements ReservationService {
         Reservation reservation= new Reservation();
         String status = "En attente de reponse";
 
-        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         Topos topos = toposDao.getToposById(idToposDispo);
+        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
 
         toposDao.updateToposTrue(topos);
 
@@ -55,11 +55,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     /**
      *          Récupérer les demandes de réservation Topos reçus
+     *
      * @param pseudo
      * @return
      */
     @Override
-    public List<Reservation> getDemandeReçus(final String pseudo)
+    public List<Reservation> getDemandeReçus(String pseudo)
     {
         return reservationDao.getReservationsRecus(pseudo);
     }
@@ -69,11 +70,12 @@ public class ReservationServiceImpl implements ReservationService {
 
     /**
      *          Récupérer les demandes de réservation Topos expédiés
+     *
      * @param pseudo
      * @return
      */
     @Override
-    public List<Reservation> getDemandeExpedie(final String pseudo)
+    public List<Reservation> getDemandeExpedie( String pseudo)
     {
         return reservationDao.getReservationExpedies(pseudo);
     }

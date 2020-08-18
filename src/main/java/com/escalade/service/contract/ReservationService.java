@@ -1,7 +1,7 @@
 package com.escalade.service.contract;
 
 import com.escalade.model.Reservation;
-import com.escalade.model.Topos;
+import com.escalade.model.Utilisateur;
 
 import java.util.List;
 

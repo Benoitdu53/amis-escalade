@@ -1,5 +1,6 @@
 package com.escalade.controller;
 
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.ToposService;
 import com.escalade.service.contract.UtilisateurService;
@@ -32,7 +33,7 @@ public class ProfilController
 
 
     /**
-     *          On affiche le profil de l'utilisateur avec ses informations (pseudo, mail, topos et demande de réservation)
+     *          On affiche le profil de l'utilisateur avec ses informations (utilisateur, mail, topos et demande de réservation)
      * @param pseudo
      * @param session
      * @param model

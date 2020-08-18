@@ -16,7 +16,7 @@
     <h3>Voies</h3>
 </div>
 
-<br>
+<div class="clear"></div>
 
 <!-- Tableau des voies -->
 <table id="voies">

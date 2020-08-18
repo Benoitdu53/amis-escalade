@@ -92,6 +92,8 @@
         <h3>Mes demandes expedié(s)</h3>
     </div>
 
+    <div class="clear"></div>
+
     <div class="DemandeEnvoye">
         <table class="topos">
             <tr>
@@ -101,7 +103,6 @@
                 <th>Lieu</th>
                 <th>Date</th>
             </tr>
-
 
             <c:forEach var="demandeEnvoye" items="${demandeEnvoye}">
                 <tr>
@@ -114,7 +115,7 @@
                     <td><a href="<c:url value="/deleteReservation/${demandeEnvoye.id}/${demandeEnvoye.topos.id}"/>" class="button3">Annuler la réservation</a></td>
                     </c:if>
                     <c:if test="${demandeEnvoye.status == 'En location'}">
-                        <td>Pseudo du propriétaire : <c:out value="${demandeEnvoye.topos.utilisateur.pseudo}"/></td>
+                        <td>Pseudo du propriétaire : <c:out value="${demandeEnvoye.topos.utilisateur.nom}"/> <c:out value="${demandeEnvoye.topos.utilisateur.prenom}"/></td>
                         <td>Mail du propriétaire : <c:out value="${demandeEnvoye.topos.utilisateur.mail}"/></td>
                     </c:if>
                 </tr>

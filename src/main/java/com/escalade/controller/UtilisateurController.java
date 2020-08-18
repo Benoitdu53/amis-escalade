@@ -4,13 +4,12 @@ import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.UtilisateurService;
 import com.escalade.service.contract.ValidationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -52,15 +51,16 @@ public class UtilisateurController
      */
     @RequestMapping(value = "/registrationUtilisateur", method = RequestMethod.POST)
     public Object addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
+                                  @RequestParam(name = "confirmationPassword", required = false) String confirmationPassword,
                                   ModelMap modelMap){
 
         Map<String,String> erreurMessage;
 
-        erreurMessage = validationService.validationUtilisateurRegistration(newUtilisateur);
+        erreurMessage = validationService.validationUtilisateurRegistration(newUtilisateur, confirmationPassword);
 
             if (erreurMessage.size() != 0){
                 modelMap.addAttribute("erreurMessages", erreurMessage);
-                return new RedirectView("/addUtilisateur");
+                return "addUtilisateur";
             }else {
                 utilisateurService.registrationUtilisateur(newUtilisateur);
                 return new RedirectView("/sites");
@@ -84,24 +84,24 @@ public class UtilisateurController
 
     /**
      *          Contrôle la validiter du login
-     * @param pseudo
-     * @param password
      * @return
      */
     @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
-    public Object validateLogin(HttpSession session,
-                                @Param("pseudo") String pseudo,
-                                @Param("password") String password){
+    public Object validateLogin(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
+                                HttpSession session,
+                                ModelMap modelMap){
 
-        Utilisateur utilisateur = utilisateurService.loginUtilisateur(pseudo,password);
+
+        utilisateur = utilisateurService.loginUtilisateur(utilisateur);
 
         if (utilisateur ==null){
-
-            return new RedirectView("/utilisateurs");
+            String erreurMessage= " Le login ou le mot de passe est incorrect";
+            modelMap.addAttribute("erreurMessage",erreurMessage);
+            return "loginUtilisateur";
         }
 
+        String pseudo = utilisateur.getPseudo();
         session.setAttribute("pseudo", pseudo);
-        session.setAttribute("isMembre", utilisateur.getMembreOfficiel());
 
         return new RedirectView("/sites");
     }

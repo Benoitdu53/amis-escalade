@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Longueur;
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.LongueurService;
 import com.escalade.service.contract.VoieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,10 +81,10 @@ public class LongueurController {
     @RequestMapping(value = "/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
     public Object addLongueur (@Valid @ModelAttribute("longueur") Longueur newLongueur, BindingResult result,
                                @PathVariable("idVoie") Long idVoie,
-                               @SessionAttribute("pseudo") String pseudo,
+                               @SessionAttribute("utilisateur") Utilisateur utilisateur,
                                HttpSession session){
 
-        longueurService.insertLongueur(newLongueur, idVoie, pseudo);
+        longueurService.insertLongueur(newLongueur, idVoie, utilisateur);
 
         return new RedirectView("/sites");
     }

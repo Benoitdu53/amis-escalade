@@ -4,6 +4,7 @@ import com.escalade.dao.UtilisateurDao;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.UtilisateurService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -80,6 +81,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public void registrationUtilisateur( Utilisateur newUtilisateur)
     {
+        String pass = BCrypt.hashpw(newUtilisateur.getPassword(),BCrypt.gensalt());
+        newUtilisateur.setPassword(pass);
         utilisateurDao.save(newUtilisateur);
     }
 
@@ -101,21 +104,24 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
     /**
      *          Méthode qui récupère les données login
-     * @param pseudo
-     * @param password
-     * @return
+     *
+     * @param utilisateur@return
      */
     @Override
-    public Utilisateur loginUtilisateur(String pseudo, String password)
+    public Utilisateur loginUtilisateur(Utilisateur utilisateur)
     {
 
-        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
+        Utilisateur utilisateurRegistred = utilisateurDao.getUtilisateurByPseudo(utilisateur.getPseudo());
 
-        if (utilisateur != null)
+        if (utilisateurRegistred == null){
+            utilisateur=null;
+        }
+
+        if (utilisateurRegistred != null)
         {
-            String pass = utilisateur.getPassword();
-            if (!pass.equals(password)) {
-                // TODO pseudo ou mot de passe incorrect
+            String password = utilisateur.getPassword();
+            String pass = utilisateurRegistred.getPassword();
+            if (!BCrypt.checkpw(password,pass)) {
                 utilisateur =null;
             }
         }

@@ -9,6 +9,8 @@
         <h3>Topos disponible(s)</h3>
     </div>
 
+    <div class="clear"></div>
+
     <%--        On affiche tout les topos disponibles non possédés par l'utilisateur--%>
         <table class="topos">
             <tr>
@@ -16,7 +18,6 @@
                 <th>Description</th>
                 <th>Lieu</th>
                 <th>Date de création</th>
-                <th>Propriétaire</th>
             </tr>
 
             <c:forEach var="toposDispo" items="${toposDispo}">
@@ -25,7 +26,6 @@
                             <td><c:out value="${toposDispo.description}"/></td>
                             <td><c:out value="${toposDispo.lieu}"/></td>
                             <td><c:out value="${toposDispo.date}"/></td>
-                            <td><c:out value="${toposDispo.utilisateur.pseudo}"/></td>
                             <td><a href="<c:url value="/reservationOn/${toposDispo.id}"/>"class="button2">Demande de réservation</a></td>
                         </tr>
                 <br>

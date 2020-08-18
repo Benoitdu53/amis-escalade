@@ -12,7 +12,7 @@ create table utilisateur
     prenom           varchar(50) not null,
     pseudo           varchar(50) not null,
     mail             varchar(50) not null,
-    password         char(40)    not null,
+    password         char(100)    not null,
     isMembreOfficiel tinyint(1)  null
 );
 

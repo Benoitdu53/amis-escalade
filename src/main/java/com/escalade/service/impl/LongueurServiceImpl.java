@@ -34,10 +34,9 @@ public class LongueurServiceImpl implements LongueurService
      * @param idVoie
      */
     @Override
-    public void insertLongueur( Longueur newLongueur, Long idVoie, String pseudo)
+    public void insertLongueur( Longueur newLongueur, Long idVoie, Utilisateur utilisateur)
     {
             Voie voie = voieService.getVoieById(idVoie);
-            Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
 
             newLongueur.setUtilisateur(utilisateur);
             newLongueur.setVoie(voie);

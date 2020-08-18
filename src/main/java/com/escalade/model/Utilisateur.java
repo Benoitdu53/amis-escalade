@@ -29,9 +29,6 @@ public class Utilisateur implements Serializable
     @Column(name = "password")
     private String password;
 
-    @Transient
-    private String confirmationPassword;
-
     @Column(name="isMembreOfficiel")
     private Boolean isMembreOfficiel;
 
@@ -53,64 +50,9 @@ public class Utilisateur implements Serializable
     @OneToMany(mappedBy = "utilisateur", fetch = FetchType.EAGER)
     private List<Topos> topos =new ArrayList<>();
 
-    public List<Topos> getTopos() {
-        return topos;
-    }
-
-    public void setTopos(List<Topos> topos) {
-        this.topos = topos;
-    }
-
-    public Boolean getMembreOfficiel() {
-        return isMembreOfficiel;
-    }
-
-    public void setMembreOfficiel(Boolean membreOfficiel) {
-        isMembreOfficiel = membreOfficiel;
-    }
-
-    public List<Site> getSiteList() {
-        return siteList;
-    }
-
-    public void setSiteList(List<Site> siteList) {
-        this.siteList = siteList;
-    }
-
-    public List<Secteur> getSecteurList() {
-        return secteurList;
-    }
-
-    public void setSecteurList(List<Secteur> secteurList) {
-        this.secteurList = secteurList;
-    }
-
-    public List<Voie> getVoieList() {
-        return voieList;
-    }
-
-    public void setVoieList(List<Voie> voieList) {
-        this.voieList = voieList;
-    }
-
-    public List<Longueur> getLongueurList() {
-        return longueurList;
-    }
-
-    public void setLongueurList(List<Longueur> longueurList) {
-        this.longueurList = longueurList;
-    }
-
-    public List<Reservation> getReservationList() {
-        return reservationList;
-    }
-
-    public void setReservationList(List<Reservation> reservationList) {
-        this.reservationList = reservationList;
-    }
-
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Utilisateur{" +
                 "id=" + id +
                 ", nom='" + nom + '\'' +
@@ -118,7 +60,6 @@ public class Utilisateur implements Serializable
                 ", pseudo='" + pseudo + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
-                ", confirmationPassword='" + confirmationPassword + '\'' +
                 ", isMembreOfficiel=" + isMembreOfficiel +
                 ", siteList=" + siteList +
                 ", secteurList=" + secteurList +
@@ -127,16 +68,6 @@ public class Utilisateur implements Serializable
                 ", reservationList=" + reservationList +
                 ", topos=" + topos +
                 '}';
-    }
-
-    public String getConfirmationPassword()
-    {
-        return confirmationPassword;
-    }
-
-    public void setConfirmationPassword(final String confirmationPassword)
-    {
-        this.confirmationPassword = confirmationPassword;
     }
 
     public Long getId()
@@ -199,13 +130,73 @@ public class Utilisateur implements Serializable
         this.password = password;
     }
 
-    public Boolean getIsMembreOfficiel()
+    public Boolean getMembreOfficiel()
     {
         return isMembreOfficiel;
     }
 
-    public void setIsMembreOfficiel(final Boolean membreOfficiel)
+    public void setMembreOfficiel(final Boolean membreOfficiel)
     {
         isMembreOfficiel = membreOfficiel;
+    }
+
+    public List<Site> getSiteList()
+    {
+        return siteList;
+    }
+
+    public void setSiteList(final List<Site> siteList)
+    {
+        this.siteList = siteList;
+    }
+
+    public List<Secteur> getSecteurList()
+    {
+        return secteurList;
+    }
+
+    public void setSecteurList(final List<Secteur> secteurList)
+    {
+        this.secteurList = secteurList;
+    }
+
+    public List<Voie> getVoieList()
+    {
+        return voieList;
+    }
+
+    public void setVoieList(final List<Voie> voieList)
+    {
+        this.voieList = voieList;
+    }
+
+    public List<Longueur> getLongueurList()
+    {
+        return longueurList;
+    }
+
+    public void setLongueurList(final List<Longueur> longueurList)
+    {
+        this.longueurList = longueurList;
+    }
+
+    public List<Reservation> getReservationList()
+    {
+        return reservationList;
+    }
+
+    public void setReservationList(final List<Reservation> reservationList)
+    {
+        this.reservationList = reservationList;
+    }
+
+    public List<Topos> getTopos()
+    {
+        return topos;
+    }
+
+    public void setTopos(final List<Topos> topos)
+    {
+        this.topos = topos;
     }
 }

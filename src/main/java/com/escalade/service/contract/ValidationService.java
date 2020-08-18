@@ -6,5 +6,5 @@ import java.util.Map;
 
 public interface ValidationService {
 
-    Map<String,String> validationUtilisateurRegistration(Utilisateur utilisateur);
+    Map<String,String> validationUtilisateurRegistration(Utilisateur utilisateur, final String confirmationPassword);
 }

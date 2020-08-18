@@ -63,8 +63,8 @@
 
             <div class="confirmationPassword">
                 <tr>
-                    <td><form:label id="confirmationPassword" class="col-md-3 control-label" path="confirmationPassword">Confirmer le mot de passe*</form:label></td>
-                    <td><form:input path="confirmationPassword" type="password" required="required"/></td>
+                    <td><label id="confirmationPassword" class="col-md-3 control-label" path="confirmationPassword">Confirmer le mot de passe*</label></td>
+                    <td><input  name="confirmationPassword" type="password" required="required"/></td>
                     <td><span class="erreur"><c:out value="${erreurMessages['confirmationMdp']}"/></span></td>
                 </tr>
             </div>

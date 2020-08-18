@@ -2,6 +2,7 @@ package com.escalade.dao;
 
 import com.escalade.model.Reservation;
 import com.escalade.model.Topos;
+import com.escalade.model.Utilisateur;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;

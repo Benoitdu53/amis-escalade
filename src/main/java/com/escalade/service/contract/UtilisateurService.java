@@ -12,5 +12,5 @@ public interface UtilisateurService
     List<String> getAllPseudo();
     void registrationUtilisateur(Utilisateur newUtilisateur);
     void deleteUtilisateur(Long idUtilisateur);
-    Utilisateur loginUtilisateur(String pseudo, String password);
+    Utilisateur loginUtilisateur(Utilisateur utilisateur);
 }

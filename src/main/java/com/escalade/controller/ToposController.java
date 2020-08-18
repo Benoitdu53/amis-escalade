@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Topos;
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.SiteService;
 import com.escalade.service.contract.ToposService;
@@ -37,7 +38,9 @@ public class ToposController {
      * @return
      */
     @RequestMapping(value = "/topos", method = RequestMethod.GET)
-    public String displayAllTopos (@SessionAttribute("pseudo") String pseudo, HttpSession session, Model model){
+    public String displayAllTopos (@SessionAttribute("pseudo") String pseudo,
+                                   HttpSession session,
+                                   Model model){
 
         model.addAttribute("toposDispo",toposService.getToposDispos(pseudo));
 
@@ -71,7 +74,7 @@ public class ToposController {
     public Object addTopos(@Valid @ModelAttribute("topos")Topos topos,
                            @SessionAttribute("pseudo") String pseudo){
 
-        toposService.insertToposByUtilisateur(pseudo, topos);
+        toposService.insertToposByUtilisateur(topos, pseudo );
 
         return new RedirectView("/topos");
     }

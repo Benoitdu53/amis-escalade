@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Commentaire;
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.CommentaireService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,14 +51,14 @@ public class CommentaireController {
      */
     @RequestMapping(value = "/addCommentaire/{idSite}", method = RequestMethod.POST)
     public Object addCommentaire(@Valid @ModelAttribute("commentaire")Commentaire commentaire,
-                                 @SessionAttribute("pseudo") String pseudo,
+                                 @SessionAttribute("utilisateur") Utilisateur utilisateur,
                                  @PathVariable("idSite") Long idSite,
                                  HttpSession session){
 
         if(commentaire.getId() == null){
-            commentaireService.addCommentaire(pseudo, commentaire, idSite);
+            commentaireService.addCommentaire(utilisateur, commentaire, idSite);
         } else {
-            commentaireService.updateCommentaire(pseudo, commentaire);
+            commentaireService.updateCommentaire(utilisateur, commentaire);
         }
 
         return new RedirectView("/site/{idSite}");

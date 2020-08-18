@@ -23,7 +23,11 @@
             </tr>
             <br>
             <tr>
-                <td><input type="submit" value="Valider" class="button2"></td></br>
+                <td><span class="erreur"><c:out value="${erreurMessage}"/></span></td>
+            </tr>
+            <br>
+            <tr>
+                <td><form:button type="submit" value="Valider" class="button2">Validez</form:button></td></br>
             </tr>
         </form:form>
         </div>

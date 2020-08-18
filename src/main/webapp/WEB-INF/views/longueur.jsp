@@ -35,7 +35,7 @@
             <td><c:out value="${longueurs.taille}"/></td>
             <td><c:out value="${longueurs.cotation}"/></td>
             <td><c:out value="${longueurs.utilisateur.pseudo}"/></td>
-            <c:if test="${not empty sessionScope.pseudo}">
+            <c:if test="${not empty sessionScope.utilisateur}">
                 <td><a href="<c:url value="/longueur/${longueurs.id}/delete"/>">Supprimer la longueur</a></td>
             </c:if>
         </tr>

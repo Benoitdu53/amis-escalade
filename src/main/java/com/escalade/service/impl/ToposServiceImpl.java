@@ -4,7 +4,6 @@ import com.escalade.dao.ReservationDao;
 import com.escalade.dao.SiteDao;
 import com.escalade.dao.ToposDao;
 import com.escalade.dao.UtilisateurDao;
-import com.escalade.model.Site;
 import com.escalade.model.Topos;
 import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.ToposService;
@@ -35,11 +34,12 @@ public class ToposServiceImpl implements ToposService
 
     /**
      *          On récupère les topos de l'utilisateur
+     *
      * @param pseudo
      * @return
      */
     @Override
-    public List<Topos> getToposByPseudo(String pseudo) {
+    public List<Topos> getToposByPseudo( String pseudo) {
         return toposDao.getToposByPseudo(pseudo);
     }
 
@@ -48,11 +48,11 @@ public class ToposServiceImpl implements ToposService
 
     /**
      *          On ajoute les topos
-     * @param pseudo
      * @param topos
+     * @param pseudo
      */
     @Override
-    public void insertToposByUtilisateur(String pseudo, Topos topos)
+    public void insertToposByUtilisateur(Topos topos, String pseudo)
     {
         Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         topos.setUtilisateur(utilisateur);

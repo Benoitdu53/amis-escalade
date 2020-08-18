@@ -25,6 +25,8 @@ public class AuthentificationFilter implements Filter
         String pseudo = (String) httpSession.getAttribute("pseudo");
         String url = httpServletRequest.getServletPath();
 
+
+
         if ((url.startsWith("/topos") || url.startsWith("/profil")) && pseudo == null){
             HttpServletResponse httpServletResponse = (HttpServletResponse) response;
             httpServletResponse.sendRedirect("loginUtilisateur");

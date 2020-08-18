@@ -12,7 +12,7 @@
         </div>
     </section>
 
-                <c:if test="${sessionScope.isMembre == true}">
+                <c:if test="${sessionScope.utilisateur.isMembreOfficiel == true}">
                     <div id="tagueSite">
                         <c:choose>
                             <c:when test="${site.tague == false}">
@@ -85,7 +85,7 @@
         </div>
         <br>
         <div class="buttonAdd">
-            <c:if test="${not empty sessionScope.pseudo}">
+            <c:if test="${not empty sessionScope.utilisateur}">
                 <p><a href="<c:url value="/site/${site.id}/add/commentaire"/>"class="button4">Ajouter un commentaire</a></p>
             </c:if>
         </div>
@@ -105,7 +105,7 @@
                             <h4><c:out value="${commentaire.titre}"/></h4>
                             <h4><c:out value="${commentaire.dateCommentaire}"/></h4>
                             <h5><small><c:out value="${commentaire.utilisateur.pseudo}"/></small></h5>
-                            <c:if test="${not empty sessionScope.isMembre == true}">
+                            <c:if test="${sessionScope.utilisateur.isMembreOfficiel == true}">
                                 <p><a href="<c:url value="/commentaire/modifier/${commentaire.id}"/>"class="button4">Modifier le commentaire</a></p>
                                 <p><a href="<c:url value="/commentaire/delete/${commentaire.id}"/>"class="button3">Supprime le commentaire</a></p>
                             </c:if>
