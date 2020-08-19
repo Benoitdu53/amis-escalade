@@ -8,12 +8,12 @@ create table utilisateur
 (
     id               int auto_increment
         primary key,
-    nom              varchar(50) not null,
-    prenom           varchar(50) not null,
-    pseudo           varchar(50) not null,
-    mail             varchar(50) not null,
-    password         char(100)    not null,
-    isMembreOfficiel tinyint(1)  null
+    nom              varchar(50)          not null,
+    prenom           varchar(50)          not null,
+    pseudo           varchar(50)          not null,
+    mail             varchar(50)          not null,
+    password         char(100)            not null,
+    isMembreOfficiel tinyint(1) default 0 null
 );
 
 create table site
@@ -41,7 +41,7 @@ create table commentaire
     commentaire      varchar(10000)                     not null,
     id_utilisateur   int                                not null,
     id_site          int                                not null,
-    date_commentaire datetime default CURRENT_TIMESTAMP null,
+    date_commentaire datetime default CURRENT_TIMESTAMP not null,
     constraint commentaire_topos_fk
         foreign key (id_site) references utilisateur (id),
     constraint FKkgndecm5i0gjb9q0vr7c7qpir
@@ -71,8 +71,8 @@ create table topos
     nom            varchar(50)          not null,
     description    varchar(1000)        not null,
     lieu           varchar(50)          not null,
-    is_reserve     tinyint(1) default 0 not null,
-    date           date                 not null,
+    is_reserve     tinyint(1) default 0 null,
+    date           varchar(50)          not null,
     id_utilisateur int                  not null,
     constraint membre_topos_fk
         foreign key (id_utilisateur) references utilisateur (id)
@@ -82,10 +82,10 @@ create table reservation
 (
     id               int auto_increment
         primary key,
-    status           varchar(50)                         not null,
-    date_reservation timestamp default CURRENT_TIMESTAMP null,
-    id_utilisateur   int                                 not null,
-    id_topos         int                                 not null,
+    status           varchar(50)                        not null,
+    date_reservation datetime default CURRENT_TIMESTAMP not null,
+    id_utilisateur   int                                not null,
+    id_topos         int                                not null,
     constraint FK3kt9mawec4sqdm8j6830e8yp9
         foreign key (id_utilisateur) references utilisateur (id),
     constraint topos_reservation_fk

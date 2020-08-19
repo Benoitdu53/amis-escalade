@@ -1,8 +1,8 @@
 package com.escalade.service.impl;
 
 import com.escalade.dao.SiteDao;
-import com.escalade.model.Secteur;
 import com.escalade.model.Site;
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -116,10 +116,12 @@ public class SiteServiceImpl implements SiteService
     /**
      *          Ajoute un site
      * @param newSite
+     * @param utilisateur
      */
     @Override
-    public void insertSite(Site newSite)
+    public void insertSite(Site newSite, final Utilisateur utilisateur)
     {
+        newSite.setUtilisateur(utilisateur);
         siteDao.save(newSite);
     }
 

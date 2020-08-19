@@ -1,6 +1,7 @@
 package com.escalade.controller;
 
 import com.escalade.model.Site;
+import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.SecteurService;
 import com.escalade.service.contract.SiteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +58,10 @@ public class SiteController {
      */
     @RequestMapping(value = "/addSite", method = RequestMethod.POST)
     public Object addSite (@Valid @ModelAttribute("site")Site newSite,
+                           @SessionAttribute("utilisateur") Utilisateur utilisateur,
                            HttpSession session){
 
-        siteService.insertSite(newSite);
+        siteService.insertSite(newSite, utilisateur);
         return new RedirectView("/sites");
 
     }

@@ -130,12 +130,12 @@ public class Utilisateur implements Serializable
         this.password = password;
     }
 
-    public Boolean getMembreOfficiel()
+    public boolean getIsMembreOfficiel()
     {
         return isMembreOfficiel;
     }
 
-    public void setMembreOfficiel(final Boolean membreOfficiel)
+    public void setIsMembreOfficiel(final Boolean membreOfficiel)
     {
         isMembreOfficiel = membreOfficiel;
     }

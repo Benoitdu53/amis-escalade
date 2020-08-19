@@ -2,6 +2,7 @@ package com.escalade.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
@@ -16,7 +17,8 @@ public class Reservation implements Serializable
     private String status;
 
     @Column(name = "date_reservation")
-    private String dateReservation;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateReservation = new Date();
 
     @ManyToOne
     @JoinColumn(name = "id_utilisateur")
@@ -35,11 +37,12 @@ public class Reservation implements Serializable
     }
 
     @Override
-    public String toString() {
+    public String toString()
+    {
         return "Reservation{" +
                 "id=" + id +
                 ", status='" + status + '\'' +
-                ", dateReservation='" + dateReservation + '\'' +
+                ", dateReservation=" + dateReservation +
                 ", utilisateur=" + utilisateur +
                 ", topos=" + topos +
                 '}';
@@ -65,12 +68,12 @@ public class Reservation implements Serializable
         this.status = status;
     }
 
-    public String getDateReservation()
+    public Date getDateReservation()
     {
         return dateReservation;
     }
 
-    public void setDateReservation(final String dateReservation)
+    public void setDateReservation(final Date dateReservation)
     {
         this.dateReservation = dateReservation;
     }

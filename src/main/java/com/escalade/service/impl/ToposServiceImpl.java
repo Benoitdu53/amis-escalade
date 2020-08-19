@@ -75,4 +75,31 @@ public class ToposServiceImpl implements ToposService
         return toposDao.getToposDispos(pseudo);
     }
 
+
+
+
+    /**
+     *      Mettre un topo dispo
+     * @param idTopo
+     */
+    @Override
+    public void changeDispoTopo(final Long idTopo)
+    {
+        Topos topo =toposDao.getToposById(idTopo);
+        toposDao.updateToposFalse(topo);
+    }
+
+
+
+
+    /**
+     *
+     * @param idTopo
+     */
+    @Override
+    public void deleteTopo(final Long idTopo)
+    {
+        toposDao.deleteById(idTopo);
+    }
+
 }

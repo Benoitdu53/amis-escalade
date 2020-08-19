@@ -2,9 +2,11 @@
 
 <%--Footer--%>
 <footer>
-    <div class="wrapper">
-        <h1>Les amis de l'escalade</h1>
-        <div class="copyright">Copyright © 2020. Tous droits réservés.</div>
+    <div class="container-fluid">
+        <div class="wrapper">
+            <h1>Les amis de l'escalade</h1>
+            <div class="copyright">Copyright © 2020. Tous droits réservés.</div>
+        </div>
     </div>
 </footer>
 </html>

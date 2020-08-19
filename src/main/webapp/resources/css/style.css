@@ -1,5 +1,9 @@
 /* Général */
 
+.container {
+
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,15 +18,11 @@ body {
 }
 
 footer {
+    width: 100%;
 }
 
 .erreur {
     color: red;
-}
-
-.wrapper {
-    margin: 0 auto;
-    padding: 0 10px;
 }
 
 h2 {
@@ -72,9 +72,8 @@ header h1 {
     margin-top: 32px;
 }
 
-header nav {
-    margin-top: 50px;
-    float: right;
+header nav ul {
+    padding-top: 35px;
 }
 
 header nav ul li{
@@ -112,7 +111,6 @@ header nav ul li a{
     background: url('/resources/img/montagne04.jpg') center no-repeat;
     background-size: cover;
 }
-
 
 .overlay {
     background: rgba(255, 255, 255, 0.95);
@@ -161,6 +159,7 @@ article h5 {
 
 footer {
     height: 260px;
+    width: 100%;
     background-color: #444;
     padding-top: 30px;
     margin-top: 650px;
@@ -189,6 +188,7 @@ footer h1 {
 }
 
 #image_site h2 {
+    color: white;
     font-weight: normal;
     text-transform: uppercase;
     text-align: center;
@@ -330,14 +330,11 @@ footer h1 {
 }
 
 .formulaire {
-    margin-top: 80px;
     background-color: #007bff;
     border-radius: 5px;
-    width: 100%;
-    height: auto;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
     padding-left: 5px;
+
 }
 
 .formulaire input {
@@ -435,15 +432,35 @@ table #longueurs {
     color: white;
 }
 
-/* Extra small ( phones , etc... ) */
 @media only screen and (max-width: 768px){
 
-    .formulaire {
-        margin-left: 20px;
+    header {
+        height: auto;
     }
 
+    .idForm h3{
+        font-size: 20px;
+    }
+
+    #secteurSection {
+        display: none;
+    }
+
+    .button3 {
+        background: none;
+        text-align: justify;
+        color: red;
+    }
+
+    .button2 {
+        background: none;
+        text-align: justify;
+        color: orange;
+    }
+
+
     #main-image {
-        height: 200px;
+        display: none;
     }
 
     #main-image h2 {
@@ -454,12 +471,13 @@ table #longueurs {
         display: none;
     }
 
+    .formulaire {
+        padding-top: 2px;
+        background: none;
+    }
+
     #rechercheSites {
         margin-bottom: 30px;
-        height: 30px;
-        width: 100%;
-        float: left;
-        margin-top: 10px;
         text-align: center;
         border-radius: 2px;
     }
@@ -479,9 +497,8 @@ table #longueurs {
 
 @media only screen and (min-width: 768px){
 
-    .formulaire {
-        margin-left: auto;
-        margin-right: auto;
+    header {
+        height: auto;
     }
 
     #main-image {
@@ -489,7 +506,7 @@ table #longueurs {
     }
 
     #main-image h2 {
-        font-weight: normal;
+        font-size: 60px;
         text-transform: uppercase;
         text-align: center;
         padding: 100px 0 50px 0;
@@ -504,7 +521,7 @@ table #longueurs {
         width: 100%;
         float: left;
         margin-top: 10px;
-        padding-top: 10px;
+        padding-top: 4px;
         text-align: center;
         border-radius: 2px;
     }
@@ -524,5 +541,4 @@ table #longueurs {
     #sitesSection article:first-child {
         margin-left: 40px;
     }
-
 }

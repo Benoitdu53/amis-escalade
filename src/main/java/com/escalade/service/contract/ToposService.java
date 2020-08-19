@@ -10,4 +10,6 @@ public interface ToposService {
     List<Topos> getToposByPseudo(String pseudo);
     void insertToposByUtilisateur(Topos topos, String pseudo);
     List<Topos> getToposDispos(String pseudo);
+    void changeDispoTopo(Long idTopo);
+    void deleteTopo(Long idTopo);
 }

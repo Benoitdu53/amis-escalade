@@ -60,14 +60,15 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     /**
      *          Ajout d'un commentaire
-     * @param utilisateur
+     * @param pseudo
      * @param commentaire
      * @param idSite
      */
     @Override
-    public void addCommentaire(final Utilisateur utilisateur, final Commentaire commentaire, Long idSite)
+    public void addCommentaire(final String pseudo, final Commentaire commentaire, Long idSite)
     {
         Site site = siteDao.getSiteById(idSite);
+        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         commentaire.setUtilisateur(utilisateur);
         commentaire.setSite(site);
 
@@ -79,13 +80,14 @@ public class CommentaireServiceImpl implements CommentaireService {
 
     /**
      *          Modifie un commentaire
-     * @param utilisateur
+     * @param pseudo
      * @param commentaire
      */
     @Override
-    public void updateCommentaire(final Utilisateur utilisateur, final Commentaire commentaire)
+    public void updateCommentaire(final String pseudo, final Commentaire commentaire)
     {
         Commentaire commentaireUpdate = commentaireDao.getCommentaireById(commentaire.getId());
+        Utilisateur utilisateur = utilisateurDao.getUtilisateurByPseudo(pseudo);
         commentaireUpdate.setUtilisateur(utilisateur);
         commentaireUpdate.setTitre(commentaire.getTitre());
         commentaireUpdate.setCommentaire(commentaire.getCommentaire());

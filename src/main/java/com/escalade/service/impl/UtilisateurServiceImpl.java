@@ -84,6 +84,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
         String pass = BCrypt.hashpw(newUtilisateur.getPassword(),BCrypt.gensalt());
         newUtilisateur.setPassword(pass);
         utilisateurDao.save(newUtilisateur);
+        utilisateurDao.updateUtilisateurIsNotMembre(newUtilisateur);
     }
 
 
@@ -113,18 +114,21 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 
         Utilisateur utilisateurRegistred = utilisateurDao.getUtilisateurByPseudo(utilisateur.getPseudo());
 
-        if (utilisateurRegistred == null){
-            utilisateur=null;
-        }
-
         if (utilisateurRegistred != null)
         {
             String password = utilisateur.getPassword();
             String pass = utilisateurRegistred.getPassword();
             if (!BCrypt.checkpw(password,pass)) {
                 utilisateur =null;
+            } else
+            {
+                utilisateur = utilisateurRegistred;
             }
+        } else{
+            utilisateur = null;
         }
+
+
             return utilisateur;
         }
     }

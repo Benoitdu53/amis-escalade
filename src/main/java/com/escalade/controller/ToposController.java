@@ -1,7 +1,6 @@
 package com.escalade.controller;
 
 import com.escalade.model.Topos;
-import com.escalade.model.Utilisateur;
 import com.escalade.service.contract.ReservationService;
 import com.escalade.service.contract.SiteService;
 import com.escalade.service.contract.ToposService;
@@ -76,7 +75,30 @@ public class ToposController {
 
         toposService.insertToposByUtilisateur(topos, pseudo );
 
-        return new RedirectView("/topos");
+        return new RedirectView("/profil");
     }
 
+
+
+
+    /**
+     *
+     * @param idTopo
+     * @return
+     */
+    @RequestMapping(value = "/disponible/{idTopo}", method = RequestMethod.GET)
+    public RedirectView disponibleTopo(@PathVariable("idTopo") Long idTopo){
+
+        toposService.changeDispoTopo(idTopo);
+
+        return new RedirectView("/profil");
+    }
+
+    @RequestMapping(value = "/topos/{idTopo}/delete", method = RequestMethod.GET)
+    public RedirectView deleteTopo(@PathVariable("idTopo")Long idTopo){
+
+        toposService.deleteTopo(idTopo);
+
+        return new RedirectView("/profil");
+    }
 }

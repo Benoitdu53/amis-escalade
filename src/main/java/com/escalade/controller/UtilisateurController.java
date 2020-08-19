@@ -101,6 +101,7 @@ public class UtilisateurController
         }
 
         String pseudo = utilisateur.getPseudo();
+        session.setAttribute("utilisateur", utilisateur);
         session.setAttribute("pseudo", pseudo);
 
         return new RedirectView("/sites");

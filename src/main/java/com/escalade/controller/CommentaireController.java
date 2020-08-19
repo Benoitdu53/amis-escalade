@@ -51,14 +51,14 @@ public class CommentaireController {
      */
     @RequestMapping(value = "/addCommentaire/{idSite}", method = RequestMethod.POST)
     public Object addCommentaire(@Valid @ModelAttribute("commentaire")Commentaire commentaire,
-                                 @SessionAttribute("utilisateur") Utilisateur utilisateur,
+                                 @SessionAttribute("pseudo") String pseudo,
                                  @PathVariable("idSite") Long idSite,
                                  HttpSession session){
 
         if(commentaire.getId() == null){
-            commentaireService.addCommentaire(utilisateur, commentaire, idSite);
+            commentaireService.addCommentaire(pseudo, commentaire, idSite);
         } else {
-            commentaireService.updateCommentaire(utilisateur, commentaire);
+            commentaireService.updateCommentaire(pseudo, commentaire);
         }
 
         return new RedirectView("/site/{idSite}");
@@ -77,7 +77,7 @@ public class CommentaireController {
 
         commentaireService.deleteCommentaire(idCommentaire);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("/sites");
     }
 
 
