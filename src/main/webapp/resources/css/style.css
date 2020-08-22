@@ -90,7 +90,7 @@ header nav ul li a{
 /* Main image */
 
 #main-image {
-    background: url('/resources/img/montagne01.jpg') center no-repeat;
+    background: url('../img/montagne01.jpg') center no-repeat;
     background-size: cover;
 }
 
