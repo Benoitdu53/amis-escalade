@@ -74,7 +74,7 @@ public class UtilisateurController
      *          Affiche le formulaire de login
      * @return
      */
-    @RequestMapping(value = "/loginUtilisateur", method = RequestMethod.GET)
+    @RequestMapping(value = "loginUtilisateur", method = RequestMethod.GET)
     public ModelAndView formLogin(){
         return new ModelAndView ("loginUtilisateur", "utilisateur", new Utilisateur());
     }
@@ -86,7 +86,7 @@ public class UtilisateurController
      *          Contrôle la validiter du login
      * @return
      */
-    @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
+    @RequestMapping(value = "validateLogin", method = RequestMethod.POST)
     public Object validateLogin(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
                                 HttpSession session,
                                 ModelMap modelMap){

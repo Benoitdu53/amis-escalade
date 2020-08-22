@@ -108,7 +108,7 @@ header nav ul li a{
     margin-bottom: 20px;
     margin-right: 30px;
 
-    background: url('/resources/img/montagne04.jpg') center no-repeat;
+    background: url('../img/montagne04.jpg') center no-repeat;
     background-size: cover;
 }
 
