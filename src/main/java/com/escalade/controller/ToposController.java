@@ -36,7 +36,7 @@ public class ToposController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/topos", method = RequestMethod.GET)
+    @RequestMapping(value = "topos", method = RequestMethod.GET)
     public String displayAllTopos (@SessionAttribute("pseudo") String pseudo,
                                    HttpSession session,
                                    Model model){
@@ -53,7 +53,7 @@ public class ToposController {
      *          Affichage du formulaire d'enregistrement de topos
      * @return
      */
-    @RequestMapping(value = "/formTopos", method = RequestMethod.GET)
+    @RequestMapping(value = "formTopos", method = RequestMethod.GET)
     public ModelAndView formTopos (Model model){
 
         model.addAttribute("nom",siteService.getNomSite());
@@ -69,13 +69,13 @@ public class ToposController {
      * @param topos
      * @return
      */
-    @RequestMapping(value = "/addTopos", method = RequestMethod.POST)
+    @RequestMapping(value = "addTopos", method = RequestMethod.POST)
     public Object addTopos(@Valid @ModelAttribute("topos")Topos topos,
                            @SessionAttribute("pseudo") String pseudo){
 
         toposService.insertToposByUtilisateur(topos, pseudo );
 
-        return new RedirectView("/profil");
+        return new RedirectView("profil");
     }
 
 
@@ -86,19 +86,19 @@ public class ToposController {
      * @param idTopo
      * @return
      */
-    @RequestMapping(value = "/disponible/{idTopo}", method = RequestMethod.GET)
+    @RequestMapping(value = "disponible/{idTopo}", method = RequestMethod.GET)
     public RedirectView disponibleTopo(@PathVariable("idTopo") Long idTopo){
 
         toposService.changeDispoTopo(idTopo);
 
-        return new RedirectView("/profil");
+        return new RedirectView("profil");
     }
 
-    @RequestMapping(value = "/topos/{idTopo}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "topos/{idTopo}/delete", method = RequestMethod.GET)
     public RedirectView deleteTopo(@PathVariable("idTopo")Long idTopo){
 
         toposService.deleteTopo(idTopo);
 
-        return new RedirectView("/profil");
+        return new RedirectView("profil");
     }
 }

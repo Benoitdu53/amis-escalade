@@ -21,7 +21,7 @@
         <div class="formulaire">
             <div class="col-md-6">
         <%--@elvariable id="utilisateur" type="com.escalade.model.Utilisateur"--%>
-        <form:form id="loginUtilisateur" method="post" action="/validateLogin" modelAttribute="utilisateur">
+        <form:form id="loginUtilisateur" method="post" action="validateLogin" modelAttribute="utilisateur">
 
             <tr>
                 <td><form:label id="pseudo" path="pseudo">Entrez votre pseudo</form:label></td>

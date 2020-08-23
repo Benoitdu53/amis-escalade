@@ -16,7 +16,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="formulaire">
-                <form:form id="formulaireTopos" method="post" action="/addTopos" modelAttribute="topos">
+                <form:form id="formulaireTopos" method="post" action="addTopos" modelAttribute="topos">
                     <table>
                         <div class="nomTopos">
                             <tr>

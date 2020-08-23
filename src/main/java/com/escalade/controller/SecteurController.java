@@ -43,7 +43,7 @@ public class SecteurController {
      * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/add", method = RequestMethod.GET)
+    @RequestMapping(value = "site/{idSite}/secteur/add", method = RequestMethod.GET)
     public ModelAndView formSecteur(@PathVariable("idSite") Long idSite,
                                     HttpSession session){
 
@@ -63,7 +63,7 @@ public class SecteurController {
      * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/secteur/add", method = RequestMethod.POST)
+    @RequestMapping(value = "site/{idSite}/secteur/add", method = RequestMethod.POST)
     public Object addSecteur (@Valid @ModelAttribute("secteur") Secteur newSecteur, BindingResult result,
                               @PathVariable("idSite") Long idSite,
                               HttpSession session){
@@ -78,7 +78,7 @@ public class SecteurController {
 
         secteurService.insertSecteur(newSecteur, idSite);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("site/{idSite}");
     }
 
 
@@ -90,7 +90,7 @@ public class SecteurController {
      * @param idSite
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}", method = RequestMethod.GET)
+    @RequestMapping(value = "site/{idSite}", method = RequestMethod.GET)
     public String displaySecteur (Model model, @PathVariable("idSite") Long idSite,
                                   HttpSession session){
 
@@ -98,7 +98,7 @@ public class SecteurController {
         model.addAttribute("secteurs", secteurService.getSectorByIdSite(idSite));
         model.addAttribute("site", siteService.getSiteById(idSite));
 
-        return "/secteur";
+        return "secteur";
     }
 
 
@@ -108,12 +108,12 @@ public class SecteurController {
      *              Supprime un secteur
      * @return
      */
-    @RequestMapping(value = "/secteur/{idSecteur}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "secteur/{idSecteur}/delete", method = RequestMethod.GET)
     public RedirectView deleteLongueur (@PathVariable("idSecteur") Long idSecteur,
                                         HttpSession session
     ){
         secteurService.deleteSecteurById(idSecteur);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 }

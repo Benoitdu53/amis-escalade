@@ -2,7 +2,7 @@ create table hibernate_sequence
 (
     next_val bigint null
 )
-    engine = MyISAM;
+    engine = INNODB;
 
 create table utilisateur
 (

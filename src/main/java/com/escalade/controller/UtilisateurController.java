@@ -36,7 +36,7 @@ public class UtilisateurController
      *          Affiche le formulaire d'inscription utilisateur
      * @return
      */
-    @RequestMapping(value = "/formUtilisateur", method = RequestMethod.GET)
+    @RequestMapping(value = "formUtilisateur", method = RequestMethod.GET)
     public ModelAndView formUtilisateur(){
         return new ModelAndView("addUtilisateur", "utilisateur", new Utilisateur());
     }
@@ -49,7 +49,7 @@ public class UtilisateurController
      * @param newUtilisateur
      * @return
      */
-    @RequestMapping(value = "/registrationUtilisateur", method = RequestMethod.POST)
+    @RequestMapping(value = "registrationUtilisateur", method = RequestMethod.POST)
     public Object addUtilisateur (@Valid @ModelAttribute("utilisateur") Utilisateur newUtilisateur,
                                   @RequestParam(name = "confirmationPassword", required = false) String confirmationPassword,
                                   ModelMap modelMap){
@@ -74,7 +74,7 @@ public class UtilisateurController
      *          Affiche le formulaire de login
      * @return
      */
-    @RequestMapping(value = "/loginUtilisateur", method = RequestMethod.GET)
+    @RequestMapping(value = "loginUtilisateur", method = RequestMethod.GET)
     public ModelAndView formLogin(){
         return new ModelAndView ("loginUtilisateur", "utilisateur", new Utilisateur());
     }
@@ -86,7 +86,7 @@ public class UtilisateurController
      *          Contrôle la validiter du login
      * @return
      */
-    @RequestMapping(value = "/validateLogin", method = RequestMethod.POST)
+    @RequestMapping(value = "validateLogin", method = RequestMethod.POST)
     public Object validateLogin(@Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
                                 HttpSession session,
                                 ModelMap modelMap){
@@ -104,7 +104,7 @@ public class UtilisateurController
         session.setAttribute("utilisateur", utilisateur);
         session.setAttribute("pseudo", pseudo);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 
 
@@ -115,10 +115,10 @@ public class UtilisateurController
      * @param session
      * @return
      */
-    @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
+    @RequestMapping(value = "deconnexion", method = RequestMethod.GET)
     public Object deconnexion(HttpSession session){
 
         session.invalidate();
-        return new RedirectView ("/sites");
+        return new RedirectView ("sites");
     }
 }

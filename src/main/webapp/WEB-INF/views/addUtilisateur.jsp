@@ -24,7 +24,7 @@
             <%--    Formulaire d'inscription utilisateur --%>
             <div class="row justify-content-center">
                 <div class="formulaire">
-                    <form:form id="formulaireUtilisateur" method="post" action="/registrationUtilisateur"
+                    <form:form id="formulaireUtilisateur" method="post" action="registrationUtilisateur"
                                modelAttribute="utilisateur">
                         <div class="col-md-6 col-sm-12 ">
                             <table>

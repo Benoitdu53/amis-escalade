@@ -42,7 +42,7 @@ public class SiteController {
      * Affiche le formulaire d'ajout de site
      * @return
      */
-    @RequestMapping(value = "/formSite", method = RequestMethod.GET)
+    @RequestMapping(value = "formSite", method = RequestMethod.GET)
     public ModelAndView formSite(){
 
         return new ModelAndView("addSite", "site", new Site());
@@ -56,7 +56,7 @@ public class SiteController {
      * @param newSite
      * @return
      */
-    @RequestMapping(value = "/addSite", method = RequestMethod.POST)
+    @RequestMapping(value = "addSite", method = RequestMethod.POST)
     public Object addSite (@Valid @ModelAttribute("site")Site newSite,
                            @SessionAttribute("utilisateur") Utilisateur utilisateur,
                            HttpSession session){
@@ -77,7 +77,7 @@ public class SiteController {
      * @param type
      * @return
      */
-    @RequestMapping(value = "/searchSites", method = RequestMethod.GET)
+    @RequestMapping(value = "searchSites", method = RequestMethod.GET)
     public String findSites( Model model,
                              @RequestParam(name = "pays", defaultValue = "", required = false) String pays,
                              @RequestParam(name = "departement",defaultValue = "", required = false) String departement,
@@ -99,7 +99,7 @@ public class SiteController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/sites", method = RequestMethod.GET)
+    @RequestMapping(value = "sites", method = RequestMethod.GET)
     public String findAllSites(Model model, HttpSession session){
 
         model.addAttribute("pays", siteService.getPays());
@@ -107,7 +107,7 @@ public class SiteController {
         model.addAttribute("type", siteService.getType());
 
         model.addAttribute("sites", siteService.getSites());
-        return "/sites";
+        return "sites";
     }
 
 
@@ -117,13 +117,13 @@ public class SiteController {
      *              Supprime un site
      * @return
      */
-    @RequestMapping(value = "/site/{idSite}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "site/{idSite}/delete", method = RequestMethod.GET)
     public RedirectView deleteLongueur (@PathVariable("idSite") Long idSite,
                                         HttpSession session){
 
         siteService.deleteSiteById(idSite);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 
 
@@ -135,13 +135,13 @@ public class SiteController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/taguerSite/{idSite}",method = RequestMethod.GET)
+    @RequestMapping(value = "taguerSite/{idSite}",method = RequestMethod.GET)
     public RedirectView taguerSite (@PathVariable("idSite")Long idSite,
                                     HttpSession session){
 
         siteService.taguerSite(idSite);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("site/{idSite}");
     }
 
 
@@ -153,12 +153,12 @@ public class SiteController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/deleteTagueSite/{idSite}",method = RequestMethod.GET)
+    @RequestMapping(value = "deleteTagueSite/{idSite}",method = RequestMethod.GET)
     public RedirectView deleteTagueSite (@PathVariable("idSite")Long idSite,
                                          HttpSession session){
 
         siteService.deleteTagueSite(idSite);
 
-        return new RedirectView("/site/{idSite}");
+        return new RedirectView("site/{idSite}");
     }
 }

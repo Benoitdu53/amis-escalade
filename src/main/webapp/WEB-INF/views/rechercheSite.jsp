@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-12">
             <section id="rechercheSites">
-                <form:form id="formulaireSite" method="get" action="/searchSites">
+                <form:form id="formulaireSite" method="get" action="searchSites">
                     <label>
                         <select name="pays">
                             <div class="button2">

@@ -44,7 +44,7 @@ public class VoieController
      * @param model
      * @return
      */
-    @RequestMapping(value = "/secteur/{idSecteur}/voie", method = RequestMethod.GET)
+    @RequestMapping(value = "secteur/{idSecteur}/voie", method = RequestMethod.GET)
     public String displayVoie (Model model, @PathVariable("idSecteur") Long idSecteur,
                                HttpSession session){
 
@@ -62,7 +62,7 @@ public class VoieController
      * @param idSecteur
      * @return
      */
-    @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
+    @RequestMapping(value = "secteur/{idSecteur}/voie/add", method= RequestMethod.GET)
     public ModelAndView formVoie(@PathVariable("idSecteur") Long idSecteur,
                                  HttpSession session){
 
@@ -82,7 +82,7 @@ public class VoieController
      * @param idSecteur
      * @return
      */
-    @RequestMapping(value = "/secteur/{idSecteur}/voie/add", method= RequestMethod.POST)
+    @RequestMapping(value = "secteur/{idSecteur}/voie/add", method= RequestMethod.POST)
     public Object addVoie (@Valid @ModelAttribute("voie") Voie newVoie, BindingResult result,
                            @PathVariable("idSecteur") Long idSecteur,
                            HttpSession session){
@@ -97,7 +97,7 @@ public class VoieController
 
         voieService.insertVoie(newVoie, idSecteur);
 
-        return new RedirectView("/secteur/{idSecteur}/voie");
+        return new RedirectView("secteur/{idSecteur}/voie");
     }
 
 
@@ -107,13 +107,13 @@ public class VoieController
      *              Supprime une voie
      * @return
      */
-    @RequestMapping(value = "/voie/{idVoie}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "voie/{idVoie}/delete", method = RequestMethod.GET)
     public RedirectView deleteLongueur (@PathVariable("idVoie") Long idVoie,
                                         HttpSession session){
 
         voieService.deleteVoieById(idVoie);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 
 }

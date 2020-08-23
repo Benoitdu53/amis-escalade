@@ -39,14 +39,14 @@ public class LongueurController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/voie/{idVoie}/longueur", method = RequestMethod.GET)
+    @RequestMapping(value = "voie/{idVoie}/longueur", method = RequestMethod.GET)
     public String displayLongueur(Model model,
                                   @PathVariable("idVoie") Long idVoie,
                                   HttpSession session){
 
         model.addAttribute("longueurs", longueurService.getLongueursByIdVoie(idVoie));
 
-        return "/longueur";
+        return "longueur";
     }
 
 
@@ -57,7 +57,7 @@ public class LongueurController {
      * @param idVoie
      * @return
      */
-    @RequestMapping(value = "/voie/{idVoie}/longueur/add", method = RequestMethod.GET)
+    @RequestMapping(value = "voie/{idVoie}/longueur/add", method = RequestMethod.GET)
     public ModelAndView formLongueur( @PathVariable("idVoie") Long idVoie,
                                       HttpSession session){
 
@@ -78,7 +78,7 @@ public class LongueurController {
      * @param idVoie
      * @return
      */
-    @RequestMapping(value = "/voie/{idVoie}/longueur/add", method= RequestMethod.POST)
+    @RequestMapping(value = "voie/{idVoie}/longueur/add", method= RequestMethod.POST)
     public Object addLongueur (@Valid @ModelAttribute("longueur") Longueur newLongueur, BindingResult result,
                                @PathVariable("idVoie") Long idVoie,
                                @SessionAttribute("utilisateur") Utilisateur utilisateur,
@@ -86,7 +86,7 @@ public class LongueurController {
 
         longueurService.insertLongueur(newLongueur, idVoie, utilisateur);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 
 
@@ -96,12 +96,12 @@ public class LongueurController {
      *              Supprime une longueur
      * @return
      */
-    @RequestMapping(value = "/longueur/{idLongueur}/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "longueur/{idLongueur}/delete", method = RequestMethod.GET)
     public RedirectView deleteLongueur (@PathVariable("idLongueur") Long idLongueur,
                                         HttpSession session){
 
         longueurService.deleteById(idLongueur);
 
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
     }
 }
