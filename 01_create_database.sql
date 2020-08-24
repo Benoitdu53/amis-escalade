@@ -1,0 +1,1 @@
+CREATE DATABASE amisEscalade CHARACTER SET 'utf8';
