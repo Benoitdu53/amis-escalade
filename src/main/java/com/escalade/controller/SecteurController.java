@@ -78,7 +78,7 @@ public class SecteurController {
 
         secteurService.insertSecteur(newSecteur, idSite);
 
-        return new RedirectView("site/{idSite}");
+        return "redirect:/sites";
     }
 
 
@@ -109,11 +109,11 @@ public class SecteurController {
      * @return
      */
     @RequestMapping(value = "secteur/{idSecteur}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idSecteur") Long idSecteur,
+    public String deleteLongueur (@PathVariable("idSecteur") Long idSecteur,
                                         HttpSession session
     ){
         secteurService.deleteSecteurById(idSecteur);
 
-        return new RedirectView("sites");
+        return "redirect:/sites";
     }
 }

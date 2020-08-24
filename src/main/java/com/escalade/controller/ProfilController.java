@@ -61,48 +61,51 @@ public class ProfilController
      * @param pseudo
      * @return
      */
-    @RequestMapping(value = "reservationOn/{idToposDispo}", method = RequestMethod.GET)
-    public RedirectView reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
+    @RequestMapping(value = "/reservationOn/{idToposDispo}", method = RequestMethod.GET)
+    public String reservationOn(@PathVariable("idToposDispo") Long idToposDispo,
                                       @SessionAttribute("pseudo") String pseudo){
 
         reservationService.reservationOn(idToposDispo, pseudo);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 
-    @RequestMapping(value = "deleteReservation/{idReservation}/{idTopos}", method = RequestMethod.GET)
-    public RedirectView deleteReservation(@PathVariable("idReservation")Long idReservation,
-                                          @PathVariable("idTopos")Long idTopos){
+    @RequestMapping(value = "/deleteReservation/{idReservation}/{idTopos}", method = RequestMethod.GET)
+    public String deleteReservation(@PathVariable("idReservation")Long idReservation,
+                                    @PathVariable("idTopos")Long idTopos,
+                                    HttpSession session){
 
         reservationService.deleteReservation(idReservation, idTopos);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 
     /**
      *          Change le status de la demande en "En location"
      */
     @RequestMapping(value = "accepterDemande/{idReservation}/{idTopos}",method = RequestMethod.GET)
-    public RedirectView accepterDemande(@PathVariable("idReservation") Long idReservation,
-                                        @PathVariable("idTopos")Long idTopos){
+    public String accepterDemande(@PathVariable("idReservation") Long idReservation,
+                                  @PathVariable("idTopos")Long idTopos,
+                                  HttpSession session){
 
         reservationService.updateReservation(idReservation, idTopos);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 
 
 
 
     /**
-     *      Refuse la demande de réservation, remis disponible et suppression de la réservation
+     *      Refuse la demande de réservation, remise disponible et suppression de la réservation
      */
     @RequestMapping(value = "refuserDemande/{idReservation}/{idTopos}",method = RequestMethod.GET)
-    public RedirectView refuserDemande(@PathVariable("idReservation")Long idReservation,
-                                       @PathVariable("idTopos")Long idTopos){
+    public String refuserDemande(@PathVariable("idReservation")Long idReservation,
+                                       @PathVariable("idTopos")Long idTopos,
+                                       HttpSession session){
 
         reservationService.deleteReservation(idReservation, idTopos);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 }

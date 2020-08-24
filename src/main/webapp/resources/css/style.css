@@ -182,7 +182,7 @@ footer h1 {
 
 #image_site {
     height: 200px;
-    background: url('/resources/img/montagne04.jpg') center no-repeat;
+    background: url('../img/montagne04.jpg') center no-repeat;
     background-size: cover;
     margin-top: 40px;
 }

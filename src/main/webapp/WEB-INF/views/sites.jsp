@@ -28,7 +28,7 @@
                         <article>
                             <div class="overlay">
                                 <c:if test="${sites.tague == true}">
-                                    <img src="/resources/img/star.png" alt="Les amis de l'escalade">
+                                    <img src="../img/star.png" alt="Les amis de l'escalade">
                                 </c:if>
                                 <h4><a href="<c:url value="/site/${sites.id}"/>"><c:out value="${sites.nom}"/></a></h4>
                                 <h5><c:out value="${sites.departement}"/></h5>

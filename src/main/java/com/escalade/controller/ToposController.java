@@ -36,7 +36,7 @@ public class ToposController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "topos", method = RequestMethod.GET)
+    @RequestMapping(value = "/topos", method = RequestMethod.GET)
     public String displayAllTopos (@SessionAttribute("pseudo") String pseudo,
                                    HttpSession session,
                                    Model model){
@@ -53,7 +53,7 @@ public class ToposController {
      *          Affichage du formulaire d'enregistrement de topos
      * @return
      */
-    @RequestMapping(value = "formTopos", method = RequestMethod.GET)
+    @RequestMapping(value = "/formTopos", method = RequestMethod.GET)
     public ModelAndView formTopos (Model model){
 
         model.addAttribute("nom",siteService.getNomSite());
@@ -82,23 +82,33 @@ public class ToposController {
 
 
     /**
-     *
+     *          Remettre un topo dispo
      * @param idTopo
      * @return
      */
-    @RequestMapping(value = "disponible/{idTopo}", method = RequestMethod.GET)
-    public RedirectView disponibleTopo(@PathVariable("idTopo") Long idTopo){
+    @RequestMapping(value = "/disponible/{idTopo}", method = RequestMethod.GET)
+    public String disponibleTopo(@PathVariable("idTopo") Long idTopo,
+                                 HttpSession session){
 
         toposService.changeDispoTopo(idTopo);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 
-    @RequestMapping(value = "topos/{idTopo}/delete", method = RequestMethod.GET)
-    public RedirectView deleteTopo(@PathVariable("idTopo")Long idTopo){
+
+
+
+    /**
+     *          Supprimer un topo
+     * @param idTopo
+     * @return
+     */
+    @RequestMapping(value = "/topos/{idTopo}/delete", method = RequestMethod.GET)
+    public String deleteTopo(@PathVariable("idTopo")Long idTopo,
+                             HttpSession session){
 
         toposService.deleteTopo(idTopo);
 
-        return new RedirectView("profil");
+        return "redirect:/profil";
     }
 }

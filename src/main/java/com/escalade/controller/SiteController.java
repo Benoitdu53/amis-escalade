@@ -42,7 +42,7 @@ public class SiteController {
      * Affiche le formulaire d'ajout de site
      * @return
      */
-    @RequestMapping(value = "formSite", method = RequestMethod.GET)
+    @RequestMapping(value = "/formSite", method = RequestMethod.GET)
     public ModelAndView formSite(){
 
         return new ModelAndView("addSite", "site", new Site());
@@ -62,7 +62,7 @@ public class SiteController {
                            HttpSession session){
 
         siteService.insertSite(newSite, utilisateur);
-        return new RedirectView("/sites");
+        return new RedirectView("sites");
 
     }
 
@@ -123,7 +123,7 @@ public class SiteController {
 
         siteService.deleteSiteById(idSite);
 
-        return new RedirectView("sites");
+        return new RedirectView("/sites");
     }
 
 
@@ -136,12 +136,12 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "taguerSite/{idSite}",method = RequestMethod.GET)
-    public RedirectView taguerSite (@PathVariable("idSite")Long idSite,
+    public String taguerSite (@PathVariable("idSite")Long idSite,
                                     HttpSession session){
 
         siteService.taguerSite(idSite);
 
-        return new RedirectView("site/{idSite}");
+        return "redirect:/sites";
     }
 
 
@@ -159,6 +159,6 @@ public class SiteController {
 
         siteService.deleteTagueSite(idSite);
 
-        return new RedirectView("site/{idSite}");
+        return new RedirectView("/site/{idSite}");
     }
 }

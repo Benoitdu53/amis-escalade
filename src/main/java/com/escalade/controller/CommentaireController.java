@@ -29,7 +29,7 @@ public class CommentaireController {
      *          Affiche du formulaire d'ajout de commentaire
      * @return
      */
-    @RequestMapping(value = "site/{idSite}/add/commentaire", method = RequestMethod.GET)
+    @RequestMapping(value = "/site/{idSite}/add/commentaire", method = RequestMethod.GET)
     public ModelAndView formCommentaire(@PathVariable("idSite")Long idSite){
 
         ModelAndView modelAndView =new ModelAndView ("addCommentaire","commentaire",new Commentaire());
@@ -49,7 +49,7 @@ public class CommentaireController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "addCommentaire/{idSite}", method = RequestMethod.POST)
+    @RequestMapping(value = "/addCommentaire/{idSite}", method = RequestMethod.POST)
     public Object addCommentaire(@Valid @ModelAttribute("commentaire")Commentaire commentaire,
                                  @SessionAttribute("pseudo") String pseudo,
                                  @PathVariable("idSite") Long idSite,
@@ -61,7 +61,7 @@ public class CommentaireController {
             commentaireService.updateCommentaire(pseudo, commentaire);
         }
 
-        return new RedirectView("site/{idSite}");
+        return new RedirectView("/site/{idSite}");
     }
 
 
@@ -73,11 +73,11 @@ public class CommentaireController {
      * @return
      */
     @RequestMapping(value = "commentaire/delete/{idCommentaire}",method = RequestMethod.GET)
-    public RedirectView deleteCommentaire(@PathVariable("idCommentaire") Long idCommentaire){
+    public String deleteCommentaire(@PathVariable("idCommentaire") Long idCommentaire){
 
         commentaireService.deleteCommentaire(idCommentaire);
 
-        return new RedirectView("sites");
+        return "redirect:/sites";
     }
 
 

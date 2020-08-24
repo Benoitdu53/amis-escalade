@@ -36,7 +36,7 @@ public class UtilisateurController
      *          Affiche le formulaire d'inscription utilisateur
      * @return
      */
-    @RequestMapping(value = "formUtilisateur", method = RequestMethod.GET)
+    @RequestMapping(value = "/formUtilisateur", method = RequestMethod.GET)
     public ModelAndView formUtilisateur(){
         return new ModelAndView("addUtilisateur", "utilisateur", new Utilisateur());
     }
@@ -63,7 +63,7 @@ public class UtilisateurController
                 return "addUtilisateur";
             }else {
                 utilisateurService.registrationUtilisateur(newUtilisateur);
-                return new RedirectView("/sites");
+                return new RedirectView("sites");
             }
     }
 
@@ -74,7 +74,7 @@ public class UtilisateurController
      *          Affiche le formulaire de login
      * @return
      */
-    @RequestMapping(value = "loginUtilisateur", method = RequestMethod.GET)
+    @RequestMapping(value = "/loginUtilisateur", method = RequestMethod.GET)
     public ModelAndView formLogin(){
         return new ModelAndView ("loginUtilisateur", "utilisateur", new Utilisateur());
     }
@@ -115,7 +115,7 @@ public class UtilisateurController
      * @param session
      * @return
      */
-    @RequestMapping(value = "deconnexion", method = RequestMethod.GET)
+    @RequestMapping(value = "/deconnexion", method = RequestMethod.GET)
     public Object deconnexion(HttpSession session){
 
         session.invalidate();

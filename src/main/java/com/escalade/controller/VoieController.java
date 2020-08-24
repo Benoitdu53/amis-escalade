@@ -97,7 +97,7 @@ public class VoieController
 
         voieService.insertVoie(newVoie, idSecteur);
 
-        return new RedirectView("secteur/{idSecteur}/voie");
+        return "redirect:/secteur/{idSecteur}/voie";
     }
 
 
@@ -108,12 +108,12 @@ public class VoieController
      * @return
      */
     @RequestMapping(value = "voie/{idVoie}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idVoie") Long idVoie,
+    public String deleteLongueur (@PathVariable("idVoie") Long idVoie,
                                         HttpSession session){
 
         voieService.deleteVoieById(idVoie);
 
-        return new RedirectView("sites");
+        return "redirect:/sites";
     }
 
 }

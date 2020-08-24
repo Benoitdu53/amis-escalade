@@ -86,7 +86,7 @@ public class LongueurController {
 
         longueurService.insertLongueur(newLongueur, idVoie, utilisateur);
 
-        return new RedirectView("sites");
+        return "redirect:/sites";
     }
 
 
@@ -97,11 +97,11 @@ public class LongueurController {
      * @return
      */
     @RequestMapping(value = "longueur/{idLongueur}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idLongueur") Long idLongueur,
+    public String deleteLongueur (@PathVariable("idLongueur") Long idLongueur,
                                         HttpSession session){
 
         longueurService.deleteById(idLongueur);
 
-        return new RedirectView("sites");
+        return "redirect:/sites";
     }
 }
