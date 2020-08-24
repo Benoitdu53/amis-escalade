@@ -41,7 +41,7 @@
                 <div class="wrapper">
                     <div id="siteDetail">
                         <c:if test="${site.tague == true}">
-                            <img src="../img/star.png" alt="Les amis de l'escalade">
+                            <img src="<c:url value="/resources/img/star.png"/>" alt="Les amis de l'escalade">
                         </c:if>
                         <ul>
                             <li><strong>Nom du site : </strong><c:out value="${site.nom}"/></li>

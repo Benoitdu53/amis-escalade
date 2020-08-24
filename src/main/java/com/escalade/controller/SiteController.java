@@ -118,12 +118,12 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "site/{idSite}/delete", method = RequestMethod.GET)
-    public RedirectView deleteLongueur (@PathVariable("idSite") Long idSite,
+    public String deleteLongueur (@PathVariable("idSite") Long idSite,
                                         HttpSession session){
 
         siteService.deleteSiteById(idSite);
 
-        return new RedirectView("/sites");
+        return "redirect:/sites";
     }
 
 
@@ -154,11 +154,11 @@ public class SiteController {
      * @return
      */
     @RequestMapping(value = "deleteTagueSite/{idSite}",method = RequestMethod.GET)
-    public RedirectView deleteTagueSite (@PathVariable("idSite")Long idSite,
+    public String deleteTagueSite (@PathVariable("idSite")Long idSite,
                                          HttpSession session){
 
         siteService.deleteTagueSite(idSite);
 
-        return new RedirectView("/site/{idSite}");
+        return "redirect:/sites";
     }
 }
