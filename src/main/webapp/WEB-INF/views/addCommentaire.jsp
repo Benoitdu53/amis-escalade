@@ -20,8 +20,7 @@
         <div class="col-md-6">
             <div class="formulaire">
                 <%--@elvariable id="commentaire" type="com.escalade.model.Commentaire"--%>
-                <form:form id="formulaireCommentaire" method="post" action="addCommentaire/${idSite}"
-                           modelAttribute="commentaire">
+                <form:form id="formulaireCommentaire" method="post" action="/amis.escalade/site/${idSite}/add/commentaire" modelAttribute="commentaire">
                     <form:hidden path="id"/>
 
                     <table>

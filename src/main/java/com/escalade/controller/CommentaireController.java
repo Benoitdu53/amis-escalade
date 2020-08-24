@@ -49,7 +49,7 @@ public class CommentaireController {
      * @param session
      * @return
      */
-    @RequestMapping(value = "/addCommentaire/{idSite}", method = RequestMethod.POST)
+    @RequestMapping(value = "/site/{idSite}/add/commentaire", method = RequestMethod.POST)
     public Object addCommentaire(@Valid @ModelAttribute("commentaire")Commentaire commentaire,
                                  @SessionAttribute("pseudo") String pseudo,
                                  @PathVariable("idSite") Long idSite,
@@ -61,7 +61,7 @@ public class CommentaireController {
             commentaireService.updateCommentaire(pseudo, commentaire);
         }
 
-        return new RedirectView("/site/{idSite}");
+        return "redirect:/site/{idSite}";
     }
 
 

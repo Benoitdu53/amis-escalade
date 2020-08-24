@@ -60,6 +60,8 @@
 
     <div class="clear"></div>
 
+    <br>
+
     <div class="row">
         <%-- Affiche du titre et si User connecté affiché "Ajouter un secteur" --%>
         <div class="titre">
