@@ -30,6 +30,9 @@ public interface SiteDao extends CrudRepository<Site, Long>
     @Query("SELECT s FROM Site s WHERE (:pays='' or s.pays = :pays) AND (:departement='' or s.departement =:departement) AND (:type='' or s.type=:type)")
     List<Site> searchSite(@Param ("pays") String pays, @Param("departement") String departement, @Param("type") String type);
 
+    @Query("SELECT s from Site s where s.nom Like :saisie")
+    List<Site> getSiteBySaisie(@Param("saisie")String saisie);
+
     @Query("SELECT s FROM Site s WHERE s.id = :id")
     Site getSiteById(@Param("id") Long id);
 

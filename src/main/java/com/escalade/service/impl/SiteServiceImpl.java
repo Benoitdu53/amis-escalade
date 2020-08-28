@@ -114,6 +114,22 @@ public class SiteServiceImpl implements SiteService
 
 
     /**
+     *          Retourne la liste des sites selon la saisie
+     * @param saisie
+     * @return
+     */
+    @Override
+    public List<Site> getSiteBySaisie(String saisie)
+    {
+        saisie = saisie.replaceAll("\\s","");
+        saisie = saisie+"%";
+        return siteDao.getSiteBySaisie(saisie);
+    }
+
+
+
+
+    /**
      *          Ajoute un site
      * @param newSite
      * @param utilisateur

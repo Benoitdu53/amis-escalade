@@ -58,6 +58,14 @@ prêt d’un topo (par échange de coordonnées).
 
 * Application web responsive
 
+###### Prérequis 
+
+* Java version 11.0.8
+
+* Tomcat version 9.0.37
+
+* Mysql version 8.0.21
+
 ###### Déploiement de l'application :
 
 ---- Base de données 

@@ -14,6 +14,7 @@ public interface SiteService
     List<String> getType();
     List<Site> getNomSite();
     List<Site> getSearchSites(String pays, String departement, String type);
+    List<Site> getSiteBySaisie(String saisie);
     void insertSite(Site newSite, final Utilisateur utilisateur);
     Site getSiteById(Long id);
     void deleteSiteById(Long idSite);

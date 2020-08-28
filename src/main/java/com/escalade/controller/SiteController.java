@@ -95,6 +95,29 @@ public class SiteController {
 
 
     /**
+     *          Recherche de site par la saisie
+     * @param model
+     * @param session
+     * @param saisie
+     * @return
+     */
+    @RequestMapping(value = "searchSitesSaisie", method = RequestMethod.GET)
+    public String findSiteBySaisie (Model model,
+                                    HttpSession session,
+                                    @RequestParam(name ="saisie",defaultValue = "",required = false) String saisie){
+
+        model.addAttribute("sites",siteService.getSiteBySaisie(saisie));
+        model.addAttribute("pays", siteService.getPays());
+        model.addAttribute("departement", siteService.getDepartement());
+        model.addAttribute("type", siteService.getType());
+
+        return "sites";
+    }
+
+
+
+
+    /**
      *              Affiche tout les sites
      * @param model
      * @return

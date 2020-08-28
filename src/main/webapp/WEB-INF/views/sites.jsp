@@ -10,7 +10,7 @@
 
 <body>
 
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <%-- Si utilisateur connecté affiché "Ajouter un site"--%>
         <c:if test="${ not empty sessionScope.pseudo}">
