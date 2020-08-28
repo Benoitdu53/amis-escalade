@@ -177,6 +177,17 @@ footer h1 {
     color: #777;
 }
 
+.rechercheSites {
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.rechercheSites select {
+    background: #ff7a00;
+    color: #ffffff;
+}
+
 /* Image de l'onglet site */
 
 #image_site {
@@ -473,18 +484,6 @@ table #longueurs {
     .formulaire {
         padding-top: 2px;
         background: none;
-    }
-
-    .rechercheSites {
-        margin-bottom: 30px;
-        text-align: center;
-        border-radius: 2px;
-    }
-
-    .rechercheSites select {
-        border-radius: 8px;
-        background: #ff7a00;
-        color: #ffffff;
     }
 
     #sitesSection article {

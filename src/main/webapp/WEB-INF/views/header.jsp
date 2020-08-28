@@ -32,7 +32,7 @@
                 <h1>Les amis de l'escalade</h1>
             </div>
 
-            <div class="col-12">
+            <div class="col-12 col-md-6">
             <nav class="col navbar navbar-expand-lg navbar-light">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
